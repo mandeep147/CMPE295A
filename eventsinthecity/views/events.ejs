@@ -16,24 +16,21 @@
        
 </head>
 
-
-
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12">
-				<% for(var i=0;i<values[0].length;i++) { %>
-							<div class="column">
-    							<div class="col-md-4 ">
-        							<div class="col-md-8 well">	
-										<div class="row"><Strong>Name : </Strong><%= values[0][i].name %> </div>
-									</div>
-								</div>
- 				<% } %> 	
-			</div>
-		</div>
-	</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <% for(var i=0;i<values[0].length;i++) { %>
+                <div class="column">
+                    <div class="col-md-4 ">
+                        <div class="col-md-8 well">
+                            <div class="row"><Strong>Name : </Strong><%= values[0][i].name %> </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
-
-
 </html>
