@@ -1,15 +1,16 @@
+
 /**
  * Module dependencies.
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path');
+    , routes = require('./routes')
+    , user = require('./routes/user')
+    , http = require('http')
+    , path = require('path');
 
 var events=require('./routes/events');
-var eventbrite = require('./routes/eventbrite');
+var login = require('./routes/login');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // development only
 if ('development' == app.get('env')) {
     app.use(express.errorHandler());
@@ -31,16 +33,11 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-
 app.get('/events',events.searchEvents);
 
-app.get('/eventsbrite', eventbrite.eventBriteEvents);
-
-/*
-* needs to be fixed in future
-*/
-//app.get('/events', events.eventBriteEvents);
+app.post('/login', login.login);
+app.post('/register',login.register);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port ' + app.get('port'));
 });
