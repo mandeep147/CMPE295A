@@ -6,7 +6,9 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "ejs": "*",
     "express": "3.2.6",
-    "ejs": "*"
+    "request": "^2.83.0"
   }
 }

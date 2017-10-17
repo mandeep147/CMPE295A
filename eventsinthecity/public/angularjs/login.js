@@ -70,6 +70,33 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
             $scope.unexpected_error = true;
         });
     };
+
+    $scope.nextpage = function(){
+
+        $http({
+            "method":"POST",
+            "url":"/nextpage",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "data":{
+                id : $scope.data
+            }
+        }).success(function(response){
+            console.log("Hi1 from angular");
+            console.log(response.status);
+            if(response.status == 200){
+
+            }
+            else{
+                $scope.error_register =false;
+            }
+        }).error(function(error){
+            console.log("from error");
+            $scope.invalid_login = false;
+            $scope.unexpected_error = true;
+        });
+    }
 }]);
 
 
