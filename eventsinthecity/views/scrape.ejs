@@ -50,49 +50,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <h1>Eventbrite</h1>
-			<% for(var i=0;i<values[0][1].length;i++) { %>
+            <h1>Scraping</h1>
+			<% for(var i=0;i<values.length;i++) { %>
 				<% if(i % 3 == 0){ %>
 				<div class="row">
             <% } %>
             <div class="col-xs-6 col-lg-4">
             
-            <h3><%= values[0][1][i].name.text %></h3>
-                <p><Strong>url : </Strong><a><%= values[0][1][i].url %> </a><p>
-
-
-                        <a href="/nextpage?id=<%=values[0][1][i].id%>">Continue</a>
-            
-            	</div>
-            <%  if(i % 3 == 2){ %>
-                </div>
-                    <% } %>
-       <% } %>     
-				
-        </div>
-	</div>
-</div>
-
-
-<h1>Meetup</h1>
-
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            
-			<% for(var i=0;i<values[1][0].length;i++) { %>
-				<% if(i % 3 == 0){ %>
-				<div class="row">
-            <% } %>
-            <div class="col-xs-6 col-lg-4">
-            
-            <h3><%= values[1][0][i].name %></h3>
-                <p><Strong>url : </Strong><a><%= values[1][0][i].link %> </a><p>
-
-
-                        <a href="/nextpageMeetup?id=<%=values[1][0][i].id%>">Continue</a>
-            
+                <p><Strong> </Strong><a><%= values[i] %> </a><p>            
             	</div>
             <%  if(i % 3 == 2){ %>
                 </div>
@@ -105,10 +70,3 @@
 
 
 </div>
-
-
-</body>
-<script>
-
-</script>
-</html>
