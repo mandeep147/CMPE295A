@@ -49,18 +49,6 @@ exports.scrape = function (req, res) {
             	console.log($('.ProfessionalSession').eq(i).text());
             }
             
-          /*
-            $('#sessionsTable').filter(function () {
-                var data = $(this);
-                
-                //console.log(data)
-                title = data.children().first().text();
-                //console.log(data);
-                json1.title = title;
-            })
-            */
-            
- 
            res.render("scrape", {
                values : arrEvents
            });
@@ -102,9 +90,9 @@ exports.scrape = function (req, res) {
 
 */
 
-/*
 
-exports.scrape = function (req, res) {
+
+exports.scrapefun = function (req, res) {
     url = "http://www.sanjose.org/events/"
     request(url, function(error, response, html){
 
@@ -112,19 +100,26 @@ exports.scrape = function (req, res) {
             var $ = cheerio.load(html);
             console.log("I'm here");
             var json1 = { title : ""};
+            var allEvents=[];
             var arrSJD =[];
-            console.log($('.col-sm-6 col-md-6 venueinfo').eq(0).text());
-            for(var i=0;i<$('.ProfessionalSession').length;i++){
-            	arrEvents.push($('.ProfessionalSession').eq(i).text().replace(/(\r\n|\n|\r)/gm,""));
-            	console.log($('.ProfessionalSession').eq(i).text());
+            console.log($('.venuetitle').eq(0).text());
+            console.log($('.venuename').eq(0).text());
+            console.log($('.eventtime').eq(0).text());
+            for(var i=0;i<$('.venuetitle').length;i++){
+            	event={};
+            	event.title=($('.venuetitle').eq(i).text());
+            	event.name=($('.venuename').eq(i).text());
+            	event.time=($('.eventtime').eq(i).text());
+            	allEvents.push(event);
+            	           	
             }
-            
-           res.render("scrape", {
-               values : arrSJD
+
+            console.log(JSON.stringify(allEvents));
+           res.render("scrapefun", {
+               values : allEvents
            });
 
         }
     })
 }
 
-*/
