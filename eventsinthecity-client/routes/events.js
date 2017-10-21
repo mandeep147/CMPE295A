@@ -1,7 +1,7 @@
-var json_responses;
+/*var json_responses;
 var Client = require('node-rest-client').Client;
 var http = require('http');
-/*
+
 var eventBriteAPI = "https://www.eventbriteapi.com/v3/events/search/?categories=102&location.address=San Francisco Bay Area&token=R3COIUX46H3TNBRBIYVS";
 var meetupEndpoint = "https://api.meetup.com/topics?search=tech&key=15257f2bd835555253b477b235278";
 var meetupEndpoint1 = "https://api.meetup.com/topics?search=tech&key=1a9e6c7667695a491e1c255a63f72";
@@ -58,7 +58,7 @@ exports.searchEvents = function(req, res) {
         values : output
     });
 };
-*/
+
 
 
 
