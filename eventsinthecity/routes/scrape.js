@@ -43,10 +43,11 @@ exports.scrape = function (req, res) {
             var $ = cheerio.load(html);
             var json1 = { title : ""};
             var arrEvents =[];
+            console.log($('.currentSession').eq(0).text());
             //console.log($('.ProfessionalSession').eq(0).text());
-            for(var i=0;i<$('.ProfessionalSession').length;i++){
-            	arrEvents.push($('.ProfessionalSession').eq(i).text().replace(/(\r\n|\n|\r)/gm,""));
-            	console.log($('.ProfessionalSession').eq(i).text());
+            for(var i=0;i<$('.currentSession').length;i++){
+            arrEvents.push($('.currentSession').eq(i).text().replace(/(\r\n|\n|\r)/gm,""));
+            console.log($('.currentSession').eq(i).text());
             }
             
            res.render("scrape", {
@@ -59,20 +60,22 @@ exports.scrape = function (req, res) {
 
 
 
-/*
 
+/*
 exports.scrape = function (req, res) {
     url = "http://sjdowntown.com/events/"
     request(url, function(error, response, html){
-
-        // First we'll check to make sure no errors occurred when making the request
-
         if(!error){
-            // Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
-
             var $ = cheerio.load(html);
-            // Finally, we'll define the variables we're going to capture
+            console.log("I'm here");
             var json = { title : ""};
+            var allEvents=[];
+            var arrSJD =[];
+            console.log($('.dp_pec_isotope ').children().first().text());
+            console.log($('span.dp_pec_date_time').eq(0).text());
+            console.log($('span.dp_pec_event_title_sp').eq(0).text());
+            console.log($('span.dp_pec_event_location').eq(0).text());            
+            console.log($('span.dp_pec_event_description').eq(0).text());
             $('.dp_pec_content').filter(function () {
                 var data = $(this);
                 console.log(data)
@@ -91,7 +94,6 @@ exports.scrape = function (req, res) {
 */
 
 
-
 exports.scrapefun = function (req, res) {
     url = "http://www.sanjose.org/events/"
     request(url, function(error, response, html){
@@ -102,6 +104,8 @@ exports.scrapefun = function (req, res) {
             var json1 = { title : ""};
             var allEvents=[];
             var arrSJD =[];
+            
+            console.log($('.allevents-img').eq(0).attr('src'));
             console.log($('.venuetitle').eq(0).text());
             console.log($('.venuename').eq(0).text());
             console.log($('.eventtime').eq(0).text());
@@ -110,6 +114,7 @@ exports.scrapefun = function (req, res) {
             	event.title=($('.venuetitle').eq(i).text());
             	event.name=($('.venuename').eq(i).text());
             	event.time=($('.eventtime').eq(i).text());
+            	event.image=($('.allevents-img').eq(i).attr('src'));
             	allEvents.push(event);
             	           	
             }
