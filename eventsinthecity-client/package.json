@@ -1,0 +1,15 @@
+{
+  "name": "eventsinthecity",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "ejs": "*",
+    "express": "3.2.6",
+    "mysql": "^2.15.0",
+    "request": "^2.83.0"
+  }
+}
