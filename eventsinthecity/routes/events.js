@@ -2,12 +2,6 @@ var json_responses;
 var Client = require('node-rest-client').Client;
 var http = require('http');
 
-/**
- * token = R3COIUX46H3TNBRBIYVS
- * category 102 = Science and Technology
- * address = San Francisco Bay Area
- */
-
 var eventBriteAPI = "https://www.eventbriteapi.com/v3/events/search/?categories=102&location.address=San Francisco Bay Area&token=R3COIUX46H3TNBRBIYVS";
 var meetupEndpoint = "https://api.meetup.com/topics?search=tech&key=15257f2bd835555253b477b235278";
 var meetupEndpoint1 = "https://api.meetup.com/topics?search=tech&key=1a9e6c7667695a491e1c255a63f72";
@@ -15,18 +9,15 @@ var client = new Client();
 
 client.get(eventBriteAPI, function(data, response_raw) {
     if (response_raw) {
-
-        if (data) {
+    	if (data) {
             json_responses = {
                 "data" : data
             };
-            // Call meetup API
-            
+            // Call meetup API 
             var clientMeetup = new Client();
             clientMeetup.get(meetupEndpoint, function(data1, response_raw1) {
             	if (response_raw1) {
-
-            		if (data1) {
+            			if (data1) {
             			json_responses1 = {
             				"data" : data1
             			};
@@ -37,13 +28,9 @@ client.get(eventBriteAPI, function(data, response_raw) {
             		console.log("returned false");
             	}
             });
-            
-            
-            
-            
+           
         }
     }
-
     else {
         console.log("returned false");
     }
@@ -63,18 +50,54 @@ exports.searchEvents = function(req, res) {
     output.push(outputEventBrite);
     output.push(outputMeetup);
     console.log(JSON.stringify(output));
+   var ebobj = {"outputEventBrite" : outputEventBrite};
+    /*
+    ebobj = {"id":outputEventBrite.id,
+    		"desc":outputEventBrite.description,
+    		"name":outputEventBrite.name,
+    		"url":outputEventBrite.url};
+    
+    ebobj.id=outputEventBrite.id;
+    ebobj.desc=outputEventBrite.description;
+    ebobj.name=outputEventBrite.name;
+    ebobj.url=outputEventBrite.url;
+    */
+    var muobj = {"outputMeetup" : outputMeetup};
+    var mongo = require("./mongoConnect");
+    var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295";
+    var json_re={user:"kalyani"};
+	mongo.connect(mongoURL, function(){
+		console.log('Connected to mongo at: ' + mongoURL);
+		var coll1 = mongo.collection('ebapi');
+		var coll2 = mongo.collection('muapi');
 
-    //    console.log(output[1][1]);
-  //  console.log(output[1][1].description);
-    //console.log(output[1][1].description.text());
+		coll1.insert(ebobj,(function(err, user){
+			if (!err) {
+							
+				console.log("Details saved successfully  ");
+
+			} else {
+				console.log("returned false"+err);
+			}
+		}));
+		
+		coll2.insert(muobj,(function(err, user){
+			if (!err) {
+							
+				console.log("Details saved successfully  ");
+
+			} else {
+				console.log("returned false");
+			}
+		}));
+	});
+    
+    
     res.render("events", {
         values : output
     });
 };
 
-	
-
-	
 
 
 
@@ -141,19 +164,3 @@ exports.eventDetailsget = function(req, res) {
 		console.log(id);
 	}
 
-/*	
-	var request = require('request');
-	var cheerio = require('cheerio');
-exports.scrapeWeb = function(req,res){
-	request('https://www.siliconvalley-codecamp.com/Session/2017', function (error, response, html) {
-		  if (!error && response.statusCode == 200) {
-			  var $ = cheerio.load(html);
-			  console.log($);
-		  res.send(html);
-		  }
-		  else{
-			  res.send("Fail");
-		  }
-		});
-};	
-	*/
