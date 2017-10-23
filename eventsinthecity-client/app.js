@@ -35,14 +35,14 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get('/events',events.searchEvents);
-app.get('/scrape', scrape.scrape);
-app.get('/scrapefun', scrape.scrapefun);
+//app.get('/events',events.searchEvents);
+//app.get('/scrape', scrape.scrape);
+//app.get('/scrapefun', scrape.scrapefun);
 
 app.post('/login', login.login);
 app.post('/register',login.register);
-app.post('/nextpage',events.nextpage);
-app.get('/nextpage',events.eventDetailsget)
+//app.post('/nextpage',events.nextpage);
+//app.get('/nextpage',events.eventDetailsget)
 //app.get('/eventDetails',events.eventDetailsget);
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -1,4 +1,4 @@
-var json_responses;
+/*var json_responses;
 var Client = require('node-rest-client').Client;
 var http = require('http');
 
@@ -13,7 +13,7 @@ client.get(eventBriteAPI, function(data, response_raw) {
             json_responses = {
                 "data" : data
             };
-            // Call meetup API 
+            // Call meetup API
             var clientMeetup = new Client();
             clientMeetup.get(meetupEndpoint, function(data1, response_raw1) {
             	if (response_raw1) {
@@ -28,7 +28,7 @@ client.get(eventBriteAPI, function(data, response_raw) {
             		console.log("returned false");
             	}
             });
-           
+
         }
     }
     else {
@@ -59,9 +59,9 @@ exports.searchEvents = function(req, res) {
     });
 };
 
-	
 
-	
+
+
 
 
 
@@ -97,10 +97,10 @@ exports.meetupDetailsget = function(req, res) {
 			res.send("Not Found");
 			console.log("returned false");
 		}
-	});	
-	
-		
-		
+	});
+
+
+
 
 
 	}
@@ -128,7 +128,7 @@ exports.eventDetailsget = function(req, res) {
 		console.log(id);
 	}
 
-/*	
+/*
 	var request = require('request');
 	var cheerio = require('cheerio');
 exports.scrapeWeb = function(req,res){
@@ -142,5 +142,5 @@ exports.scrapeWeb = function(req,res){
 			  res.send("Fail");
 		  }
 		});
-};	
+};
 	*/

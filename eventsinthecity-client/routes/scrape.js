@@ -29,7 +29,7 @@ exports.scrape = function (req, res) {
     res.end();
 }*/
 
-
+/*
 var express = require('express');
 var fs = require('fs');
 var request = require('request');
@@ -49,7 +49,7 @@ exports.scrape = function (req, res) {
             arrEvents.push($('.currentSession').eq(i).text().replace(/(\r\n|\n|\r)/gm,"/n"));
             console.log($('.currentSession').eq(i).text());
             }
-            
+
            res.render("scrape", {
                values : arrEvents
            });
@@ -74,7 +74,7 @@ exports.scrape = function (req, res) {
             console.log($('.dp_pec_isotope ').children().first().text());
             console.log($('span.dp_pec_date_time').eq(0).text());
             console.log($('span.dp_pec_event_title_sp').eq(0).text());
-            console.log($('span.dp_pec_event_location').eq(0).text());            
+            console.log($('span.dp_pec_event_location').eq(0).text());
             console.log($('span.dp_pec_event_description').eq(0).text());
             $('.dp_pec_content').filter(function () {
                 var data = $(this);
@@ -93,7 +93,7 @@ exports.scrape = function (req, res) {
 
 */
 
-
+/*
 exports.scrapefun = function (req, res) {
     url = "http://www.sanjose.org/events/"
     request(url, function(error, response, html){
@@ -104,7 +104,7 @@ exports.scrapefun = function (req, res) {
             var json1 = { title : ""};
             var allEvents=[];
             var arrSJD =[];
-            
+
             console.log($('.allevents-img').eq(0).attr('src'));
             console.log($('.venuetitle').eq(0).text());
             console.log($('.venuename').eq(0).text());
@@ -116,7 +116,7 @@ exports.scrapefun = function (req, res) {
             	event.time=($('.eventtime').eq(i).text());
             	event.image=($('.allevents-img').eq(i).attr('src'));
             	allEvents.push(event);
-            	           	
+
             }
 
             console.log(JSON.stringify(allEvents));
@@ -127,4 +127,4 @@ exports.scrapefun = function (req, res) {
         }
     })
 }
-
+*/
