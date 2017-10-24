@@ -37,7 +37,9 @@ client.get(eventBriteAPI, function(data, response_raw) {
 });
 
 exports.searchEvents = function(req, res) {
-
+	
+	var ebEvents=[];
+	var muEvents=[];
     var output = [];
     var outputEventBrite = [];
     var outputMeetup = [];
@@ -46,32 +48,51 @@ exports.searchEvents = function(req, res) {
     }
     for (i in json_responses1.data) {
     	outputMeetup.push(json_responses1.data[i]);
+
     }
     output.push(outputEventBrite);
     output.push(outputMeetup);
-    console.log(JSON.stringify(output));
-   var ebobj = {"outputEventBrite" : outputEventBrite};
-    /*
-    ebobj = {"id":outputEventBrite.id,
-    		"desc":outputEventBrite.description,
-    		"name":outputEventBrite.name,
-    		"url":outputEventBrite.url};
-    
-    ebobj.id=outputEventBrite.id;
-    ebobj.desc=outputEventBrite.description;
-    ebobj.name=outputEventBrite.name;
-    ebobj.url=outputEventBrite.url;
-    */
+    var ebobj = {"outputEventBrite" : outputEventBrite};
     var muobj = {"outputMeetup" : outputMeetup};
     var mongo = require("./mongoConnect");
     var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295";
     var json_re={user:"kalyani"};
+   
+    
+    res.render("events", {
+        values : output
+    });
+    
+    for(var i=0;i<output[0][1].length;i++)
+    {
+    //	console.log(output[0][1][i].name.text);
+    //	console.log(output[0][1][i].description.text);
+    	eb={};
+    	eb.id=output[0][1][i].id;
+    	eb.url=output[0][1][i].url;
+    	eb.name=output[0][1][i].name.text;
+    	eb.description=output[0][1][i].description.text;
+    	eb.time=output[0][1][i].start.local;
+    	ebEvents.push(eb);
+    	mu={};
+    	mu.id=output[1][0][i].id;
+    	mu.name=output[1][0][i].name;
+    	mu.description=output[1][0][i].description;
+    	mu.url=output[1][0][i].link;
+    	mu.urlkey=output[1][0][i].urlkey;
+    	mu.updated=output[1][0][i].updated;
+    	muEvents.push(mu);
+    	
+    }
+    var eventobj = {"ebEvents" : ebEvents};
+    var eventobj2 = {"muEvents" : muEvents};
+    
 	mongo.connect(mongoURL, function(){
 		console.log('Connected to mongo at: ' + mongoURL);
-		var coll1 = mongo.collection('ebapi');
-		var coll2 = mongo.collection('muapi');
-
-		coll1.insert(ebobj,(function(err, user){
+		var coll1 = mongo.collection('eventbriteapi');
+		var coll2 = mongo.collection('meetupapi');
+		
+		coll1.insert(eventobj,(function(err, user){
 			if (!err) {
 							
 				console.log("Details saved successfully  ");
@@ -81,21 +102,19 @@ exports.searchEvents = function(req, res) {
 			}
 		}));
 		
-		coll2.insert(muobj,(function(err, user){
+		coll2.insert(eventobj2,(function(err, user){
 			if (!err) {
 							
 				console.log("Details saved successfully  ");
 
 			} else {
-				console.log("returned false");
+				console.log("returned false"+err);
 			}
 		}));
+		
 	});
-    
-    
-    res.render("events", {
-        values : output
-    });
+	
+
 };
 
 

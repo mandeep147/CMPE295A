@@ -38,6 +38,8 @@ app.get('/users', user.list);
 app.get('/events',events.searchEvents);
 app.get('/scrape', scrape.scrape);
 app.get('/scrapefun', scrape.scrapefun);
+app.get('/scrapefun2', scrape.scrapefun2);
+app.get('/scrapeSF', scrape.scrapeSF);
 
 app.post('/login', login.login);
 app.post('/register',login.register);
