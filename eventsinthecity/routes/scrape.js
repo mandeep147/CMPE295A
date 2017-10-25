@@ -1,40 +1,10 @@
-/**
- * Created by mandeep on 9/13/17.
- */
-
-/*
-var graph = require('facebook-complete');
-var conf = {
-    client_id:      '118045498900273',
-    client_secret:  'ffab260e64b70e769b501acf3fbf795a',
-    scope:          'email, user_about_me, user_birthday, user_location, publish_stream',
-    redirect_uri:   'http://localhost:3000/auth/facebook'
-};
-*//*
-let cheerio = require('cheerio')
-//let $ = cheerio.load('http://sjdowntown.com/events/')
-let $ = cheerio.load('https://www.siliconvalley-codecamp.com/Session/2017')
-
-exports.scrape = function (req, res) {
-    var companiesList = [];
-    console.log("inside scrape")
-    $('#session_7337').each(function(index, element){
-        companiesList[index] = {};
-        console.log("inside $")
-        var header = $(element).find('[ProfessionalSession]');
-        companiesList[index]['title'] = header
-        console.log(companiesList)
-        res.send(companiesList);
-    })
-    res.end();
-}*/
-
-
 var express = require('express');
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
-
+var mongo = require("./mongoConnect");
+var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295";
+var json_re={user:"kalyani"};
 
 exports.scrape = function (req, res) {
     url = "https://www.siliconvalley-codecamp.com/Session/2017"
@@ -93,9 +63,93 @@ exports.scrape = function (req, res) {
 
 */
 
-
+var allEvents=[];
 exports.scrapefun = function (req, res) {
     url = "http://www.sanjose.org/events/"
+    request(url, function(error, response, html){
+
+        if(!error){
+            var $ = cheerio.load(html);
+            console.log("I'm here");
+            var json1 = { title : ""};
+            
+            var arrSJD =[];
+            console.log($('.allevents-img').eq(0).attr('src'));
+            console.log($('.venuetitle').eq(0).text());
+            console.log($('.venuename').eq(0).text());
+            console.log($('.eventtime').eq(0).text());
+            for(var i=0;i<$('.venuetitle').length;i++){
+            	event={};
+            	event.id=i+1;
+            	event.title=($('.venuetitle').eq(i).text());
+            	event.name=($('.venuename').eq(i).text());
+            	event.time=($('.eventtime').eq(i).text());
+            	//event.image=($('.allevents-img').eq(i).attr('src'));
+            	allEvents.push(event);
+            	           	
+            }
+            console.log(JSON.stringify(allEvents));
+
+        }
+    })
+}
+
+
+exports.scrapefun2 = function (req, res) {
+    url = "http://www.sanjose.org/events/?page=2"
+    request(url, function(error, response, html){
+
+        if(!error){
+            var $ = cheerio.load(html);
+            console.log("I'm here");
+            var json1 = { title : ""};
+         
+        //    console.log($('.allevents-img').eq(0).attr('src'));
+            console.log($('.venuetitle').eq(0).text());
+            console.log($('.venuename').eq(0).text());
+            console.log($('.eventtime').eq(0).text());
+            for(var i=0;i<$('.venuetitle').length;i++){
+            	event={};
+            	event.id=i+11;
+            	event.title=($('.venuetitle').eq(i).text());
+            	event.name=($('.venuename').eq(i).text());
+            	event.time=($('.eventtime').eq(i).text());
+            	//event.image=($('.allevents-img').eq(i).attr('src'));
+            	allEvents.push(event);
+            	           	
+            }
+          
+            var eventobj = {"allEvents" : allEvents};
+           
+        	mongo.connect(mongoURL, function(){
+        		console.log('Connected to mongo at: ' + mongoURL);
+        		var coll1 = mongo.collection('sjscrape');
+        		
+        		coll1.insert(eventobj,(function(err, user){
+        			if (!err) {
+        							
+        				console.log("Details saved successfully  ");
+
+        			} else {
+        				console.log("returned false"+err);
+        			}
+        		}));
+        		
+        	});
+        
+            console.log(JSON.stringify(allEvents));
+           res.render("scrapefun2", {
+               values : allEvents
+           });
+
+        }
+    })
+}
+
+
+
+exports.scrapeSF = function (req, res) {
+    url = "https://www.events12.com/sanfrancisco/"
     request(url, function(error, response, html){
 
         if(!error){
@@ -105,26 +159,32 @@ exports.scrapefun = function (req, res) {
             var allEvents=[];
             var arrSJD =[];
             
-            console.log($('.allevents-img').eq(0).attr('src'));
-            console.log($('.venuetitle').eq(0).text());
-            console.log($('.venuename').eq(0).text());
-            console.log($('.eventtime').eq(0).text());
-            for(var i=0;i<$('.venuetitle').length;i++){
+            
+      //     console.log($('.event .title').eq(0).text());
+          //  console.log($('.event.date').eq(0).text());
+            //console.log($('.event').text());
+            
+          //  console.log($('.event').eq(0).text());
+            console.log($('.event').eq(0).removeAttr('title').text());
+        
+            for(var i=0;i<$('.event').length;i++){
             	event={};
-            	event.title=($('.venuetitle').eq(i).text());
-            	event.name=($('.venuename').eq(i).text());
-            	event.time=($('.eventtime').eq(i).text());
-            	event.image=($('.allevents-img').eq(i).attr('src'));
+            	event.title=($('.event .title').eq(i).text());
+            	event.time=($('.event .date').eq(i).text());
+            	
+            	event.desc=($('.event').eq(i).text());
+            	
+            	
             	allEvents.push(event);
             	           	
             }
+           
 
-            console.log(JSON.stringify(allEvents));
-           res.render("scrapefun", {
+          console.log(JSON.stringify(allEvents));
+           res.render("scrapeSF", {
                values : allEvents
            });
 
         }
     })
 }
-
