@@ -1,7 +1,16 @@
-/*var json_responses;
+var json_responses;
 var Client = require('node-rest-client').Client;
 var http = require('http');
 
+var mongo = require("mongo");
+var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295";
+
+mongo.connect(mongoURL, function(){
+    console.log('Connected to mongo at: ' + mongoURL);
+    var coll = mongo.collection('meetupapi');
+    console.log(coll);
+  });
+/*
 var eventBriteAPI = "https://www.eventbriteapi.com/v3/events/search/?categories=102&location.address=San Francisco Bay Area&token=R3COIUX46H3TNBRBIYVS";
 var meetupEndpoint = "https://api.meetup.com/topics?search=tech&key=15257f2bd835555253b477b235278";
 var meetupEndpoint1 = "https://api.meetup.com/topics?search=tech&key=1a9e6c7667695a491e1c255a63f72";
@@ -35,7 +44,7 @@ client.get(eventBriteAPI, function(data, response_raw) {
         console.log("returned false");
     }
 });
-
+*/
 exports.searchEvents = function(req, res) {
 
     var output = [];
@@ -51,18 +60,10 @@ exports.searchEvents = function(req, res) {
     output.push(outputMeetup);
     console.log(JSON.stringify(output));
 
-    //    console.log(output[1][1]);
-  //  console.log(output[1][1].description);
-    //console.log(output[1][1].description.text());
     res.render("events", {
         values : output
     });
 };
-
-
-
-
-
 
 
 exports.meetupDetailsget = function(req, res) {
@@ -99,12 +100,7 @@ exports.meetupDetailsget = function(req, res) {
 		}
 	});
 
-
-
-
-
 	}
-
 
 
 exports.eventDetailsget = function(req, res) {
