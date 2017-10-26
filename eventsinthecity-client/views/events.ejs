@@ -2,113 +2,95 @@
 <html>
 
 <head>
+  <title>Events in The City</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
 
 </head>
 
 <body>
-<nav class="navbar navbar-fixed-top navbar-inverse">
+  <nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">EventsInTheCity</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </div><!-- /.nav-collapse -->
-    </div><!-- /.container -->
-</nav>
+        <a class="navbar-brand" href="#">EventsInTheCity</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+      <!-- /.nav-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
 
-<div class="container">
+  <div class="container">
 
 
     <div class="jumbotron">
-        <h1>Events In The City!</h1>
-        <p>Listing Events in the Bay Area</p>
+      <h1>Events In The City!</h1>
+      <p>Listing Events in the Bay Area</p>
     </div>
-    
-    
-<div class="container-fluid">
-    <div class="row">
+
+    <div class="container-fluid">
+      <h2>Tech Events</h2>
+      <div class="row">
         <div class="col-md-12">
-            <h1>Eventbrite</h1>
-			<% for(var i=0;i<values[0][1].length;i++) { %>
-				<% if(i % 3 == 0){ %>
-				<div class="row">
+          <% for(var i=0;i<values.length;i++) { %>
+            <% if(i % 3 == 0){ %>
+              <div class="row">
+                <% } %>
+                  <div class="col-xs-6 col-lg-4">
+
+                    <h3><%= values[i].name %></h3>
+                    <p><%= values[i].url %><p>
+                    <a href="/nextpageMeetup?id=<%=values[i].id%>">Continue</a>
+
+                  </div>
+                  <%  if(i % 3 == 2){ %>
+              </div>
             <% } %>
-            <div class="col-xs-6 col-lg-4">
-            
-            <h3><%= values[0][1][i].name.text %></h3>
-                <p><Strong>url : </Strong><a><%= values[0][1][i].url %> </a><p>
-
-
-                        <a href="/nextpage?id=<%=values[0][1][i].id%>">Continue</a>
-            
-            	</div>
-            <%  if(i % 3 == 2){ %>
-                </div>
-                    <% } %>
-       <% } %>     
-				
+          <% } %>
         </div>
-	</div>
-</div>
+      </div>
+    </div>
 
-
-<h1>Meetup</h1>
-
-
-<div class="container-fluid">
-    <div class="row">
+    <div class="container-fluid">
+      <h2>Fun Events</h2>
+      <div class="row">
         <div class="col-md-12">
-            
-			<% for(var i=0;i<values[1][0].length;i++) { %>
-				<% if(i % 3 == 0){ %>
-				<div class="row">
+          <% for(var i=0;i<fun.length;i++) { %>
+            <% if(i % 3 == 0){ %>
+              <div class="row">
+                <% } %>
+                  <div class="col-xs-6 col-lg-4">
+
+                    <h3><%= fun[i].name %></h3>
+                    <p><%= fun[i].time %><p>
+                  
+                  </div>
+                  <%  if(i % 3 == 2){ %>
+              </div>
             <% } %>
-            <div class="col-xs-6 col-lg-4">
-            
-            <h3><%= values[1][0][i].name %></h3>
-                <p><Strong>url : </Strong><a><%= values[1][0][i].link %> </a><p>
-
-
-                        <a href="/nextpageMeetup?id=<%=values[1][0][i].id%>">Continue</a>
-            
-            	</div>
-            <%  if(i % 3 == 2){ %>
-                </div>
-                    <% } %>
-       <% } %>     
-				
+          <% } %>
         </div>
-	</div>
-</div>
+      </div>
+    </div>
 
 
-</div>
-
-
+  </div>
 </body>
-<script>
 
-</script>
 </html>

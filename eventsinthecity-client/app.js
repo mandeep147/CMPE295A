@@ -35,15 +35,13 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-//app.get('/events',events.searchEvents);
-//app.get('/scrape', scrape.scrape);
-//app.get('/scrapefun', scrape.scrapefun);
-
 app.post('/login', login.login);
 app.post('/register',login.register);
-//app.post('/nextpage',events.nextpage);
-//app.get('/nextpage',events.eventDetailsget)
-//app.get('/eventDetails',events.eventDetailsget);
+
+app.get('/events',events.listEvents);
+app.post('/nextpage',events.nextpage);
+app.get('/nextpage',events.listEventDetails)
+//app.get('/eventDetails',events.listEventDetails);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
