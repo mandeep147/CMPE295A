@@ -14,6 +14,8 @@ exports.login = function(req,res){
     var connection = mysql.getConnection();
     connection.query("select * from customer where email = '"+ email + "' and password = '" + encrypted_password +"'" ,function(err,rows){
         if(rows.length>0){
+        	sess= req.session;
+        	sess.email=email;
             console.log("In success");
             res.send({status:200});
         }
@@ -40,10 +42,10 @@ exports.register = function(req,res){
     console.log(data);
     connection.query("insert into customer set ?", data, function(err,rows){
         if(!err){
-            /*req.session.firstname=data.firstname;  //for displaying hi "name" on homepage
-             res.send({status:200, firstname: req.session.firstname});*/
+            req.session.firstname=data.firstname;  //for displaying hi "name" on homepage
+            
             console.log("Successful");
-            res.send({status:200});
+            res.send({status:200, firstname: req.session.firstname});
         }
         else{
             res.send({status:400});

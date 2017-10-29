@@ -8,6 +8,9 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
+var session = require('express-session');
+
+var MongoStore = require('connect-mongo')(session);
 
 var events=require('./routes/events');
 var login = require('./routes/login');
@@ -15,6 +18,15 @@ var login = require('./routes/login');
 var scrape = require('./routes/scrape');
 
 var app = express();
+
+app.use(session({
+	  secret: 'my_secret',
+	  resave: false,
+	  saveUninitialized: false,
+	  duration: 30 * 60 * 1000,    
+	  activeDuration: 5 * 60 * 1000,
+	  store: new MongoStore({ url: 'mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295' })
+}));
 
 // all environments
 app.set('port', process.env.PORT || 3000);
