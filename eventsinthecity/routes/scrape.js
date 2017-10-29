@@ -156,33 +156,52 @@ exports.scrapeSF = function (req, res) {
             var $ = cheerio.load(html);
             console.log("I'm here");
             var json1 = { title : ""};
-            var allEvents=[];
-            var arrSJD =[];
+            var arrSF =[];
             
-            
-      //     console.log($('.event .title').eq(0).text());
-          //  console.log($('.event.date').eq(0).text());
-            //console.log($('.event').text());
-            
-          //  console.log($('.event').eq(0).text());
-            console.log($('.event').eq(0).removeAttr('title').text());
+       /*     
+            console.log($('.event .title').eq(0).text());
+            console.log($('.event .date').eq(0).text());
+            console.log($('.event .miles').eq(0).text());
+            console.log($('.event').text());
+            var myString = ($('.event').eq(0).text());
+            var splits = ($('.event').eq(0).text()).split('\n', 5);
+            console.log(splits[4]);
+            */
         
             for(var i=0;i<$('.event').length;i++){
             	event={};
             	event.title=($('.event .title').eq(i).text());
             	event.time=($('.event .date').eq(i).text());
-            	
+            	event.location=($('.event .miles').eq(i).text());
             	event.desc=($('.event').eq(i).text());
-            	
-            	
-            	allEvents.push(event);
+            	var splits=[];
+            	splits = ($('.event').eq(i).text()).replace(/\n+/g, '\n').split('\n', 5);
+            	event.desc=splits[4];
+            	arrSF.push(event);
             	           	
-            }
+            }  
            
+            var sfeventobj = {"arrSF" : arrSF};
+            
+        	mongo.connect(mongoURL, function(){
+        		console.log('Connected to mongo at: ' + mongoURL);
+        		var coll1 = mongo.collection('sfscrape');
+        		
+        		coll1.insert(sfeventobj,(function(err, user){
+        			if (!err) {
+        							
+        				console.log("Details saved successfully  ");
 
-          console.log(JSON.stringify(allEvents));
+        			} else {
+        				console.log("returned false"+err);
+        			}
+        		}));
+        		
+        	});
+
+          console.log(JSON.stringify(arrSF));
            res.render("scrapeSF", {
-               values : allEvents
+               values : arrSF
            });
 
         }
