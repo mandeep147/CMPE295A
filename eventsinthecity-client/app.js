@@ -41,7 +41,6 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/clickOnLoginButton', routes.clickOnLoginButton);
 app.get('/users', user.list);
 app.post('/login', login.login);
 app.post('/register',login.register);
