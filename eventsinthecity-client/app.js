@@ -1,5 +1,5 @@
 var express = require('express')
-  , routes = require('./routes')
+  , routes = require('./routes/index')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
@@ -41,6 +41,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/clickOnLoginButton', routes.clickOnLoginButton);
 app.get('/users', user.list);
 app.post('/login', login.login);
 app.post('/register',login.register);

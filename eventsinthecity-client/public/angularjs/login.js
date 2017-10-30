@@ -70,6 +70,15 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
             $scope.unexpected_error = true;
         });
     };
+    
+    /*$scope.clickOnLoginButton = function(){
+    	console.log("I came in here");
+    	$http({
+    		"method":"GET",
+    		"url" : "/clickOnLoginButton"
+    		
+    	});
+    };*/
 
     $scope.nextpage = function(){
 
