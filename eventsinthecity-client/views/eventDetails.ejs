@@ -10,10 +10,16 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <link rel='stylesheet' href='/stylesheets/style.css' />
+<style>
 
+.container{
+  max-width: 75rem;
+  }
+</style>
 </head>
 
 <body>
+  <div class="container">
   <nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
       <div class="navbar-header">
@@ -35,31 +41,20 @@
     </div>
     <!-- /.container -->
   </nav>
-  <div class="container">
+<main role="main">
+  <div class="jumbotron">
+    <h1 class="row" style="text-align:center;padding-bottom:2rem;">Event Details</h1>
 
-
-    <div class="jumbotron">
-      <h1>Events In The City!</h1>
-      <p>Listing Events in the Bay
-        <Area>
-      </p>
-    </div>
-
-    <div class="row">
       <div>
-        <h2><%= values.name %></h2>
-        <h4><%=values.description%></h4>
-        <h4><%=values.time%></h4>
-        <p>
-          <Strong>url : </Strong><a>
-            <%= values.url %>
-          </a>
-          <p>
+        <h2>Name: <%= values.name %></h2>
+        <p><Strong>Description: </Strong><%=values.description%></p>
+        <p><Strong>Time : </Strong><%=values.time%></p>
+        <p><Strong>Please Visit : </Strong><a><%= values.url %></a></p>
       </div>
-    </div>
 
   </div>
-
+</main>
+</div>
 </body>
 
 </html>
