@@ -1,16 +1,15 @@
 /**
  * Created by aartichella on 5/1/17.
+ * Updated by anushka on 10/21/2017
  */
-/**
- * New node file
- */
+
 var mysql = require("mysql");
 var db = {
-    "host"     : 'cmpe295a.cum1koe02itt.us-east-1.rds.amazonaws.com',
-    "user"     : 'cmpe295a',
-    "password" : 'abcd1234',
-    "database" : 'cmpe295a',
-    "port"	 : 3306
+		"host"     : 'cmpe295.cwqcbn87lmnm.us-west-1.rds.amazonaws.com',
+	    "user"     : 'cmpe295',
+	    "password" : 'abcd1234',
+	    "database" : 'eventsInTheCity',
+	    "port"	 : 3306
 };
 
 exports.getConnection = function(){
