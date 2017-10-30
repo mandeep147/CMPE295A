@@ -61,8 +61,8 @@ mongo.connect(mongoURL, function(db) {
   })
   db.close();
 });
-//output= output.concat(outputEventBrite)
 
+//Main Events page - events.ejs
 exports.listEvents = function(req, res) {
   res.render("events", {
     values: output,
@@ -70,23 +70,30 @@ exports.listEvents = function(req, res) {
   });
 };
 
-
+//Single Event page - nextpage.ejs
 exports.listEventDetails = function(req, res) {
   var eventid = req.param("id");
   console.log("id= " + eventid)
-  for (var i = 0; i < json_responses.data.events.length; i++) {
+  for( var i=0;i<output.length; i++){
+    if(output[i].id == eventid){
+      res.render("eventDetails",{
+        values:output[i]
+      })
+    }
+
+  }
+
+
+  /*for (var i = 0; i < json_responses.data.events.length; i++) {
     console.log("Responses" + json_responses.data.events[i].id)
     if (json_responses.data.events[i].id == eventid) {
       res.render("nextpage", {
         values: json_responses.data.events[i]
       })
     }
-  }
-
-
+  }*/
 }
-exports.nextpage = function(req, res) {
-  console.log("In function");
-  id = req.param("id");
-  console.log(id);
+exports.updatePreference = function(req, res) {
+  console.log("Update in DB");
+
 }

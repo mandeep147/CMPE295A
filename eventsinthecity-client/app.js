@@ -39,8 +39,9 @@ app.post('/login', login.login);
 app.post('/register',login.register);
 
 app.get('/events',events.listEvents);
-app.post('/nextpage',events.nextpage);
-app.get('/nextpage',events.listEventDetails)
+app.post('/updatePreference',events.updatePreference);
+app.get('/eventDetails',events.listEventDetails)
+
 //app.get('/eventDetails',events.listEventDetails);
 
 http.createServer(app).listen(app.get('port'), function(){

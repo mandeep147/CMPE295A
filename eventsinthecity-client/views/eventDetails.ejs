@@ -35,62 +35,31 @@
     </div>
     <!-- /.container -->
   </nav>
-
   <div class="container">
 
 
     <div class="jumbotron">
       <h1>Events In The City!</h1>
-      <p>Listing Events in the Bay Area</p>
+      <p>Listing Events in the Bay
+        <Area>
+      </p>
     </div>
 
-    <div class="container-fluid">
-      <h2>Tech Events</h2>
-      <div class="row">
-        <div class="col-md-12">
-          <% for(var i=0;i<values.length;i++) { %>
-            <% if(i % 3 == 0){ %>
-              <div class="row">
-                <% } %>
-                  <div class="col-xs-6 col-lg-4">
-
-                    <h3><%= values[i].name %></h3>
-                    <p><%= values[i].url %><p>
-                    <a href="/eventDetails?id=<%=values[i].id%>">Continue</a>
-
-                  </div>
-                  <%  if(i % 3 == 2){ %>
-              </div>
-            <% } %>
-          <% } %>
-        </div>
+    <div class="row">
+      <div>
+        <h2><%= values.name %></h2>
+        <h4><%=values.description%></h4>
+        <h4><%=values.time%></h4>
+        <p>
+          <Strong>url : </Strong><a>
+            <%= values.url %>
+          </a>
+          <p>
       </div>
     </div>
-
-    <div class="container-fluid">
-      <h2>Fun Events</h2>
-      <div class="row">
-        <div class="col-md-12">
-          <% for(var i=0;i<fun.length;i++) { %>
-            <% if(i % 3 == 0){ %>
-              <div class="row">
-                <% } %>
-                  <div class="col-xs-6 col-lg-4">
-
-                    <h3><%= fun[i].name %></h3>
-                    <p><%= fun[i].time %><p>
-
-                  </div>
-                  <%  if(i % 3 == 2){ %>
-              </div>
-            <% } %>
-          <% } %>
-        </div>
-      </div>
-    </div>
-
 
   </div>
+
 </body>
 
 </html>
