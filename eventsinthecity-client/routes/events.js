@@ -80,18 +80,7 @@ exports.listEventDetails = function(req, res) {
         values:output[i]
       })
     }
-
   }
-
-
-  /*for (var i = 0; i < json_responses.data.events.length; i++) {
-    console.log("Responses" + json_responses.data.events[i].id)
-    if (json_responses.data.events[i].id == eventid) {
-      res.render("nextpage", {
-        values: json_responses.data.events[i]
-      })
-    }
-  }*/
 }
 exports.updatePreference = function(req, res) {
   console.log("Update in DB");

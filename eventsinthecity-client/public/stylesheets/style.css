@@ -1,7 +1,7 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
-  font-family: 'Lato', sans-serif;
+  font-family: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -10,9 +10,14 @@ a {
 .row{
 
 }
-
+/*
 .col-lg-4{
   border:1px solid;
   height:180px;
 
+}*/
+.display-3{
+    font-size: 4.5rem;
+    font-weight: 300;
+    line-height: 1.2;
 }
