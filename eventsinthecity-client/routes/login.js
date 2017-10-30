@@ -12,7 +12,7 @@ exports.login = function(req,res){
     var encrypted_password=encryption.encrypt(password);
     console.log("This is encrypted password" + encrypted_password);
     var connection = mysql.getConnection();
-    connection.query("select * from customer where email = '"+ email + "' and password = '" + encrypted_password +"'" ,function(err,rows){
+    connection.query("select * from users where email = '"+ email + "' and password = '" + encrypted_password +"'" ,function(err,rows){
         if(rows.length>0){
         	sess= req.session;
         	sess.email=email;
@@ -40,7 +40,7 @@ exports.register = function(req,res){
         address:req.body.address
     };
     console.log(data);
-    connection.query("insert into customer set ?", data, function(err,rows){
+    connection.query("insert into users set ?", data, function(err,rows){
         if(!err){
             req.session.firstname=data.firstname;  //for displaying hi "name" on homepage
             

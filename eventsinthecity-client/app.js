@@ -1,5 +1,5 @@
 var express = require('express')
-  , routes = require('./routes')
+  , routes = require('./routes/index')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
