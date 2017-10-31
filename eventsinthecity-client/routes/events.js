@@ -10,22 +10,6 @@ var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:270
 var output = [];
 var outputFun = [];
 
-//extract data for Meetup data
-mongo.connect(mongoURL, function(db) {
-
-  console.log('Connected to mongo at: ' + mongoURL);
-  var collection = db.collection('meetupapi');
-  collection.find().toArray(function(err, result) {
-    if (result.length) {
-      output = output.concat(result[0].muEvents);
-      //output.push(result[0].muEvents);
-      //console.log(output[0][0].id);
-    } else {
-      console.log(err)
-    }
-  })
-  db.close();
-});
 
 //extract data for Eventbrite data
 mongo.connect(mongoURL, function(db) {
@@ -44,6 +28,24 @@ mongo.connect(mongoURL, function(db) {
   })
   db.close();
 });
+
+//extract data for Meetup data
+mongo.connect(mongoURL, function(db) {
+
+  console.log('Connected to mongo at: ' + mongoURL);
+  var collection = db.collection('meetupapi');
+  collection.find().toArray(function(err, result) {
+    if (result.length) {
+      output = output.concat(result[0].muEvents);
+      //output.push(result[0].muEvents);
+      //console.log(output[0][0].id);
+    } else {
+      console.log(err)
+    }
+  })
+  db.close();
+});
+
 
 //extract data for Fun Events data
 mongo.connect(mongoURL, function(db) {
@@ -87,7 +89,7 @@ exports.updatePreference = function(req, res) {
   console.log("Update in DB");
 
 }
-=======
+
 var json_responses;
 var Client = require('node-rest-client').Client;
 var http = require('http'),
@@ -163,12 +165,23 @@ exports.listEvents = function(req, res) {
 //Single Event page - nextpage.ejs
 exports.listEventDetails = function(req, res) {
   var eventid = req.param("id");
-  console.log("id= " + eventid)
-  for( var i=0;i<output.length; i++){
-    if(output[i].id == eventid){
-      res.render("eventDetails",{
-        values:output[i]
-      })
+  var eventType = req.param("type");
+  console.log("id= " + eventid,"type="+eventType);
+  if(eventType == 'tech'){
+    for( var i=0;i<output.length; i++){
+      if(output[i].id == eventid){
+        res.render("eventDetails",{
+          values:output[i]
+        })
+      }
+    }
+  }else if (eventType == 'fun'){
+    for( var i=0;i<outputFun.length; i++){
+      if(outputFun[i].id == eventid){
+        res.render("eventDetails",{
+          values:outputFun[i]
+        })
+      }
     }
   }
 }
@@ -176,4 +189,3 @@ exports.updatePreference = function(req, res) {
   console.log("Update in DB");
 
 }
->>>>>>> refs/remotes/origin/master

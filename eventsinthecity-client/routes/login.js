@@ -43,7 +43,7 @@ exports.register = function(req,res){
     connection.query("insert into users set ?", data, function(err,rows){
         if(!err){
             req.session.firstname=data.firstname;  //for displaying hi "name" on homepage
-            
+
             console.log("Successful");
             res.send({status:200, firstname: req.session.firstname});
         }

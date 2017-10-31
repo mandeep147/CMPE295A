@@ -61,7 +61,7 @@
                   <p class="card-text text-secondary">
                     <%= values[i].url %>
                       <p>
-                        <a class="btn btn-primary" href="/eventDetails?id=<%=values[i].id%>">Continue</a>
+                        <a class="btn btn-primary" href="/eventDetails?id=<%=values[i].id%>&type=tech">Continue</a>
                 </div>
               </div>
               <%  if(i % 3 == 2){ %>
@@ -86,7 +86,7 @@
                     <p class="card-text text-secondary">
                       <%= fun[i].time %>
                         <p>
-                          <a class="btn btn-primary" href="/eventDetails?id=<%=fun[i].id%>">Continue</a>
+                          <a class="btn btn-primary" href="/eventDetails?id=<%=fun[i].id%>&type=fun">Continue</a>
                   </div>
                 </div>
                 <% } %>
