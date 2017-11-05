@@ -8,5 +8,5 @@ exports.index = function(req, res){
 };
 
 exports.clickOnLoginButton = function(req,res){
-	res.render('index', {title: 'Events in the City'});
+	res.render('signin', {title: 'Events in the City'});
 };
