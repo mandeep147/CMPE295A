@@ -5,7 +5,7 @@ var ejs = require("ejs");
 var mysql = require('./mysql');
 var encryption = require('./encryption');
 
-exports.login = function(req,res){
+exports.loginRequest = function(req,res){
     console.log(req.body);
     var email = req.body.username;
     var password = req.body.password;
@@ -51,4 +51,11 @@ exports.register = function(req,res){
             res.send({status:400});
         }
     });
+};
+
+exports.logout = function(req,res){			
+	console.log(JSON.stringify(req.session.email));
+	
+	req.session.destroy();
+	res.render('homepage');
 };

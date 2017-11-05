@@ -2,54 +2,55 @@
 <html>
 <head>
   <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-
-  <!-- Latest compiled and minified CSS -->
+  
+  <link rel='stylesheet' type="text/css" href='/stylesheets/fb.css'/>
+  <link rel='stylesheet' type="text/css" href='/stylesheets/reset.css'/>
+  <link rel='stylesheet' type="text/css" href='/stylesheets/others.css'/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
           crossorigin="anonymous"></script>
-  <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
   <script src="angularjs/login.js"></script>
 </head>
 
 <body ng-app="mylogin" ng-controller="login">
-<div class="container">
-  <div class="row">
-    <div class = "col-md-4">
-      <label style="font-size:180%"><%= title %></label>
-    </div>
-    <div class = "col-md-8">
-      <div class="row">
-        <div class="col-md-4">
-          <input ng-model ="username" type="text" placeholder="Enter your username">
-        </div>
-        <div class="col-md-4">
-          <input ng-model="password"  type="password" placeholder="Enter password">
-        </div>
-        <div class="col-md-4">
-          <button type="submit" ng-click ="submit()"> Login </button>
-        </div>
-      </div>
-    </div>
+<div class="log-In">
+	<h3 class="title"><%= title %></h3>
+	<input type="text" placeholder="Email" class="email" ng-model="username">
+	<input type="password" placeholder="Password" class="pass" ng-model="password">
+	<input type="button" value="Log In" class="logIn" ng-click ="submit()">
+</div>
 
-  </div>
-
-  <div class ="row">
-    <br>
-    <br>
-    <label style="font-size:180%">First time User? Sign up here!</label>
-    <form>
-      Username: <input ng-model ="email1" type="text"><br><br>
-      Password: <input ng-model="password1"  type="text" ><br><br>
-      Firstname: <input ng-model="firstname"  type="text" ><br><br>
-      Lastname: <input ng-model="lastname"  type="text" ><br><br>
-      Mobile: <input ng-model="mobile"  type="text" ><br><br>
-      Address: <input ng-model="address"  type="text" ><br><br>
-      <button type="submit" ng-click ="register()"> Register </button>
-    </form>
-  </div>
+	<div class="alert alert-danger" ng-hide="invalid_login">
+		<strong>Incorrect email or password</strong>
+	</div>
+	<div class="alert alert-danger" ng-hide="unexpected_error">
+		<strong>Unexpected error, try again</strong>
+	</div>
+	
+<div class="Sign-Up">
+	<div class="sign">
+		<div class="newacc">
+			<span class="lg">Sign Up</span>
+			<span class="text">It's free and always will be</span>
+			
+			<form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate> 
+				<input type="text" placeholder="First Name" class="first nm" ng-model="firstname" required>
+				<input type="text" placeholder="Last Name" class="first nm" ng-model="lastname" required>
+				<input type="email" placeholder="Email" class="mail nm" ng-model ="email1" ng-maxlength="64">
+				<input type="password" placeholder="Password" class="mail nm" ng-model="password1" ng-maxlength="64">
+				<input type="tel" pattern='[\(]\d{3}[\)]\d{3}[\-]\d{4}' placeholder="Phone Number" class="mail nm" ng-model="mobile">
+				<input type="text" placeholder="Address" class="mail nm" ng-model="address">
+	            <br>
+				<p class="declare">By clicking Sign Up for Events in the City, you agree to our <strong>terms</strong> and that you have read our <strong>Data Use Policy</strong>, including our <strong>Cookies Use.</strong> </p>
+				<button type="submit" value="Sign Up for Events in the City" class="button nm" ng-click ="register()" ng-disabled="userForm.$invalid">Sign Up</button>
+			</form>
+		</div>
+	</div>
+	
 </div>
 </body>
 </html>

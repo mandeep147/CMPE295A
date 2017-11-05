@@ -14,7 +14,7 @@
   <script src="angularjs/login.js"></script>
 </head>
 
-<body>
+<body ng-app="mylogin" ng-controller="login">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">EventsInTheCity</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@
       <h2>Events In The City</h2>
       <h3>Find inspiration about the Events you love.</h3>
       <div style="text-align:center;">
-        <button onclick="location.href='/clickOnLoginButton'" class="loginButton">Signup or Login</button>
+        <button ng-click = "clickOnLoginButton()" class="loginButton">Signup or Login</button>
       </div>
     </div>
   </div>

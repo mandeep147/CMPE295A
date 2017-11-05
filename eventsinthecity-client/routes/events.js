@@ -1,6 +1,6 @@
 
 var json_responses;
-var Client = require('node-rest-client').Client;
+//var Client = require('node-rest-client').Client;
 var http = require('http'),
   assert = require('assert');
 
@@ -91,7 +91,7 @@ exports.updatePreference = function(req, res) {
 }
 
 var json_responses;
-var Client = require('node-rest-client').Client;
+//var Client = require('node-rest-client').Client;
 var http = require('http'),
   assert = require('assert');
 
