@@ -6,62 +6,7 @@ var mongo = require("./mongoConnect");
 var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295";
 var json_re={user:"kalyani"};
 
-exports.scrape = function (req, res) {
-    url = "https://www.siliconvalley-codecamp.com/Session/2017"
-    request(url, function(error, response, html){
-        if(!error){
-            var $ = cheerio.load(html);
-            var json1 = { title : ""};
-            var arrEvents =[];
-            console.log($('.currentSession').eq(0).text());
-            //console.log($('.ProfessionalSession').eq(0).text());
-            for(var i=0;i<$('.currentSession').length;i++){
-            arrEvents.push($('.currentSession').eq(i).text().replace(/(\r\n|\n|\r)/gm,""));
-            console.log($('.currentSession').eq(i).text());
-            }
-            
-           res.render("scrape", {
-               values : arrEvents
-           });
 
-        }
-    })
-}
-
-
-
-
-/*
-exports.scrape = function (req, res) {
-    url = "http://sjdowntown.com/events/"
-    request(url, function(error, response, html){
-        if(!error){
-            var $ = cheerio.load(html);
-            console.log("I'm here");
-            var json = { title : ""};
-            var allEvents=[];
-            var arrSJD =[];
-            console.log($('.dp_pec_isotope ').children().first().text());
-            console.log($('span.dp_pec_date_time').eq(0).text());
-            console.log($('span.dp_pec_event_title_sp').eq(0).text());
-            console.log($('span.dp_pec_event_location').eq(0).text());            
-            console.log($('span.dp_pec_event_description').eq(0).text());
-            $('.dp_pec_content').filter(function () {
-                var data = $(this);
-                console.log(data)
-                title = data.eq(2).text();
-               // console.log("data:" +data[0])
-                console.log("title: "+title)
-                json.title = title;
-            })
-
-            res.send(JSON.stringify(json));
-        }
-    })
-}
-
-
-*/
 
 var allEvents=[];
 exports.scrapefun = function (req, res) {
@@ -80,10 +25,13 @@ exports.scrapefun = function (req, res) {
             console.log($('.eventtime').eq(0).text());
             for(var i=0;i<$('.venuetitle').length;i++){
             	event={};
-            	event.id=i+1;
+            	event.id=i+100;
             	event.title=($('.venuetitle').eq(i).text());
-            	event.name=($('.venuename').eq(i).text());
             	event.time=($('.eventtime').eq(i).text());
+            	event.description=" ";
+            	event.url="http://www.sanjose.org/events/";
+            	event.location=($('.venuename').eq(i).text());
+            	event.type="SJFUN1";
             	//event.image=($('.allevents-img').eq(i).attr('src'));
             	allEvents.push(event);
             	           	
@@ -110,10 +58,13 @@ exports.scrapefun2 = function (req, res) {
             console.log($('.eventtime').eq(0).text());
             for(var i=0;i<$('.venuetitle').length;i++){
             	event={};
-            	event.id=i+11;
+            	event.id=i+111;
             	event.title=($('.venuetitle').eq(i).text());
-            	event.name=($('.venuename').eq(i).text());
             	event.time=($('.eventtime').eq(i).text());
+            	event.description=" ";
+            	event.url="http://www.sanjose.org/events/";
+            	event.location=($('.venuename').eq(i).text());
+               	event.type="SJFUN2";
             	//event.image=($('.allevents-img').eq(i).attr('src'));
             	allEvents.push(event);
             	           	
@@ -170,13 +121,25 @@ exports.scrapeSF = function (req, res) {
         
             for(var i=0;i<$('.event').length;i++){
             	event={};
+            	event.id=i+200;
             	event.title=($('.event .title').eq(i).text());
             	event.time=($('.event .date').eq(i).text());
-            	event.location=($('.event .miles').eq(i).text());
-            	event.desc=($('.event').eq(i).text());
-            	var splits=[];
+            	
+            	event.description=($('.event').eq(i).text());
+               	var splits=[];
             	splits = ($('.event').eq(i).text()).replace(/\n+/g, '\n').split('\n', 5);
-            	event.desc=splits[4];
+            	event.description=splits[4];
+            	
+            	event.url="https://www.events12.com/sanfrancisco/";
+            	
+            	var str = $('.event .miles').eq(i).text();
+            //	event.location=($('.event .miles').eq(i).text());
+               	if(str.includes("mile"))
+            		event.location=($('.event .miles').eq(i).text()) + " of San Francisco";
+            	else
+            		event.location=($('.event .miles').eq(i).text());
+
+            	event.type="SFFUN";
             	arrSF.push(event);
             	           	
             }  
@@ -207,3 +170,63 @@ exports.scrapeSF = function (req, res) {
         }
     })
 }
+
+
+
+/*
+exports.scrape = function (req, res) {
+    url = "https://www.siliconvalley-codecamp.com/Session/2017"
+    request(url, function(error, response, html){
+        if(!error){
+            var $ = cheerio.load(html);
+            var json1 = { title : ""};
+            var arrEvents =[];
+            console.log($('.currentSession').eq(0).text());
+            //console.log($('.ProfessionalSession').eq(0).text());
+            for(var i=0;i<$('.currentSession').length;i++){
+            arrEvents.push($('.currentSession').eq(i).text().replace(/(\r\n|\n|\r)/gm,""));
+            console.log($('.currentSession').eq(i).text());
+            }
+            
+           res.render("scrape", {
+               values : arrEvents
+           });
+
+        }
+    })
+}
+
+
+
+
+
+exports.scrape = function (req, res) {
+    url = "http://sjdowntown.com/events/"
+    request(url, function(error, response, html){
+        if(!error){
+            var $ = cheerio.load(html);
+            console.log("I'm here");
+            var json = { title : ""};
+            var allEvents=[];
+            var arrSJD =[];
+            console.log($('.dp_pec_isotope ').children().first().text());
+            console.log($('span.dp_pec_date_time').eq(0).text());
+            console.log($('span.dp_pec_event_title_sp').eq(0).text());
+            console.log($('span.dp_pec_event_location').eq(0).text());            
+            console.log($('span.dp_pec_event_description').eq(0).text());
+            $('.dp_pec_content').filter(function () {
+                var data = $(this);
+                console.log(data)
+                title = data.eq(2).text();
+               // console.log("data:" +data[0])
+                console.log("title: "+title)
+                json.title = title;
+            })
+
+            res.send(JSON.stringify(json));
+        }
+    })
+}
+
+
+*/

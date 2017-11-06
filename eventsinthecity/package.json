@@ -9,6 +9,8 @@
     "cheerio": "^1.0.0-rc.2",
     "ejs": "*",
     "express": "3.2.6",
+    "mongo": "^0.1.0",
+    "mongodb": "^2.2.33",
     "mysql": "^2.15.0",
     "request": "^2.83.0"
   }
