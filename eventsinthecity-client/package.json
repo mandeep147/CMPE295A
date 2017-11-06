@@ -10,6 +10,9 @@
     "ejs": "*",
     "express": "3.2.6",
     "mysql": "^2.15.0",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "connect-mongo" :"*",
+    "express-session":"*",
+    "mongodb":"*"
   }
 }

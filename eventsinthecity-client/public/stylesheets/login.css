@@ -1,0 +1,248 @@
+.log-In{
+		background-color: #4e69a2;;
+		#background-image : linear-gradient(to right, #f88379,#ffffff);
+		margin: 0;
+		width: 100%;
+		height: 75px;
+	}
+.title{
+		display: inline-block;
+		color: #ffffff;
+		position: relative;
+		font-weight: bold;
+		font-size: 35px;	
+		font-family: "calibri";
+		font-weight: 50;
+		left: 210px;
+		#padding-top: 10px;
+		#top: 5px;
+	}
+.email{
+		position: absolute;
+		display: inline-block;
+		left: 700px;
+		margin-top: 20px; 
+		padding-top: 2px;
+		width: 165px;
+		height: 25px;
+		padding-left: 10px;
+		border-radius: 2px;
+		border: 0px;
+	}
+.pass{
+		position: absolute;
+		display: inline-block;
+		left: 880px;
+		padding-left: 10px;
+		padding-top: 2px;
+		margin-top: 20px;
+		width: 165px;
+		height: 25px;
+		border-radius: 2px;
+		border: 0;
+	}
+.logIn{
+		background-color: #637bad;
+		border: 1px solid #1d3871;
+		left: 1060px;
+		width: 75px;
+		color: white;
+		height: 25px;
+		position: absolute;
+		margin-top: 20px;
+		padding-left: 2px;
+		padding-top: 2px;
+	}
+.log{
+		position: absolute;
+		left: 695px;
+		margin-top: 55px;
+		width: 10px;
+		height: 10px;
+	}
+.forgot{
+		position: absolute;
+		left: 885px;
+		top: 50px;
+		color: #aec4e3;
+		font-size: 14px;
+	}
+.logg{
+		position: absolute;
+		left: 715px;
+		font-size: 14px;
+		top: 50px;
+		color: #aec4e3;
+	}
+.sign{
+		#background-image: url('../studymaterial/fblogin/background.jpg');
+		
+		height: 700px;
+		background-position: top center;
+		background-color: #EFF2FB;
+		background-repeat:no-repeat;
+		opacity: 0.7;
+	}
+.newacc{
+		background-color: #EFF2FB;
+		
+		width: 550px;
+		height: 550px;
+		position: relative;
+		left: 400px;
+		top:  30px;
+	}
+.lg{
+		font-size: 40px;
+		font-weight: 100;
+		font-family: "Calibri";
+		color: black;
+		padding-left: 180px;
+		position: relative;
+		top: 20px;
+	}
+.text{
+		font-size: 18px;
+		color: black;
+		position: relative;
+		top: 50px;
+		left: -150px;
+	}
+.nm{
+		display: block;
+		margin-left: 30px;
+		margin-bottom: 20px;
+		background-color: white;
+	}
+.first{
+		display: inline-block;
+		width: 210px;
+		padding: 5px;
+		background-color: white;
+		position: relative;
+		top: 60px;
+		left: 10px;
+		margin-left: 20px;
+	}
+.mail{
+		position: relative;
+		top: 50px;
+		width: 440px;
+		padding: 5px;
+	}
+.birth{
+		display: inline-block;
+		padding-left: 35px;
+		font-size: 14px;
+		position: relative;
+		padding-top:50px;
+	}
+.day{
+		text-decoration: none;
+		font-size: 12px;
+		left: 112px;
+		margin-left: 35px;
+	}
+.date{
+		position: relative;
+		top: 12px;
+	}
+.gender{
+		display: inline-block;
+		font-size: 14px;
+		padding: 5px;
+		margin-top: 14px;
+	}
+.declare{
+		position: relative;
+		top: 20px;
+		padding-left: 5px;
+		margin-left: 5px;
+		font-size: 14px;
+		color: black;
+		font-family: "Arial"; 	
+	}
+strong{
+		color: #3b5998;
+	}
+p{
+		width: 450px;
+		position: relative;
+		padding-left: 35px;
+		left: 25px;
+		top: 5px;
+		font-size: 12px;
+	}
+.button{
+		display: block;
+		width: 445px;
+		background-color: #3b5998;
+		position: relative;
+		margin-left: 25px;
+		margin-top: 35px;
+		height: 35px;
+		color: white;
+		font-size: 16px;
+		border: 0;
+	}
+a{
+		text-decoration: none;
+		color: #3b5998;
+		margin-left: 15px;
+		cursor: pointer;
+		font-family: "Arial";
+	}
+.abt{
+		font-size: 16px;
+		position: relative;
+		top: 50px;
+		left: 310px;
+	}
+.carr{
+		font-size: 14px;
+		position: relative;
+		top: 80px;
+		left: -300px;
+	}
+.face,.english{
+		font-size: 13px;
+		color: gray;
+		position: relative;
+		top: 102px;
+		left: -650px;
+	}
+.english{
+	margin-left: 60px;
+}
+.stay,.latest,.share{
+	position: relative;
+	display: inline-block;
+	margin-left: 80px;
+	width: 350px;
+	margin-top: 10px;
+}
+.touch{
+	position: absolute;
+	margin-left: 10px;
+	margin-top: 4px;
+	font-size: 18px;
+	font-weight: bold; 	
+}
+.keep{
+	position: absolute;
+	margin-left: 10px;
+	font-size: 14px;
+	margin-top: 28px;
+}
+.Sign-Up{
+	background-color: #EFF2FB;
+	}
+.about-Us{
+	height: 130px;
+	background-color: #EFF2FB;
+	}
+hr{
+	width: 800px;
+	position: relative;
+	top:30px;
+}

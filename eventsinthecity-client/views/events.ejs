@@ -3,37 +3,40 @@
 
 <head>
   <title>Events in The City</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="angularjs/login.js"></script>
 
 </head>
 
-<body>
-  <nav class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        <a class="navbar-brand" href="#">EventsInTheCity</a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-      </div>
-      <!-- /.nav-collapse -->
+<body ng-app="mylogin" ng-controller="login">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Events in the City</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+
+      </ul>
     </div>
-    <!-- /.container -->
+    <form class="form-inline">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>&nbsp;&nbsp;
+  <button class="btn btn-outline-info my-2 my-sm-0" type="submit" ng-click ="logout()">Logout</button>
+  
+</form>
   </nav>
 
   <div class="container">
@@ -44,51 +47,57 @@
       <p>Listing Events in the Bay Area</p>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-bottom:20px">
       <h2>Tech Events</h2>
-      <div class="row">
-        <div class="col-md-12">
-          <% for(var i=0;i<values.length;i++) { %>
-            <% if(i % 3 == 0){ %>
-              <div class="row">
-                <% } %>
-                  <div class="col-xs-6 col-lg-4">
+      <div class="event-container" style="height:500px;overflow-y:scroll">
+      <div class="row" style="margin:10px">
 
-                    <h3><%= values[i].name %></h3>
-                    <p><%= values[i].url %><p>
-                    <a href="/nextpageMeetup?id=<%=values[i].id%>">Continue</a>
-
-                  </div>
-                  <%  if(i % 3 == 2){ %>
-              </div>
+        <!--<div class="col-md-12">-->
+        <% for(var i=0;i<values.length;i++) { %>
+          <% if(i % 3 == 0){ %>
+            <!--  <div class="row">-->
             <% } %>
-          <% } %>
-        </div>
+              <div class="card" style="margin:10px; width:15rem">
+                <!--style="width:20rem"-->
+                <div class="card-body">
+                  <h5 class="card-title"><%= values[i].name %></h5>
+                  <p class="card-text text-secondary">
+                    <%= values[i].url %>
+                      <p>
+                        <a class="btn btn-primary" href="/eventDetails?id=<%=values[i].id%>&type=tech">Continue</a>
+                </div>
+              </div>
+              <%  if(i % 3 == 2){ %>
+
+                <% } %>
+                  <% } %>
+
+      </div>
       </div>
     </div>
-
-    <div class="container-fluid">
+    <hr />
+    <div class="container-fluid" style="margin-bottom:20px">
       <h2>Fun Events</h2>
-      <div class="row">
-        <div class="col-md-12">
-          <% for(var i=0;i<fun.length;i++) { %>
-            <% if(i % 3 == 0){ %>
-              <div class="row">
-                <% } %>
-                  <div class="col-xs-6 col-lg-4">
+        <div class="event-container" style="height:500px;overflow-y:scroll">
+      <div class="row" style="margin:10px">
 
-                    <h3><%= fun[i].name %></h3>
-                    <p><%= fun[i].time %><p>
-                  
+          <% for(var i=0;i<fun.length;i++) { %>
+
+                  <div class="card" style="margin:10px; width:15rem">
+                    <div class="card-body">
+                    <h5 class="card-title"><%= fun[i].name %></h3>
+                    <p class="card-text text-secondary">
+                      <%= fun[i].time %>
+                        <p>
+                          <a class="btn btn-primary" href="/eventDetails?id=<%=fun[i].id%>&type=fun">Continue</a>
                   </div>
-                  <%  if(i % 3 == 2){ %>
-              </div>
-            <% } %>
-          <% } %>
-        </div>
+                </div>
+                <% } %>
+
       </div>
     </div>
-
+    </div>
+    <hr />
 
   </div>
 </body>

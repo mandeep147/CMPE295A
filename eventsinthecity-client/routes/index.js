@@ -4,5 +4,9 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+  res.render('homepage', { title: 'Events in the City' });
+};
+
+exports.clickOnLoginButton = function(req,res){
+	res.render('signin', {title: 'Events in the City'});
 };

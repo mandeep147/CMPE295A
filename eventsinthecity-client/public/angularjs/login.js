@@ -13,7 +13,7 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
     $scope.submit= function(){
         $http({
             "method":"POST",
-            "url":"/login",
+            "url":"/loginRequest",
             "headers": {
                 "content-type": "application/json"
             },
@@ -22,20 +22,21 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
                 "password" : $scope.password
             }
         }).success(function(response){
-            console.log("Hi1")
+            console.log("Hi1");
             if(response.status == 200){
                 $window.location.assign('/events');
             }
             else{
                 console.log("Some problem in login");
-                $scope.invalid_login = false;
-                $scope.unexpected_error = true;
+                //$scope.invalid_login = false;
+                //$scope.unexpected_error = true;
+                $window.alert("Wrong email or password");
 
             }
         }).error(function(error){
             console.log("from error in login");
-            $scope.invalid_login = false;
-            $scope.unexpected_error = true;
+            $scope.invalid_login = true;
+            $scope.unexpected_error = false;
         });
     };
 
@@ -59,16 +60,27 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
             console.log(response.status);
             if(response.status == 200){
                 $scope.success_register=false;
-                //$window.location.assign('/homepage1');
+                $window.location.assign('/events');
             }
             else{
                 $scope.error_register =false;
             }
         }).error(function(error){
             console.log("from error");
-            $scope.invalid_login = false;
-            $scope.unexpected_error = true;
+            $scope.error_register =false;
         });
+    };
+    
+   
+    
+    $scope.clickOnLoginButton = function(){
+    	console.log("I came in here");
+    	$window.location.assign('/login');
+    };
+    
+    $scope.logout = function(){
+    	console.log("Logout button clicked");
+    	$window.location.assign('/logout');
     };
 
     $scope.nextpage = function(){

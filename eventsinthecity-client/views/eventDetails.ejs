@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Events in The City</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+<style>
+
+.container{
+  max-width: 75rem;
+  }
+</style>
+</head>
+
+<body>
+  <div class="container">
+  <nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        <a class="navbar-brand" href="#">EventsInTheCity</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+      <!-- /.nav-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+<main role="main">
+  <div class="jumbotron">
+    <h1 class="row" style="text-align:center;padding-bottom:2rem;">Event Details</h1>
+
+      <div>
+        <h2>Name: <%= values.name %></h2>
+        <p><Strong>Description: </Strong><%=values.description%></p>
+        <p><Strong>Time : </Strong><%=values.time%></p>
+        <p><Strong>Please Visit : </Strong><a><%= values.url %></a></p>
+      </div>
+
+  </div>
+</main>
+</div>
+</body>
+
+</html>

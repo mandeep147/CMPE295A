@@ -5,15 +5,17 @@ var ejs = require("ejs");
 var mysql = require('./mysql');
 var encryption = require('./encryption');
 
-exports.login = function(req,res){
+exports.loginRequest = function(req,res){
     console.log(req.body);
     var email = req.body.username;
     var password = req.body.password;
     var encrypted_password=encryption.encrypt(password);
     console.log("This is encrypted password" + encrypted_password);
     var connection = mysql.getConnection();
-    connection.query("select * from customer where email = '"+ email + "' and password = '" + encrypted_password +"'" ,function(err,rows){
+    connection.query("select * from users where email = '"+ email + "' and password = '" + encrypted_password +"'" ,function(err,rows){
         if(rows.length>0){
+        	sess= req.session;
+        	sess.email=email;
             console.log("In success");
             res.send({status:200});
         }
@@ -38,15 +40,22 @@ exports.register = function(req,res){
         address:req.body.address
     };
     console.log(data);
-    connection.query("insert into customer set ?", data, function(err,rows){
+    connection.query("insert into users set ?", data, function(err,rows){
         if(!err){
-            /*req.session.firstname=data.firstname;  //for displaying hi "name" on homepage
-             res.send({status:200, firstname: req.session.firstname});*/
+            req.session.firstname=data.firstname;  //for displaying hi "name" on homepage
+
             console.log("Successful");
-            res.send({status:200});
+            res.send({status:200, firstname: req.session.firstname});
         }
         else{
             res.send({status:400});
         }
     });
+};
+
+exports.logout = function(req,res){			
+	console.log(JSON.stringify(req.session.email));
+	
+	req.session.destroy();
+	res.render('homepage');
 };
