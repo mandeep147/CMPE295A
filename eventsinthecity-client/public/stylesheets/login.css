@@ -1,5 +1,5 @@
 .log-In{
-		background-color: #4e69a2;;
+		background-color: #a4d555;;
 		#background-image : linear-gradient(to right, #f88379,#ffffff);
 		margin: 0;
 		width: 100%;
@@ -9,7 +9,7 @@
 		display: inline-block;
 		color: #ffffff;
 		position: relative;
-		font-weight: bold;
+		#font-weight: bold;
 		font-size: 35px;	
 		font-family: "calibri";
 		font-weight: 50;
@@ -42,7 +42,7 @@
 		border: 0;
 	}
 .logIn{
-		background-color: #637bad;
+		background-color: #841983;
 		border: 1px solid #1d3871;
 		left: 1060px;
 		width: 75px;
@@ -85,8 +85,7 @@
 	}
 .newacc{
 		background-color: #EFF2FB;
-		
-		width: 550px;
+		width: 500px;
 		height: 550px;
 		position: relative;
 		left: 400px;
@@ -104,9 +103,9 @@
 .text{
 		font-size: 18px;
 		color: black;
-		position: relative;
-		top: 50px;
-		left: -150px;
+		position: absolute;
+		top: 75px;
+		left: 150px;
 	}
 .nm{
 		display: block;
