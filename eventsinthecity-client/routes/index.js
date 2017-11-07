@@ -4,6 +4,9 @@
  */
 
 exports.index = function(req, res){
+  res.render('index', { title: 'Events in the City' });
+};
+exports.homepage = function(req, res){
   res.render('homepage', { title: 'Events in the City' });
 };
 

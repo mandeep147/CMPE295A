@@ -24,7 +24,7 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
         }).success(function(response){
             console.log("Hi1");
             if(response.status == 200){
-                $window.location.assign('/events');
+                $window.location.assign('/homepage');
             }
             else{
                 console.log("Some problem in login");
@@ -70,14 +70,14 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
             $scope.error_register =false;
         });
     };
-    
-   
-    
+
+
+
     $scope.clickOnLoginButton = function(){
     	console.log("I came in here");
     	$window.location.assign('/login');
     };
-    
+
     $scope.logout = function(){
     	console.log("Logout button clicked");
     	$window.location.assign('/logout');
@@ -110,5 +110,3 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
         });
     }
 }]);
-
-

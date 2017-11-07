@@ -42,16 +42,19 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/login', routes.clickOnLoginButton);
+app.get('/homepage',routes.homepage);
 app.get('/users', user.list);
+
 app.post('/loginRequest', login.loginRequest);
 app.post('/register',login.register);
 app.get('/logout',login.logout);
 
-app.get('/events',events.listEvents);
-app.post('/updatePreference',events.updatePreference);
-app.get('/eventDetails',events.listEventDetails)
+app.get('/techEvents',events.listTechEvents);
+app.get('/funEvents',events.listFunEvents);
 
-//app.get('/eventDetails',events.listEventDetails);
+app.get('/techEventDetails',events.listTechEventDetails)
+app.get('/funEventDetails',events.listFunEventDetails)
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
