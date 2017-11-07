@@ -69,18 +69,19 @@ exports.searchEvents = function(req, res) {
     //	console.log(output[0][1][i].description.text);
     	eb={};
     	eb.id=output[0][1][i].id;
-    	eb.url=output[0][1][i].url;
-    	eb.name=output[0][1][i].name.text;
-    	eb.description=output[0][1][i].description.text;
+    	eb.title=output[0][1][i].name.text;
     	eb.time=output[0][1][i].start.local;
+    	eb.description=output[0][1][i].description.text;
+    	eb.url=output[0][1][i].url;
+
     	ebEvents.push(eb);
     	mu={};
     	mu.id=output[1][0][i].id;
-    	mu.name=output[1][0][i].name;
+    	mu.title=output[1][0][i].name;
+    	mu.time=output[1][0][i].updated;
     	mu.description=output[1][0][i].description;
     	mu.url=output[1][0][i].link;
     	mu.urlkey=output[1][0][i].urlkey;
-    	mu.updated=output[1][0][i].updated;
     	muEvents.push(mu);
     	
     }
