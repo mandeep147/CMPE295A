@@ -17,12 +17,17 @@
 </head>
 
 <body ng-app="mylogin" ng-controller="login">
+<form>
 <div class="log-In">
 	<h3 class="title"><%= title %></h3>
-	<input type="text" placeholder="Email" class="email" ng-model="username">
-	<input type="password" placeholder="Password" class="pass" ng-model="password">
-	<input type="button" value="Log In" class="logIn" ng-click ="submit()">
+	
+	<input type="text" placeholder="Email" class="email" ng-model="username" required>
+	<input type="password" placeholder="Password" class="pass" ng-model="password" required>
+	<button  class="logIn" ng-click ="submit()">Log In</button>
+	
 </div>
+	</form>
+
 
 	<div class="alert alert-danger" ng-hide="invalid_login">
 		<strong>Incorrect email or password</strong>

@@ -5,7 +5,7 @@
 
   <title>Events in The City</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -14,37 +14,23 @@
   <script src="angularjs/login.js"></script>
 </head>
 
-<body ng-app="mylogin" ng-controller="login">
-
-  <div class="banner">
-    <div class="displaycontent">
-      <h2>Events In The City</h2>
-      <h3>Find inspiration about the Events you love.</h3>
-      <div style="text-align:center;">
-        <button ng-click = "clickOnProfileButton()" class="loginButton">Profile</button>
-      </div>
-
-    </div>
-  </div>
-  <div class="container sampleEvents">
-
-
-    <div class="col-lg-6">
-      <a href="/techEvents">
-        <img src="http://via.placeholder.com/350x350"  alt="Generic placeholder image" width="140" height="140"/>
-      </a>
-      <h2>Tech Events</h2>
-    </div>
-
-    <div class="col-lg-6">
-      <a href="/funEvents">
-        <img src="http://via.placeholder.com/350x350"  alt="Generic placeholder image" width="140" height="140"/>
-      </a>
-      <h2>Fun Events</h2>
-    </div>
-
-
-  </div>
+<body>
+	<div class ="container"></div>
+	<div class="container">
+		<h1><%= firstname %> <%= lastname %></h1>
+		<hr>
+		<table>
+			<tr>
+				<td><b>Location:</b></td>   
+				<td><b>Meetup member since:</b></td>
+				<td><b>Networks</b></td>
+			</tr>
+			<tr>
+				<td><%= address%></td>
+				<td>Time</td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
 </body>
-
 </html>

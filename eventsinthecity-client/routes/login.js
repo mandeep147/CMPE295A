@@ -57,5 +57,5 @@ exports.logout = function(req,res){
 	console.log(JSON.stringify(req.session.email));
 	
 	req.session.destroy();
-	res.render('homepage');
+	res.render('index');
 };

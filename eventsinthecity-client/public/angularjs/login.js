@@ -77,6 +77,11 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
     	console.log("I came in here");
     	$window.location.assign('/login');
     };
+    
+    $scope.clickOnProfileButton = function(){
+    	console.log("Profile button clicked");
+    	$window.location.assign('/profile');
+    };
 
     $scope.logout = function(){
     	console.log("Logout button clicked");
