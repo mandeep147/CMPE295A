@@ -106,6 +106,9 @@ exports.listTechEventDetails = function(req, res) {
           });
 
           res.render("techEventDetails",{
+
+        // push data into userevents collection
+        res.render("techEventDetails",{
           values:output[i]
         })
       }
@@ -142,8 +145,9 @@ exports.listFunEventDetails = function(req, res) {
 
           });
 
+          // push data into userevents collection
         res.render("funEventDetails",{
-          values:outputFun[i]
+          fun:outputFun[i]
         })
       }
     }
