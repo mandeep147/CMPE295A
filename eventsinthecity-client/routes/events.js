@@ -8,7 +8,6 @@ var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:270
 //var json_re={user:"kalyani"};
 var output = [];
 var outputFun = [];
-
 /*
 //Extract data for Meetup data
 mongo.connect(mongoURL, function(db) {
@@ -85,7 +84,28 @@ exports.listTechEventDetails = function(req, res) {
   if(eventCategory == 'tech'){
     for( var i=0;i<output.length; i++){
       if(output[i].id == eventid && output[i].type == eventType){
-        res.render("techEventDetails",{
+        //console.log(req.session.email)
+          event={};
+          event.userid = req.session.email;
+          event.id=eventid;
+          event.type=eventType;
+          event.category=eventCategory;
+
+          mongo.connect(mongoURL, function(){
+              console.log('Connected to mongo at: ' + mongoURL);
+              var coll1 = mongo.collection('userevents');
+
+              coll1.insert(event,(function(err, user){
+                  if (!err) {
+                      console.log("Details saved successfully  ");
+                  } else {
+                      console.log("returned false"+err);
+                  }
+              }));
+
+          });
+
+          res.render("techEventDetails",{
           values:output[i]
         })
       }
@@ -101,6 +121,27 @@ exports.listFunEventDetails = function(req, res) {
   if (eventType == 'fun'){
     for( var i=0;i<outputFun.length; i++){
       if(outputFun[i].id == eventid){
+
+          event={};
+          event.userid = req.session.email;
+          event.id=eventid;
+          event.type=eventType;
+          event.category=eventCategory;
+
+          mongo.connect(mongoURL, function(){
+              console.log('Connected to mongo at: ' + mongoURL);
+              var coll1 = mongo.collection('userevents');
+
+              coll1.insert(event,(function(err, user){
+                  if (!err) {
+                      console.log("Details saved successfully  ");
+                  } else {
+                      console.log("returned false"+err);
+                  }
+              }));
+
+          });
+
         res.render("funEventDetails",{
           values:outputFun[i]
         })
