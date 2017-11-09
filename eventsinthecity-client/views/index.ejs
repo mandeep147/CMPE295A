@@ -12,59 +12,78 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="angularjs/login.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
 </head>
 
-<body ng-app="mylogin" ng-controller="login">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">EventsInTheCity</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<body ng-app="mylogin" ng-controller="login" class="ng-scope">
+
+  <header>
+
+  <div class="banner">
+    <!--<img src="/images/bg-banner-3.jpeg" alt="" class="bg-img">-->
+    <nav class="navbar navbar-expand-lg  custom-navbar">
+    <a class="navbar-brand" href="#">Events In the City</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
         </li>
 
+
       </ul>
+
     </div>
   </nav>
 
-  <div class="banner">
-    <div class="displaycontent">
+      </div>
+
+    <div class="displaycontent" style="z-index: 1000;">
       <h2>Events In The City</h2>
       <h3>Find inspiration about the Events you love.</h3>
       <div style="text-align:center;">
-        <button ng-click = "clickOnLoginButton()" class="loginButton">Signup or Login</button>
+        <button ng-click="clickOnLoginButton()" class="loginButton">Signup or Login</button>
       </div>
     </div>
+
   </div>
+</header>
+
+
   <div class="container sampleEvents">
-  <div class="row">
+    <h3>Most Happening Events</h3>
+    <div class="row">
 
-    <div class="col-lg-4">
-      <img class="rounded-circle" src="http://via.placeholder.com/350x350" alt="Generic placeholder image" width="140" height="140">
-      <h2>Front End Masters</h2>
-      <p>Front End Masters Meetup. Discussion on the latest React and Redux xhanges</p>
-      <p><a class="btn btn-secondary" href="#" role="button">View details</a></p>
+      <div class="col-lg-4">
+        <img class="rounded-circle" src="http://via.placeholder.com/350x350" alt="Generic placeholder image" width="140" height="140">
+        <h2>Front End Masters</h2>
+        <p>Front End Masters Meetup. Discussion on the latest React and Redux xhanges</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details</a></p>
+      </div>
+
+      <div class="col-lg-4">
+        <img class="rounded-circle" src="http://via.placeholder.com/350x350" alt="Generic placeholder image" width="140" height="140">
+        <h2>Front End Masters</h2>
+        <p>Front End Masters Meetup. Discussion on the latest React and Redux xhanges</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details</a></p>
+      </div>
+
+      <div class="col-lg-4">
+        <img class="rounded-circle" src="http://via.placeholder.com/350x350" alt="Generic placeholder image" width="140" height="140">
+        <h2>Front End Masters</h2>
+        <p>Front End Masters Meetup. Discussion on the latest React and Redux xhanges</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details</a></p>
+      </div>
+
     </div>
-
-    <div class="col-lg-4">
-      <img class="rounded-circle" src="http://via.placeholder.com/350x350" alt="Generic placeholder image" width="140" height="140">
-      <h2>Front End Masters</h2>
-      <p>Front End Masters Meetup. Discussion on the latest React and Redux xhanges</p>
-      <p><a class="btn btn-secondary" href="#" role="button">View details</a></p>
-    </div>
-
-    <div class="col-lg-4">
-      <img class="rounded-circle" src="http://via.placeholder.com/350x350" alt="Generic placeholder image" width="140" height="140">
-      <h2>Front End Masters</h2>
-      <p>Front End Masters Meetup. Discussion on the latest React and Redux xhanges</p>
-      <p><a class="btn btn-secondary" href="#" role="button">View details</a></p>
-    </div>
-
   </div>
-</div>
+
 </body>
 
 </html>

@@ -85,6 +85,8 @@ exports.listTechEventDetails = function(req, res) {
   if(eventCategory == 'tech'){
     for( var i=0;i<output.length; i++){
       if(output[i].id == eventid && output[i].type == eventType){
+
+        // push data into userevents collection
         res.render("techEventDetails",{
           values:output[i]
         })
@@ -101,8 +103,10 @@ exports.listFunEventDetails = function(req, res) {
   if (eventType == 'fun'){
     for( var i=0;i<outputFun.length; i++){
       if(outputFun[i].id == eventid){
+
+          // push data into userevents collection
         res.render("funEventDetails",{
-          values:outputFun[i]
+          fun:outputFun[i]
         })
       }
     }
