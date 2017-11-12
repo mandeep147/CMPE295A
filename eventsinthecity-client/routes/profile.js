@@ -12,26 +12,7 @@ exports.getProfileInfo = function(req, res){
     var output = [];
     console.log("final output")
     console.log(output)
-
-    userData(req,res,output)
-
-    Promise.all(
-        output.map(function(output) {
-            return new Promise(function(res){
-                userData(req, res, output);
-                eventData(output);
-                res(output);
-            });
-        })
-    ).then(function(output){
-
-        res.render('profile', {
-            values: output
-        });
-        res.end();
-
-    });
-
+    userData(req,res,output);
 };
 
 
@@ -52,29 +33,40 @@ function  userData(req, res, output) {
 
             output.push(user);
             console.log("user data");
-            console.log(output);
+         //   console.log(output);
+            eventData(req, res, output);
         }
 
     });
 }
 
-function eventData(output) {
+function eventData(req, res, output) {
     mongo.connect(mongoURL, function(db) {
         var coll1 = db.collection('userevents');
         coll1.find().toArray(function(err, result) {
             console.log("inside profile")
+            console.log(result)
             for(var i = 0; i < result.length; i++) {
-                event={};
-                event.userid = result[i].userid;
-                event.id=result[i].id;
-                event.type=result[i].type;
-                event.category=result[i].category;
-                //  console.log(event)
-                output.push(event);
+               if(result[i].userid == req.session.email){
+                   console.log("true")
+
+                   event={};
+                   event.userid = result[i].userid;
+                   event.id = result[i].id;
+                   event.type = result[i].type;
+                   event.category = result[i].category;
+                  //   console.log(event)
+                   output.push(event);
+               }
             }
-            //console.log("events");
+            console.log("events");
+            console.log(output.length)
             console.log(output);
+            res.render("profile", {
+                "values": output
+            });
         })
         db.close();
     });
+
 }

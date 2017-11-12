@@ -60,11 +60,12 @@
 				<h3>Events Viewed before</h3>
 				<div class="event-container" style="height:500px;overflow-y:scroll">
 					<div class="row" style="margin:10px">
-                        <% for(var i=0;i<values.length;i++) { %>
+                        <% for(var i=1;i<values.length;i++) { %>
 						<div class="card" style="margin:10px; width:15rem">
 							<div class="card-body">
 								<h5 class="card-title"><%= values[i].id %></h5>
 								<p class="card-text text-secondary"><%= values[i].category %></p>
+								<p class="card-text text-secondary"><%= values[i].type %></p>
 							</div>
 						</div>
                         <% } %>
