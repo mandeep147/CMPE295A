@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2e2fef54-4a81-4e40-ac04-e3472eaf5b25" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eventsinthecity-client/routes/profile.js" afterPath="$PROJECT_DIR$/eventsinthecity-client/routes/profile.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eventsinthecity-client/views/profile.ejs" afterPath="$PROJECT_DIR$/eventsinthecity-client/views/profile.ejs" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,21 +18,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="profile.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="profile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eventsinthecity-client/routes/profile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="242">
               <caret line="132" column="14" lean-forward="false" selection-start-line="132" selection-start-column="14" selection-end-line="132" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="profile.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/eventsinthecity-client/views/profile.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="66" column="64" lean-forward="true" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
+            <state relative-caret-position="301">
+              <caret line="53" column="36" lean-forward="false" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -63,8 +62,8 @@
         <option value="$PROJECT_DIR$/eventsinthecity/app.js" />
         <option value="$PROJECT_DIR$/eventsinthecity/routes/scrape.js" />
         <option value="$PROJECT_DIR$/eventsinthecity-client/routes/events.js" />
-        <option value="$PROJECT_DIR$/eventsinthecity-client/views/profile.ejs" />
         <option value="$PROJECT_DIR$/eventsinthecity-client/routes/profile.js" />
+        <option value="$PROJECT_DIR$/eventsinthecity-client/views/profile.ejs" />
       </list>
     </option>
   </component>
@@ -260,12 +259,12 @@
       <workItem from="1510291452757" duration="444000" />
       <workItem from="1510430691893" duration="2488000" />
       <workItem from="1510476205804" duration="1409000" />
-      <workItem from="1510486332763" duration="11346000" />
+      <workItem from="1510486332763" duration="11538000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36349000" />
+    <option name="totallyTimeSpent" value="36541000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -648,18 +647,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eventsinthecity-client/views/profile.ejs">
+    <entry file="file://$PROJECT_DIR$/eventsinthecity-client/routes/profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="66" column="64" lean-forward="true" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
+        <state relative-caret-position="242">
+          <caret line="132" column="14" lean-forward="false" selection-start-line="132" selection-start-column="14" selection-end-line="132" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eventsinthecity-client/routes/profile.js">
+    <entry file="file://$PROJECT_DIR$/eventsinthecity-client/views/profile.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="132" column="14" lean-forward="false" selection-start-line="132" selection-start-column="14" selection-end-line="132" selection-end-column="14" />
+        <state relative-caret-position="301">
+          <caret line="53" column="36" lean-forward="false" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
           <folding />
         </state>
       </provider>

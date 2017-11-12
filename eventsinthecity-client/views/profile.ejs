@@ -42,7 +42,7 @@
 	<div class="container">
 		<div  class="profile">
 			<h1 class="flush--bottom text--display3">
-				<span class="name"><%=  values[values.length-1].firstname %> <%=  values[values.length-1].lastname %></span>
+				<span class="name"><%=  values[0].firstname %> <%=  values[0].lastname %></span>
 				<hr />
 			</h1>
 
@@ -51,7 +51,7 @@
 					<td><b>Location:</b></td>
 				</tr>
 				<tr>
-					<td><%= values[values.length-1].address%></td>
+					<td><%= values[0].address%></td>
 				</tr>
 			</table>
 
