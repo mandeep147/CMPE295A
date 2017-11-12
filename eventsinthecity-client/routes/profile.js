@@ -86,24 +86,40 @@ function getTechDetails(req, res, output){
 
 function searchEventTitle(req, res, output) {
     mongo.connect(mongoURL, function(db) {
-        var techEvent = db.collection('eventbriteapi');
+        var techEvent = db.collection('techEvents');
         techEvent.find().toArray(function(err, result) {
             if (result.length) {
                 for(var j = 0; j < output.length; j++){
-                    for (var i = 0; i < result[0].ebEventsSJ.length; i++) {
-                        if (output[j].id == result[0].ebEventsSJ[i].id) {
-                            console.log("getSJTechDetails" + result[0].ebEventsSJ[i].id)
-                            console.log(result[0].ebEventsSJ[i].title);
-                            output[j].title = result[0].ebEventsSJ[i].title;
-                            output[j].url = result[0].ebEventsSJ[i].url;
+                	for (var i = 0; i < result[0].ebEventsSF.length; i++) {
+                        if (output[j].id == result[0].ebEventsSF[i].id) {
+                            console.log("getSFTechDetails" + result[0].ebEventsSF[i].id)
+                            console.log(result[0].ebEventsSF[i].title);
+                            output[j].title = result[0].ebEventsSF[i].title;
+                            output[j].url = result[0].ebEventsSF[i].url;
                         }
                     }
-                    for (var i = 0; i < result[1].ebEventsSF.length; i++) {
-                        if (output[j].id == result[1].ebEventsSF[i].id) {
-                            console.log("getSFTechDetails" + result[1].ebEventsSF[i].id)
-                            console.log(result[1].ebEventsSF[i].title);
-                            output[j].title = result[1].ebEventsSF[i].title;
-                            output[j].url = result[1].ebEventsSF[i].url;
+                    for (var i = 0; i < result[1].ebEventsSJ.length; i++) {
+                        if (output[j].id == result[1].ebEventsSJ[i].id) {
+                            console.log("getSJTechDetails" + result[1].ebEventsSJ[i].id)
+                            console.log(result[1].ebEventsSJ[i].title);
+                            output[j].title = result[1].ebEventsSJ[i].title;
+                            output[j].url = result[1].ebEventsSJ[i].url;
+                        }
+                    }
+                    for (var i = 0; i < result[2].muSFEvents.length; i++) {
+                        if (output[j].id == result[2].muSFEvents[i].id) {
+                            console.log("getSFTechDetails" + result[2].muSFEvents[i].id)
+                            console.log(result[2].muSFEvents[i].title);
+                            output[j].title = result[2].muSFEvents[i].title;
+                            output[j].url = result[2].muSFEvents[i].url;
+                        }
+                    }
+                    for (var i = 0; i < result[3].muSJEvents.length; i++) {
+                        if (output[j].id == result[3].muSJEvents[i].id) {
+                            console.log("getSJTechDetails" + result[3].muSJEvents[i].id)
+                            console.log(result[3].muSJEvents[i].title);
+                            output[j].title = result[3].muSJEvents[i].title;
+                            output[j].url = result[3].muSJEvents[i].url;
                         }
                     }
                 }
