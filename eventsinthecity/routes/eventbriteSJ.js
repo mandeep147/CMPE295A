@@ -66,7 +66,7 @@ exports.searchEbSJEvents = function(req, res) {
     
 	mongo.connect(mongoURL, function(){
 		console.log('Connected to mongo at: ' + mongoURL);
-		var coll1 = mongo.collection('eventbriteapi');
+		var coll1 = mongo.collection('techEvents');
 		
 		coll1.insert(eventobj,(function(err, user){
 			if (!err) {

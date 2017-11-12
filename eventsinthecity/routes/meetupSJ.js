@@ -19,9 +19,9 @@ client.get(meetupAPI, function(data, response_raw) {
     }
 });
 
-exports.searchMeetupEvents = function(req, res) {
+exports.searchMeetupSJEvents = function(req, res) {
 	
-	var muEvents=[];
+	var muSJEvents=[];
     var output = [];
  //   var venueoutput = [];
     
@@ -58,7 +58,7 @@ exports.searchMeetupEvents = function(req, res) {
     var json_re={user:"kalyani"};
    
     
-    res.render("meetup", {
+    res.render("meetupSJ", {
         values : output
     });
     
@@ -70,7 +70,7 @@ exports.searchMeetupEvents = function(req, res) {
     	meup={};
     	var venueoutput = [];
     	
-    	meup.id=1000+i;
+    	meup.id=100+i;
     	meup.title=output[0][0][i].name;
     	
     	var a = new Date(output[0][0][i].time);
@@ -104,18 +104,18 @@ exports.searchMeetupEvents = function(req, res) {
         meup.type="SCTECH";
     	
     	
-        muEvents.push(meup);
+        muSJEvents.push(meup);
     	
     }
     
     
     	
     }
-    var eventobjnew = {"muEvents" : muEvents};
+    var eventobjnew = {"muSJEvents" : muSJEvents};
     
 	mongo.connect(mongoURL, function(){
 		console.log('Connected to mongo at: ' + mongoURL);
-		var coll1 = mongo.collection('meetupapi');
+		var coll1 = mongo.collection('techEvents');
 		
 		coll1.insert(eventobjnew,(function(err, user){
 			if (!err) {
