@@ -4,6 +4,7 @@
   <title><%= title %></title>
   
   <link rel='stylesheet' type="text/css" href='/stylesheets/login.css'/>
+  <link rel='stylesheet' type="text/css" href='/stylesheets/style.css'/>
   <!--<link rel='stylesheet' type="text/css" href='/stylesheets/reset.css'/>
   <link rel='stylesheet' type="text/css" href='/stylesheets/others.css'/>-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -17,45 +18,49 @@
 </head>
 
 <body ng-app="mylogin" ng-controller="login">
-<form>
-<div class="log-In">
-	<h3 class="title"><%= title %></h3>
-	
-	<input type="text" placeholder="Email" class="email" ng-model="username" required>
-	<input type="password" placeholder="Password" class="pass" ng-model="password" required>
-	<button  class="logIn" ng-click ="submit()">Log In</button>
-	
-</div>
-	</form>
-
-
-	<div class="alert alert-danger" ng-hide="invalid_login">
-		<strong>Incorrect email or password</strong>
-	</div>
-	<div class="alert alert-danger" ng-hide="unexpected_error">
-		<strong>Unexpected error, try again</strong>
-	</div>
-	
-<div class="Sign-Up">
-	<div class="sign">
-		<div class="newacc">
-			<span class="lg">Sign Up</span>
-			<span class="text">It's free and always will be</span>
+	<div class="log-In">
+		<h3 class="title"><%= title %></h3>
+		<form name="loginForm" novalidate autocomplete>
+			<input type="email" name="username" placeholder="Email" class="email" ng-model="username" required  />
+			<input type="password" name = "password" placeholder="Password" class="pass" ng-model="password" required/>
+			<button type="submit" class="logIn" ng-click ="submit(loginForm.$valid)">Log In</button>
+			<p class="errorEmail" ng-show="loginForm.username.$invalid && !loginForm.username.$pristine && submitted">Email is not valid</p>
+			<p class="errorPassword" ng-show="loginForm.password.$invalid && !loginForm.password.$pristine && submitted">Password is required</p>
 			
-			<form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate> 
-				<input type="text" placeholder="First Name" class="first nm" ng-model="firstname" required>
-				<input type="text" placeholder="Last Name" class="first nm" ng-model="lastname" required>
-				<input type="email" placeholder="Email" class="mail nm" ng-model ="email1" ng-maxlength="64">
-				<input type="password" placeholder="Password" class="mail nm" ng-model="password1" ng-maxlength="64">
-				<input type="tel" pattern='[\(]\d{3}[\)]\d{3}[\-]\d{4}' placeholder="Phone Number" class="mail nm" ng-model="mobile">
-				<input type="text" placeholder="Address" class="mail nm" ng-model="address">
-	            <br>
-				<p class="declare">By clicking Sign Up for Events in the City, you agree to our <strong>terms</strong> and that you have read our <strong>Data Use Policy</strong>, including our <strong>Cookies Use.</strong> </p>
-				<button type="submit" value="Sign Up for Events in the City" class="button nm" ng-click ="register()" ng-disabled="userForm.$invalid">Sign Up</button>
-			</form>
-		</div>
+		</form>
 	</div>
 	
-</div>
+	<div class="Sign-Up">
+		<div class="sign">
+			<div class="newacc">
+				<span class="lg">Sign Up</span>
+				<span class="text">It's free and always will be</span>
+				
+				<form name="registerForm" novalidate autocomplete> 
+					<input type="text" placeholder="First Name" class="first nm" ng-model="firstname" required/>
+					<input type="text" placeholder="Last Name" class="first nm" ng-model="lastname" required/>
+					<input type="email" placeholder="Email" class="mail nm" ng-model ="email1" ng-maxlength="64"/>
+					<input type="password" placeholder="Password" class="mail nm" ng-model="password1" ng-maxlength="64"/>
+					<input type="tel" pattern='[\(]\d{3}[\)]\d{3}[\-]\d{4}' placeholder="Phone Number" class="mail nm" ng-model="mobile"/>
+					<input type="text" placeholder="Address" class="mail nm" ng-model="address"/>
+		            <br>
+					<p class="declare">By clicking Sign Up for Events in the City, you agree to our <strong>terms</strong> and that you have read our <strong>Data Use Policy</strong>, including our <strong>Cookies Use.</strong> </p>
+					<button type="submit" value="Sign Up for Events in the City" class="button nm" ng-click ="register(registerForm.$valid)" ng-disabled="userForm.$invalid">Sign Up</button>
+				</form>
+			</div>
+		</div>
+		
+	</div>
+	
+	<footer>
+  	<div class="row" style="height:100px;">
+  		<div class = "col-md-8" style="background:#7ed026;">
+  			<p class="footerText">Copyright © 2017 Events in the City. All Rights Reserved.</p>
+  		</div>
+  		<div class = "col-md-4" style="background:#00aeef;">
+  			<p ><a href='/about' class="footerText" style="text-align:center;">About</a></p>
+  		</div>
+  	</div>
+</footer>
 </body>
 </html>

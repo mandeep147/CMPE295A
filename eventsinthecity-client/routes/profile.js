@@ -6,10 +6,13 @@ var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:270
 
 exports.getProfileInfo = function(req, res){
     var output = [];
+
     //console.log("final output")
  //   console.log(output)
     userData(req,res,output);
 };
+
+           
 
 
 function  userData(req, res, output) {
@@ -67,7 +70,6 @@ function eventData(req, res, output) {
     });
 
 }
-
 function getTechDetails(req, res, output){
     for(j = 0; j < output.length; j++){
         if (output[j].type == 'SJTECH' || output[j].type == 'SFTECH') {
@@ -172,3 +174,6 @@ function exportData(req, res, output) {
         "values": output
     });
 }
+
+}
+

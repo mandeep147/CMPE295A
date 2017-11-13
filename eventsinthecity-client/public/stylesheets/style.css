@@ -75,8 +75,15 @@ max-width: 33.333333%;
 
 .container.sampleEvents{
       color: ghostwhite;
+      margin-top:200px;
 }
 .sampleEvents .btn.btn-secondary{
   color: black;
 background-color: darkturquoise;
+}
+
+.footerText{
+	color:#ffffff; 
+	text-align:center; 
+	margin-top:40px;
 }
