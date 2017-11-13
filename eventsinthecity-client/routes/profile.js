@@ -1,7 +1,3 @@
-/*
- * Created by Anushka Jain
-*/
-
 var ejs = require("ejs");
 var mysql = require('./mysql');
 var mongo = require("./mongoConnect");
@@ -64,7 +60,8 @@ function eventData(req, res, output) {
          //   console.log("events");
           //  console.log(output.length)
          //   console.log(output);
-            getTechDetails(req, res, output)
+         //   getTechDetails(req, res, output)
+            searchEventTitle(req, res, output)
         })
         db.close();
     });
@@ -86,7 +83,7 @@ function getTechDetails(req, res, output){
 
 function searchEventTitle(req, res, output) {
     mongo.connect(mongoURL, function(db) {
-        var techEvent = db.collection('techEvents');
+        var techEvent = db.collection('techfunEvents');
         techEvent.find().toArray(function(err, result) {
             if (result.length) {
                 for(var j = 0; j < output.length; j++){
@@ -120,6 +117,22 @@ function searchEventTitle(req, res, output) {
                             console.log(result[3].muSJEvents[i].title);
                             output[j].title = result[3].muSJEvents[i].title;
                             output[j].url = result[3].muSJEvents[i].url;
+                        }
+                    }
+                    for (var i = 0; i < result[4].funeventsSJ.length; i++) {
+                        if (output[j].id == result[4].funeventsSJ[i].id) {
+                            console.log("getSJFunDetails" + result[4].funeventsSJ[i].id)
+                            console.log(result[4].funeventsSJ[i].title);
+                            output[j].title = result[4].funeventsSJ[i].title;
+                            output[j].url = result[4].funeventsSJ[i].url;
+                        }
+                    }
+                    for (var i = 0; i < result[5].funeventsSF.length; i++) {
+                        if (output[j].id == result[5].funeventsSF[i].id) {
+                            console.log("getSFFunDetails" + result[5].funeventsSF[i].id)
+                            console.log(result[5].funeventsSF[i].title);
+                            output[j].title = result[5].funeventsSF[i].title;
+                            output[j].url = result[5].funeventsSF[i].url;
                         }
                     }
                 }

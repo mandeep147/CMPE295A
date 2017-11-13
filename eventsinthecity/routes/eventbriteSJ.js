@@ -67,8 +67,18 @@ exports.searchEbSJEvents = function(req, res) {
 	mongo.connect(mongoURL, function(){
 		console.log('Connected to mongo at: ' + mongoURL);
 		var coll1 = mongo.collection('techEvents');
+		var coll2 = mongo.collection('techfunEvents');
 		
 		coll1.insert(eventobj,(function(err, user){
+			if (!err) {
+							
+				console.log("Details saved successfully  ");
+
+			} else {
+				console.log("returned false"+err);
+			}
+		}));
+		coll2.insert(eventobj,(function(err, user){
 			if (!err) {
 							
 				console.log("Details saved successfully  ");

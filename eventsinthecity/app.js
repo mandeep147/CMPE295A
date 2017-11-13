@@ -42,7 +42,7 @@ app.get('/users', user.list);
 
 app.get('/events',events.searchEvents);
 app.get('/scrapefun', scrape.scrapefun);
-app.get('/featured', scrape.featureEvents);
+app.get('/scrapefeatured', scrape.featureEvents);
 app.get('/scrapefun2', scrape.scrapefun2);
 app.get('/scrapeSF', scrape.scrapeSF);
 app.get('/eventbriteSF',eventbriteSF.searchEbSFEvents);
