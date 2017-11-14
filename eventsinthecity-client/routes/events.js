@@ -36,7 +36,9 @@ mongo.connect(mongoURL, function(db) {
       output= output.concat(result[0].ebEventsSJ);
       output= output.concat(result[1].ebEventsSF);
       console.log("Eventbrite!!!!!!")
-      console.log(output);
+        //console.log(result[0].ebEventsSJ.length)
+
+    //  console.log(output);
     } else {
       console.log(err)
     }
@@ -64,12 +66,28 @@ mongo.connect(mongoURL, function(db) {
 
 //Tech Events page - techEvents.ejs
 exports.listTechEvents = function(req, res) {
+    /**
+     * getting random 5 records
+     */
+    for(var i = 0; i < 5; i++){
+        var randomNumber =  Math.floor(Math.random() * output.length)
+        console.log("inside recommendations" + randomNumber)
+        console.log(output[randomNumber]);
+    }
   res.render("techEvents", {
     values: output
   });
 };
 //Fun Events page - FunEvents.ejs
 exports.listFunEvents = function(req, res) {
+    /**
+     * getting random 5 records
+     */
+    for(var i = 0; i < 5; i++){
+        var randomNumber =  Math.floor(Math.random() * outputFun.length)
+        console.log("inside recommendations" + randomNumber)
+        console.log(outputFun[randomNumber]);
+    }
   res.render("funEvents", {
     fun:  outputFun
   });
@@ -104,6 +122,7 @@ exports.listTechEventDetails = function(req, res) {
               }));
 
           });
+
         // push data into userevents collection
         res.render("techEventDetails",{
           values:output[i]

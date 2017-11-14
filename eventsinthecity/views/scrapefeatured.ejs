@@ -47,15 +47,25 @@
     </div>
     
     
-
-<h1>EventBrite SJ</h1>
-
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
+            <h1>Scraping</h1>
+			<% for(var i=0;i<values.length;i++) { %>
+				<% if(i % 3 == 0){ %>
+				<div class="row">
+            <% } %>
+            <div class="col-xs-6 col-lg-4">
             
-     
+                <p><Strong> </Strong><a><%= values[i].title %> </a><p> 
+                <p><Strong> </Strong><a><%= values[i].name %> </a><p> 
+                <p><Strong> </Strong><a><%= values[i].time %> </a><p> 
+		<p> <%= values[i].image %> <p>           
+            	</div>
+            <%  if(i % 3 == 2){ %>
+                </div>
+                    <% } %>
+       <% } %>     
 				
         </div>
 	</div>
@@ -63,10 +73,3 @@
 
 
 </div>
-
-
-</body>
-<script>
-
-</script>
-</html>

@@ -44,10 +44,11 @@ app.get('/', routes.index);
 app.get('/login', routes.clickOnLoginButton);
 app.get('/homepage',routes.homepage);
 app.get('/users', user.list);
-app.get('/profile',profile.getProfileInfo);
+app.post('/profile',profile.getProfileInfo);
 app.post('/loginRequest', login.loginRequest);
 app.post('/register',login.register);
-app.get('/logout',login.logout);
+//app.get('/logout',login.logout);
+app.get('/about',routes.about);
 
 app.get('/techEvents',events.listTechEvents);
 app.get('/funEvents',events.listFunEvents);

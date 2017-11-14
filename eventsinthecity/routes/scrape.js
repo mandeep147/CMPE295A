@@ -6,7 +6,8 @@ var mongo = require("./mongoConnect");
 var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295";
 var json_re={user:"kalyani"};
 
-var allEvents=[];
+var funeventsSJ=[];
+var featuredEvents=[];
 exports.scrapefun = function (req, res) {
     url = "http://www.sanjose.org/events/"
     request(url, function(error, response, html){
@@ -29,61 +30,15 @@ exports.scrapefun = function (req, res) {
             	event.location=($('.venuename').eq(i).text());
             	event.type="SJFUN1";
             	//event.image=($('.allevents-img').eq(i).attr('src'));
-            	allEvents.push(event);
+            	funeventsSJ.push(event);
             	           	
             }
-            console.log(JSON.stringify(allEvents));
+            console.log(JSON.stringify(funeventsSJ));
         }
     })
 }
 
-exports.featureEvents = function (req, res) {
-    url = "http://www.sanjose.org/events/"
-    request(url, function(error, response, html){
 
-        if(!error){
-            var $ = cheerio.load(html);
-            console.log("inside feature events");
-            for(var i=0;i<$('.feature-events-div').length;i++){
-                event={};
-                event.id=i+1000;
-                event.title=($('.captiontitle').eq(i).text());
-                event.time=($('.feature-event-time').eq(i).text());
-                event.description=($('.ic_text').eq(i).text());
-                event.url="http://www.sanjose.org/events/";
-                event.location=($('.ic_category').eq(i).text());
-                event.type="Featured Events";
-
-                event.time = event.time.replace(/\s\s+/g, ' ' );
-                console.log("id: "+event.id+"\n title: "+event.title+"\n time: "+event.time+"\n description: "+event.description+"\n location: "+event.location)
-                //event.image=($('.allevents-img').eq(i).attr('src'));
-                allEvents.push(event);
-
-            }
-            console.log(JSON.stringify(allEvents));
-
-            var eventobj = {"allEvents" : allEvents};
-
-            mongo.connect(mongoURL, function(){
-                console.log('Connected to mongo at: ' + mongoURL);
-                var coll1 = mongo.collection('featuredEvents');
-                coll1.insert(eventobj,(function(err, user){
-                    if (!err) {
-                        console.log("Details saved successfully  ");
-                    } else {
-                        console.log("returned false"+err);
-                    }
-                }));
-
-            });
-
-            res.render("scrapefun2", {
-                values : allEvents
-            });
-
-        }
-    })
-}
 
 exports.scrapefun2 = function (req, res) {
     url = "http://www.sanjose.org/events/?page=2"
@@ -108,17 +63,27 @@ exports.scrapefun2 = function (req, res) {
             	event.location=($('.venuename').eq(i).text());
                	event.type="SJFUN2";
             	//event.image=($('.allevents-img').eq(i).attr('src'));
-            	allEvents.push(event);
+               	funeventsSJ.push(event);
             	           	
             }
           
-            var eventobj = {"allEvents" : allEvents};
+            var eventobj = {"funeventsSJ" : funeventsSJ};
            
         	mongo.connect(mongoURL, function(){
         		console.log('Connected to mongo at: ' + mongoURL);
-        		var coll1 = mongo.collection('sjscrape');
+        		var coll1 = mongo.collection('funEvents');
+        		var coll2 = mongo.collection('techfunEvents');
         		
         		coll1.insert(eventobj,(function(err, user){
+        			if (!err) {
+        							
+        				console.log("Details saved successfully  ");
+
+        			} else {
+        				console.log("returned false"+err);
+        			}
+        		}));
+        		coll2.insert(eventobj,(function(err, user){
         			if (!err) {
         							
         				console.log("Details saved successfully  ");
@@ -130,16 +95,62 @@ exports.scrapefun2 = function (req, res) {
         		
         	});
         
-            console.log(JSON.stringify(allEvents));
+            console.log(JSON.stringify(funeventsSJ));
            res.render("scrapefun2", {
-               values : allEvents
+               values : funeventsSJ
            });
 
         }
     })
 }
 
+exports.featureEvents = function (req, res) {
+    url = "http://www.sanjose.org/events/"
+    request(url, function(error, response, html){
 
+        if(!error){
+            var $ = cheerio.load(html);
+            console.log("inside feature events");
+            for(var i=0;i<$('.feature-events-div').length;i++){
+                event={};
+                event.id=i+1000;
+                event.title=($('.captiontitle').eq(i).text());
+                event.time=($('.feature-event-time').eq(i).text());
+                event.description=($('.ic_text').eq(i).text());
+                event.url="http://www.sanjose.org/events/";
+                event.location=($('.ic_category').eq(i).text());
+                event.type="Featured Events";
+
+                event.time = event.time.replace(/\s\s+/g, ' ' );
+                console.log("id: "+event.id+"\n title: "+event.title+"\n time: "+event.time+"\n description: "+event.description+"\n location: "+event.location)
+                //event.image=($('.allevents-img').eq(i).attr('src'));
+                featuredEvents.push(event);
+
+            }
+            console.log(JSON.stringify(featuredEvents));
+
+            var eventobj = {"featuredEvents" : featuredEvents};
+
+            mongo.connect(mongoURL, function(){
+                console.log('Connected to mongo at: ' + mongoURL);
+                var coll1 = mongo.collection('featuredEvents');
+                coll1.insert(eventobj,(function(err, user){
+                    if (!err) {
+                        console.log("Details saved successfully  ");
+                    } else {
+                        console.log("returned false"+err);
+                    }
+                }));
+
+            });
+
+            res.render("scrapefeatured", {
+                values : featuredEvents
+            });
+
+        }
+    })
+}
 
 exports.scrapeSF = function (req, res) {
     url = "https://www.events12.com/sanfrancisco/"
@@ -149,7 +160,7 @@ exports.scrapeSF = function (req, res) {
             var $ = cheerio.load(html);
             console.log("I'm here");
             var json1 = { title : ""};
-            var arrSF =[];
+            var funeventsSF =[];
             
        /*     
             console.log($('.event .title').eq(0).text());
@@ -182,17 +193,27 @@ exports.scrapeSF = function (req, res) {
             		event.location=($('.event .miles').eq(i).text());
 
             	event.type="SFFUN";
-            	arrSF.push(event);
+            	funeventsSF.push(event);
             	           	
             }  
            
-            var sfeventobj = {"arrSF" : arrSF};
+            var sfeventobj = {"funeventsSF" : funeventsSF};
             
         	mongo.connect(mongoURL, function(){
         		console.log('Connected to mongo at: ' + mongoURL);
-        		var coll1 = mongo.collection('sfscrape');
+        		var coll1 = mongo.collection('funEvents');
+        		var coll2 = mongo.collection('techfunEvents');
         		
         		coll1.insert(sfeventobj,(function(err, user){
+        			if (!err) {
+        							
+        				console.log("Details saved successfully  ");
+
+        			} else {
+        				console.log("returned false"+err);
+        			}
+        		}));
+        		coll2.insert(sfeventobj,(function(err, user){
         			if (!err) {
         							
         				console.log("Details saved successfully  ");
@@ -204,9 +225,9 @@ exports.scrapeSF = function (req, res) {
         		
         	});
 
-          console.log(JSON.stringify(arrSF));
+          console.log(JSON.stringify(funeventsSF));
            res.render("scrapeSF", {
-               values : arrSF
+               values : funeventsSF
            });
 
         }

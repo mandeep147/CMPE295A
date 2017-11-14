@@ -5,39 +5,39 @@ var app = angular.module('mylogin',[]);
 
 app.controller('login',['$scope','$http','$window',function($scope,$http,$window){
 
-    $scope.invalid_login = true;
-    $scope.unexpected_error = true;
-    $scope.error_register =true;
-    $scope.success_register = true;
+    $scope.submit= function(isValid){
+    	$scope.submitted = true;
+    	if(isValid){
+    		
+    		$http({
+                "method":"POST",
+                "url":"/loginRequest",
+                "headers": {
+                    "content-type": "application/json"
+                },
+                "data":{
+                    "username" : $scope.username,
+                    "password" : $scope.password
+                }
+            }).success(function(response){
+            	console.log("Login Success!!");
+                if(response.status == 200){
+                    $window.location.assign('/homepage');
+                }
+                else{
+                    console.log("Some problem in login");
+                    $window.alert("Wrong email or password");
 
-    $scope.submit= function(){
-        $http({
-            "method":"POST",
-            "url":"/loginRequest",
-            "headers": {
-                "content-type": "application/json"
-            },
-            "data":{
-                "username" : $scope.username,
-                "password" : $scope.password
-            }
-        }).success(function(response){
-            console.log("Hi1");
-            if(response.status == 200){
-                $window.location.assign('/homepage');
-            }
-            else{
-                console.log("Some problem in login");
-                //$scope.invalid_login = false;
-                //$scope.unexpected_error = true;
-                $window.alert("Wrong email or password");
-
-            }
-        }).error(function(error){
-            console.log("from error in login");
-            $scope.invalid_login = true;
-            $scope.unexpected_error = false;
-        });
+                }
+            }).error(function(error){
+                console.log("from error in login");
+                $window.alert("Sorry! Could not retrieve your information. Please try again.");
+            });	
+    	}
+    	else{
+    		$window.alert("Email or Password Invalid");
+    	}
+        
     };
 
     $scope.register = function(){
@@ -71,8 +71,6 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
         });
     };
 
-
-
     $scope.clickOnLoginButton = function(){
     	console.log("I came in here");
     	$window.location.assign('/login');
@@ -85,7 +83,7 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
 
     $scope.logout = function(){
     	console.log("Logout button clicked");
-    	$window.location.assign('/logout');
+    	$window.location.assign('/');
     };
 
     $scope.nextpage = function(){

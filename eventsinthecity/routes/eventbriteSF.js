@@ -48,7 +48,7 @@ exports.searchEbSFEvents = function(req, res) {
     //	console.log(output[0][1][i].name.text);
     //	console.log(output[0][1][i].description.text);
     	eb={};
-    	eb.id=10000 + i;
+    	eb.id=1000 + i;
     	eb.title=output[0][1][i].name.text;
     	eb.time=output[0][1][i].start.local;
     	eb.description=output[0][1][i].description.text;
@@ -66,9 +66,19 @@ exports.searchEbSFEvents = function(req, res) {
     
 	mongo.connect(mongoURL, function(){
 		console.log('Connected to mongo at: ' + mongoURL);
-		var coll1 = mongo.collection('eventbriteapi');
+		var coll1 = mongo.collection('techEvents');
+		var coll2 = mongo.collection('techfunEvents');
 		
 		coll1.insert(eventobj,(function(err, user){
+			if (!err) {
+							
+				console.log("Details saved successfully  ");
+
+			} else {
+				console.log("returned false"+err);
+			}
+		}));
+		coll2.insert(eventobj,(function(err, user){
 			if (!err) {
 							
 				console.log("Details saved successfully  ");

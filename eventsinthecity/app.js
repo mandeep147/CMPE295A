@@ -13,7 +13,8 @@ var events=require('./routes/events');
 var login = require('./routes/login');
 
 var scrape = require('./routes/scrape');
-var meetup = require('./routes/meetup');
+var meetupSF = require('./routes/meetupSF');
+var meetupSJ = require('./routes/meetupSJ');
 var eventbriteSJ = require('./routes/eventbriteSJ');
 var eventbriteSF = require('./routes/eventbriteSF');
 
@@ -41,12 +42,13 @@ app.get('/users', user.list);
 
 app.get('/events',events.searchEvents);
 app.get('/scrapefun', scrape.scrapefun);
-app.get('/featured', scrape.featureEvents);
+app.get('/scrapefeatured', scrape.featureEvents);
 app.get('/scrapefun2', scrape.scrapefun2);
 app.get('/scrapeSF', scrape.scrapeSF);
 app.get('/eventbriteSF',eventbriteSF.searchEbSFEvents);
 app.get('/eventbriteSJ',eventbriteSJ.searchEbSJEvents);
-app.get('/meetup', meetup.searchMeetupEvents);
+app.get('/meetupSJ', meetupSJ.searchMeetupSJEvents);
+app.get('/meetupSF', meetupSF.searchMeetupSFEvents);
 
 app.post('/login', login.login);
 app.post('/register',login.register);
