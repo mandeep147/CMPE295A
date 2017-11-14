@@ -1,0 +1,54 @@
+body {
+
+font-family: 'Barlow Semi Condensed', sans-serif;
+  -webkit-font-smoothing: antialiased
+}
+
+.sampleEvents{
+  margin-top: 1.5em;
+}
+
+.col-lg-4{
+    margin-bottom: 1.5rem;
+    text-align: center;
+    flex: 0 0 33.333333%;
+max-width: 33.333333%;
+
+}
+.display-3{
+    font-size: 4.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+
+.sampleEvents h3{
+  font-weight : 100;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 10px
+}
+
+.custom-navbar{
+  text-transform: uppercase;
+  background-color: transparent;
+
+}
+.custom-navbar a{
+  color:white
+}
+
+.navbar-nav{
+    color: white;
+}
+.brand a {
+  color: white;
+}
+
+.container.sampleEvents{
+      color: black;
+}
+.sampleEvents .btn.btn-secondary{
+  color: black;
+background-color: darkturquoise;
+}

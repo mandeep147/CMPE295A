@@ -104,9 +104,6 @@ exports.listTechEventDetails = function(req, res) {
               }));
 
           });
-
-          res.render("techEventDetails",{
-
         // push data into userevents collection
         res.render("techEventDetails",{
           values:output[i]
