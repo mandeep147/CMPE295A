@@ -60,7 +60,7 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
             console.log(response.status);
             if(response.status == 200){
                 $scope.success_register=false;
-                $window.location.assign('/events');
+                $window.location.assign('/homepage');
             }
             else{
                 $scope.error_register =false;
@@ -80,6 +80,8 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
     	console.log("Profile button clicked");
     	$window.location.assign('/profile');
     };
+    
+    
 
     $scope.logout = function(){
     	console.log("Logout button clicked");

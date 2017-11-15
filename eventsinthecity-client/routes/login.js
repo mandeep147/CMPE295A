@@ -14,7 +14,7 @@ exports.loginRequest = function(req,res){
     var connection = mysql.getConnection();
     connection.query("select * from users where email = '"+ email + "' and password = '" + encrypted_password +"'" ,function(err,rows){
         if(rows.length>0){
-        	sess= req.session;
+        	sess = req.session;
         	sess.email=email;
             console.log("In success");
             res.send({status:200});

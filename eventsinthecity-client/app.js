@@ -18,8 +18,9 @@ app.use(session({
 	  secret: 'my_secret',
 	  resave: false,
 	  saveUninitialized: false,
-	  duration: 30 * 60 * 1000,
-	  activeDuration: 5 * 60 * 1000,
+	  cookie: { maxAge: 30*60000 },
+	  //duration: 30 * 60 * 1000,
+	  //activeDuration: 5 * 60 * 1000,
 	  store: new MongoStore({ url: 'mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295' })
 }));
 
@@ -44,12 +45,12 @@ app.get('/', routes.index);
 app.get('/login', routes.clickOnLoginButton);
 app.get('/homepage',routes.homepage);
 app.get('/users', user.list);
-app.post('/profile',profile.getProfileInfo);
+app.get('/profile',profile.getProfileInfo);
 app.post('/loginRequest', login.loginRequest);
 app.post('/register',login.register);
 //app.get('/logout',login.logout);
 app.get('/about',routes.about);
-
+app.get('/contactUs', routes.contactUs);
 app.get('/techEvents',events.listTechEvents);
 app.get('/funEvents',events.listFunEvents);
 

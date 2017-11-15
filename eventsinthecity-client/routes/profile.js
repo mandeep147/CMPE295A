@@ -5,15 +5,18 @@ var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:270
 
 
 exports.getProfileInfo = function(req, res){
-    var output = [];
+    if(req.session.email){
+    	var output = [];
+    	//console.log("final output")
+        //console.log(output)
+        userData(req,res,output);
+    }
+    else{
+    	res.render('signin', {title: 'Events in the City'});
+    }
 
-    //console.log("final output")
- //   console.log(output)
-    userData(req,res,output);
+    
 };
-
-           
-
 
 function  userData(req, res, output) {
 
@@ -64,8 +67,8 @@ function eventData(req, res, output) {
           //  console.log(output.length)
          //   console.log(output);
          //   getTechDetails(req, res, output)
-            searchEventTitle(req, res, output)
-        })
+            searchEventTitle(req, res, output);
+        });
         db.close();
     });
 
@@ -175,5 +178,5 @@ function exportData(req, res, output) {
     });
 }
 
-}
+
 
