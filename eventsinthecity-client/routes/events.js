@@ -95,77 +95,88 @@ exports.listFunEvents = function(req, res) {
 
 //Single Tech Event page - techEventDetails.ejs
 exports.listTechEventDetails = function(req, res) {
-  var eventid = req.param("id");
-  var eventType = req.param("type");
-  var eventCategory = req.param("cat");
-  console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
-  if(eventCategory == 'tech'){
-    for( var i=0;i<output.length; i++){
-      if(output[i].id == eventid && output[i].type == eventType){
-        //console.log(req.session.email)
-          event={};
-          event.userid = req.session.email;
-          event.id=eventid;
-          event.type=eventType;
-          event.category=eventCategory;
+	if(req.session.email){
+		var eventid = req.param("id");
+		  var eventType = req.param("type");
+		  var eventCategory = req.param("cat");
+		  console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
+		  if(eventCategory == 'tech'){
+		    for( var i=0;i<output.length; i++){
+		      if(output[i].id == eventid && output[i].type == eventType){
+		        //console.log(req.session.email)
+		          event={};
+		          event.userid = req.session.email;
+		          event.id=eventid;
+		          event.type=eventType;
+		          event.category=eventCategory;
 
-          mongo.connect(mongoURL, function(){
-              console.log('Connected to mongo at: ' + mongoURL);
-              var coll1 = mongo.collection('userevents');
+		          mongo.connect(mongoURL, function(){
+		              console.log('Connected to mongo at: ' + mongoURL);
+		              var coll1 = mongo.collection('userevents');
 
-              coll1.insert(event,(function(err, user){
-                  if (!err) {
-                      console.log("Details saved successfully  ");
-                  } else {
-                      console.log("returned false"+err);
-                  }
-              }));
+		              coll1.insert(event,(function(err, user){
+		                  if (!err) {
+		                      console.log("Details saved successfully  ");
+		                  } else {
+		                      console.log("returned false"+err);
+		                  }
+		              }));
 
-          });
+		          });
 
-        // push data into userevents collection
-        res.render("techEventDetails",{
-          values:output[i]
-        })
-      }
-    }
-  }
+		        // push data into userevents collection
+		        res.render("techEventDetails",{
+		          values:output[i]
+		        })
+		      }
+		    }
+		  }
+	}
+	else{
+		res.render('signin', {title: 'Events in the City'});
+	}
+  
 };
 
 //Single Fun Event page - funEventDetails.ejs
 exports.listFunEventDetails = function(req, res) {
-  var eventid = req.param("id");
-  var eventType = req.param("type");
-  console.log("id= " + eventid,"type="+eventType);
-  if (eventType == 'fun'){
-    for( var i=0;i<outputFun.length; i++){
-      if(outputFun[i].id == eventid){
+	if(req.session.email){
+		  var eventid = req.param("id");
+		  var eventType = req.param("type");
+		  console.log("id= " + eventid,"type="+eventType);
+		  if (eventType == 'fun'){
+		    for( var i=0;i<outputFun.length; i++){
+		      if(outputFun[i].id == eventid){
+		    	  event={};
+		          event.userid = req.session.email;
+		          event.id=eventid;
+		          event.type=eventType;
+		          event.category=eventCategory;
 
-          event={};
-          event.userid = req.session.email;
-          event.id=eventid;
-          event.type=eventType;
-          event.category=eventCategory;
+		          mongo.connect(mongoURL, function(){
+		              console.log('Connected to mongo at: ' + mongoURL);
+		              var coll1 = mongo.collection('userevents');
 
-          mongo.connect(mongoURL, function(){
-              console.log('Connected to mongo at: ' + mongoURL);
-              var coll1 = mongo.collection('userevents');
+		              coll1.insert(event,(function(err, user){
+		                  if (!err) {
+		                      console.log("Details saved successfully  ");
+		                  } else {
+		                      console.log("returned false"+err);
+		                  }
+		              }));
 
-              coll1.insert(event,(function(err, user){
-                  if (!err) {
-                      console.log("Details saved successfully  ");
-                  } else {
-                      console.log("returned false"+err);
-                  }
-              }));
+		          });
 
-          });
+		          // push data into userevents collection
+		        res.render("funEventDetails",{
+		          fun:outputFun[i]
+		        });
+		      }
+		    }
+		  }
+	}
+	else{
+		res.render('signin', {title: 'Events in the City'});
+	}
 
-          // push data into userevents collection
-        res.render("funEventDetails",{
-          fun:outputFun[i]
-        })
-      }
-    }
-  }
 };

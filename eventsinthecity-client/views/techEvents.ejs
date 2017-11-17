@@ -17,6 +17,7 @@
 <body ng-app="mylogin" ng-controller="login">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  	<button class="btn btn-primary" onclick="window.history.back()"><i class="glyphicon glyphicon-chevron-left">Back</i></button>
     <a class="navbar-brand" href="#">Events in the City</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -62,6 +63,7 @@
                       <%= values[i].time %>
                         <p>
                           <a class="btn btn-primary" href="/techEventDetails?id=<%=values[i].id%>&type=<%=values[i].type%>&cat=tech">Continue</a>
+                          <a class="btn btn-primary" href="/saveToFavorite"><i class="glyphicon glyphicon-star-empty"></i>Save</a>
                   </div>
                 </div>
                 <%  if(i % 3 == 2){ %>
@@ -78,7 +80,7 @@
   </div>
   
   <footer>
-  	<div class="row" style="height:100px;">
+  	<div class="row" style="height:75px;">
   		<div class = "col-md-8" style="background:#7ed026;">
   			<p class="footerText">Copyright © 2017 Events in the City. All Rights Reserved.</p>
   		</div>

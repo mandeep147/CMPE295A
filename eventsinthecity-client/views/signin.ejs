@@ -37,9 +37,14 @@
 				<span class="text">It's free and always will be</span>
 				
 				<form name="registerForm" novalidate autocomplete> 
-					<input type="text" placeholder="First Name" class="first nm" ng-model="firstname" required/>
+					<input type="text" name="fname" placeholder="First Name" class="first nm" ng-model="firstname" required/>
+					<p ng-show="registerForm.fname.$invalid && !registerForm.fname.$pristine">Email is not valid</p>
+					
 					<input type="text" placeholder="Last Name" class="first nm" ng-model="lastname" required/>
-					<input type="email" placeholder="Email" class="mail nm" ng-model ="email1" ng-maxlength="64"/>
+					
+					<input type="email" name="email" placeholder="Email" class="mail nm" ng-model ="email1" ng-maxlength="64"/>
+					<p class="errorEmail" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">Email is not valid</p>
+					
 					<input type="password" placeholder="Password" class="mail nm" ng-model="password1" ng-maxlength="64"/>
 					<input type="tel" pattern='[\(]\d{3}[\)]\d{3}[\-]\d{4}' placeholder="Phone Number" class="mail nm" ng-model="mobile"/>
 					<input type="text" placeholder="Address" class="mail nm" ng-model="address"/>
@@ -53,7 +58,7 @@
 	</div>
 	
 	<footer>
-  	<div class="row" style="height:100px;">
+  	<div class="row" style="height:75px;">
   		<div class = "col-md-8" style="background:#7ed026;">
   			<p class="footerText">Copyright © 2017 Events in the City. All Rights Reserved.</p>
   		</div>
