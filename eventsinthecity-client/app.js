@@ -44,7 +44,7 @@ app.get('/', routes.index);
 app.get('/login', routes.clickOnLoginButton);
 app.get('/homepage',routes.homepage);
 app.get('/users', user.list);
-app.post('/profile',profile.getProfileInfo);
+app.get('/profile',profile.getProfileInfo);
 app.post('/loginRequest', login.loginRequest);
 app.post('/register',login.register);
 //app.get('/logout',login.logout);

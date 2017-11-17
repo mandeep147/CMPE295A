@@ -12,7 +12,7 @@ exports.getProfileInfo = function(req, res){
     userData(req,res,output);
 };
 
-           
+
 
 
 function  userData(req, res, output) {
@@ -174,6 +174,3 @@ function exportData(req, res, output) {
         "values": output
     });
 }
-
-}
-
