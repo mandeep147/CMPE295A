@@ -1,9 +1,16 @@
 /**
  * Created by aartichella on 5/1/17.
  */
-var app = angular.module('mylogin',[]);
+var app = angular.module('mylogin',['ngAutocomplete']);
 
 app.controller('login',['$scope','$http','$window',function($scope,$http,$window){
+	
+	$scope.result2 = '';
+    $scope.options2 = {
+      country: 'us',
+      types: '(cities)'
+    };    
+    $scope.details2 = '';
 
     $scope.submit= function(isValid){
     	$scope.submitted = true;
@@ -40,35 +47,40 @@ app.controller('login',['$scope','$http','$window',function($scope,$http,$window
         
     };
 
-    $scope.register = function(){
-        $http({
-            "method":"POST",
-            "url":"/register",
-            "headers": {
-                "content-type": "application/json"
-            },
-            "data":{
-                "email" : $scope.email1,
-                "password" : $scope.password1,
-                "firstname":$scope.firstname,
-                "lastname":$scope.lastname,
-                "mobile": $scope.mobile,
-                "address":$scope.address
-            }
-        }).success(function(response){
-            console.log("Hi1 from angular");
-            console.log(response.status);
-            if(response.status == 200){
-                $scope.success_register=false;
-                $window.location.assign('/homepage');
-            }
-            else{
-                $scope.error_register =false;
-            }
-        }).error(function(error){
-            console.log("from error");
-            $scope.error_register =false;
-        });
+    $scope.register = function(isValid){
+    	$scope.submittedRegister = true;
+    	if(isValid){
+	        $http({
+	            "method":"POST",
+	            "url":"/register",
+	            "headers": {
+	                "content-type": "application/json"
+	            },
+	            "data":{
+	                "email" : $scope.email1,
+	                "password" : $scope.password1,
+	                "firstname":$scope.firstname,
+	                "lastname":$scope.lastname,
+	                "mobile": $scope.mobile,
+	                "address":$scope.address
+	            }
+	        }).success(function(response){
+	            console.log(response.status);
+	            if(response.status == 200){
+	                $scope.success_register=false;
+	                $window.location.assign('/homepage');
+	            }
+	            else{
+	            	$window.alert("Some error in Register. Please try again later!");
+	            }
+	        }).error(function(error){
+	            console.log("from error");
+	            $window.alert("Sorry! Could not create your account. Please try again later!");
+	        });
+    	}
+    	else{
+    		$window.alert("Invalid Register form entries");
+    	}
     };
 
     $scope.clickOnLoginButton = function(){

@@ -246,7 +246,7 @@ hr{
 	top:30px;
 }
 
-.errorEmail{
+.errorUsername{
 	font-size:14px;
 	left:700px;
 	color:#ffffff;
@@ -255,4 +255,10 @@ hr{
 	font-size:14px;
 	left:850px;
 	color:#ffffff;
+}
+
+p .errorEmail{
+	font-size:14px;
+	left:550px;
+	color:#ff0000;
 }
