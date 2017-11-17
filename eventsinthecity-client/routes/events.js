@@ -1,44 +1,26 @@
 var json_responses;
-//var Client = require('node-rest-client').Client;
+
 var http = require('http'),
   assert = require('assert');
 
 var mongo = require("./mongoConnect");
 var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295";
-//var json_re={user:"kalyani"};
+
 var output = [];
 var outputFun = [];
-/*
-//Extract data for Meetup data
-mongo.connect(mongoURL, function(db) {
-  console.log('Connected to mongo at: ' + mongoURL);
-  var collection = db.collection('meetupapi');
-  collection.find().toArray(function(err, result) {
-    if (result.length) {
-      output = output.concat(result[0].muEvents);
-      //output.push(result[0].muEvents);
-      //console.log(output[0][0].id);
-    } else {
-      console.log(err)
-    }
-  })
-  db.close();
-});
-*/
 
-//Extract data for Eventbrite data- SJ and SF
+//Extract data for TechEvents data
 mongo.connect(mongoURL, function(db) {
   console.log('Connected to mongo at: ' + mongoURL);
-  var coll1 = db.collection('eventbriteapi');
+  var coll1 = db.collection('techEvents');
   coll1.find().toArray(function(err, result) {
     if (result.length) {
 
-      output= output.concat(result[0].ebEventsSJ);
-      output= output.concat(result[1].ebEventsSF);
-      console.log("Eventbrite!!!!!!")
-        //console.log(result[0].ebEventsSJ.length)
+      output= output.concat(result[0].ebEventsSF);
+      output= output.concat(result[1].ebEventsSJ);
+      output= output.concat(result[2].muSFEvents);
+      output= output.concat(result[3].muSJEvents);
 
-    //  console.log(output);
     } else {
       console.log(err)
     }
@@ -50,13 +32,13 @@ mongo.connect(mongoURL, function(db) {
 mongo.connect(mongoURL, function(db) {
 
   console.log('Connected to mongo at: ' + mongoURL);
-  var coll2 = db.collection('sjscrape');
+  var coll2 = db.collection('funEvents');
   coll2.find().toArray(function(err, result) {
     if (result.length) {
-      //console.log(result[0].allEvents);
-      outputFun=outputFun.concat(result[0].allEvents);
-      //console.log("Fun Events")
-      //console.log(outputFun);
+
+      outputFun=outputFun.concat(result[0].funeventsSJ);
+      outputFun=outputFun.concat(result[1].funeventsSF);
+
     } else {
       console.log(err)
     }
@@ -69,11 +51,11 @@ exports.listTechEvents = function(req, res) {
     /**
      * getting random 5 records
      */
-    for(var i = 0; i < 5; i++){
+    /*for(var i = 0; i < 5; i++){
         var randomNumber =  Math.floor(Math.random() * output.length)
         console.log("inside recommendations" + randomNumber)
         console.log(output[randomNumber]);
-    }
+    }*/
   res.render("techEvents", {
     values: output
   });
@@ -135,7 +117,7 @@ exports.listTechEventDetails = function(req, res) {
 	else{
 		res.render('signin', {title: 'Events in the City'});
 	}
-  
+
 };
 
 //Single Fun Event page - funEventDetails.ejs

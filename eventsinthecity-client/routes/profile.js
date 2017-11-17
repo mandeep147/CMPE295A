@@ -178,9 +178,3 @@ function exportData(req, res, output) {
         "values": output
     });
 }
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> origin/master
