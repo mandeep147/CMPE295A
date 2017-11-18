@@ -8,6 +8,8 @@ var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:270
 
 var output = [];
 var outputFun = [];
+var recommend=[];
+var recommendFun=[];
 
 //Extract data for TechEvents data
 mongo.connect(mongoURL, function(db) {
@@ -97,10 +99,10 @@ exports.listTechEventDetails = function(req, res) {
 		              	var coll1 = mongo.collection('userevents');
 
 		              	coll1.update({
-							id: event.id},
-							{$set:{'userid': event.userid, 'type': event.type, 'category': event.category}},
-						  	{upsert: true}
-                      	);
+                          id: event.id},
+					  	  {$set:{'userid': event.userid, 'type': event.type, 'category': event.category}},
+						  {upsert: true}
+                      );
 		              /*coll1.insert(event,(function(err, user){
 		                  if (!err) {
 		                      console.log("Details saved successfully  ");
@@ -111,9 +113,16 @@ exports.listTechEventDetails = function(req, res) {
 
 		          });
 
+                    for(var i = 0; i < 3; i++) {
+                        var randomNumber = Math.floor(Math.random() * output.length)
+                        console.log("inside recommendations" + randomNumber)
+                        recommend[i]=output[randomNumber];
+                    }
+
+                    console.log(recommend)
 		        // push data into userevents collection
 		        res.render("techEventDetails",{
-		          values:output[i]
+		          values:output[i], recommend: recommend,
 		        })
 		      }
 		    }
@@ -154,9 +163,15 @@ exports.listFunEventDetails = function(req, res) {
 
 		          });
 
+                  for(var i = 0; i < 3; i++){
+                      var randomNumber =  Math.floor(Math.random() * outputFun.length)
+                      console.log("inside recommendations" + randomNumber)
+                      recommendFun[i]=outputFun[randomNumber];
+                  }
+
 		          // push data into userevents collection
 		        res.render("funEventDetails",{
-		          fun:outputFun[i]
+		          fun:outputFun[i], recommend: recommendFun,
 		        });
 		      }
 		    }
