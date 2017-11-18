@@ -9,13 +9,11 @@
   <link rel='stylesheet' type="text/css" href='/stylesheets/others.css'/>-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   
-  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
           crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
   <script src="angularjs/login.js"></script>
-  <script src="angularjs/ngAutocomplete.js"></script>
 </head>
 
 <body ng-app="mylogin" ng-controller="login">
@@ -53,7 +51,7 @@
 					<input type="tel" name="mobile" pattern='[\(]\d{3}[\)]\d{3}[\-]\d{4}' placeholder="Phone Number (XXX)XXX-XXXX" class="mail nm" ng-model="mobile"/>
 					<p ng-show="registerForm.mobile.$invalid && !registerForm.mobile.$pristine && submittedRegister">Mobile number must be in (XXX)XXX-XXXX format</p>
 					
-					<input type="text" name="address" placeholder="Address" ng-autocomplete="result1" details="details1" options="options1" class="mail nm" ng-model="address"/>
+					<input type="text" name="address" placeholder="Address" class="mail nm" ng-model="address"/>
 		            <br>
 					<p class="declare">By clicking Sign Up for Events in the City, you agree to our <strong>terms</strong> and that you have read our <strong>Data Use Policy</strong>, including our <strong>Cookies Use.</strong> </p>
 					<button type="submit" value="Sign Up for Events in the City" class="button nm" ng-click ="register(registerForm.$valid)" ng-disabled="userForm.$invalid">Sign Up</button>

@@ -1,16 +1,9 @@
 /**
  * Created by aartichella on 5/1/17.
  */
-var app = angular.module('mylogin',['ngAutocomplete']);
+var app = angular.module('mylogin',[]);
 
 app.controller('login',['$scope','$http','$window',function($scope,$http,$window){
-	
-	$scope.result2 = '';
-    $scope.options2 = {
-      country: 'us',
-      types: '(cities)'
-    };    
-    $scope.details2 = '';
 
     $scope.submit= function(isValid){
     	$scope.submitted = true;
