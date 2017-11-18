@@ -65,11 +65,11 @@ exports.listFunEvents = function(req, res) {
     /**
      * getting random 5 records
      */
-    for(var i = 0; i < 5; i++){
+   /** for(var i = 0; i < 5; i++){
         var randomNumber =  Math.floor(Math.random() * outputFun.length)
         console.log("inside recommendations" + randomNumber)
         console.log(outputFun[randomNumber]);
-    }
+    }**/
   res.render("funEvents", {
     fun:  outputFun
   });
@@ -79,30 +79,35 @@ exports.listFunEvents = function(req, res) {
 exports.listTechEventDetails = function(req, res) {
 	if(req.session.email){
 		var eventid = req.param("id");
-		  var eventType = req.param("type");
-		  var eventCategory = req.param("cat");
-		  console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
-		  if(eventCategory == 'tech'){
-		    for( var i=0;i<output.length; i++){
-		      if(output[i].id == eventid && output[i].type == eventType){
+		var eventType = req.param("type");
+		var eventCategory = req.param("cat");
+		console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
+		if(eventCategory == 'tech'){
+			for( var i=0;i<output.length; i++){
+				if(output[i].id == eventid && output[i].type == eventType){
 		        //console.log(req.session.email)
-		          event={};
-		          event.userid = req.session.email;
-		          event.id=eventid;
-		          event.type=eventType;
-		          event.category=eventCategory;
+					event={};
+					event.userid = req.session.email;
+					event.id=eventid;
+					event.type=eventType;
+					event.category=eventCategory;
 
-		          mongo.connect(mongoURL, function(){
-		              console.log('Connected to mongo at: ' + mongoURL);
-		              var coll1 = mongo.collection('userevents');
+		          	mongo.connect(mongoURL, function(){
+		          		console.log('Connected to mongo at: ' + mongoURL);
+		              	var coll1 = mongo.collection('userevents');
 
-		              coll1.insert(event,(function(err, user){
+		              	coll1.update({
+							id: event.id},
+							{$set:{'userid': event.userid, 'type': event.type, 'category': event.category}},
+						  	{upsert: true}
+                      	);
+		              /*coll1.insert(event,(function(err, user){
 		                  if (!err) {
 		                      console.log("Details saved successfully  ");
 		                  } else {
 		                      console.log("returned false"+err);
 		                  }
-		              }));
+		              }));*/
 
 		          });
 
