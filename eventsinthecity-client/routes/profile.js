@@ -45,7 +45,7 @@ function  userData(req, res, output) {
 
 function eventData(req, res, output) {
     mongo.connect(mongoURL, function(db) {
-        var coll1 = db.collection('userevents');
+        var coll1 = db.collection('favoriteEvents');
         coll1.find({"userid":req.session.email}).toArray(function(err, result) {
            // console.log("inside profile");
            // console.log(result.length);
@@ -56,7 +56,7 @@ function eventData(req, res, output) {
 
                    event={};
                    event.userid = result[i].userid;
-                   event.id = result[i].id;
+                   event.id = result[i].eventid;
                    event.type = result[i].type;
                   // event.category = result[i].category;
                   //   console.log(event)
