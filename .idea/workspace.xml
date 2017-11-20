@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2e2fef54-4a81-4e40-ac04-e3472eaf5b25" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eventsinthecity-client/.tern-project" afterPath="$PROJECT_DIR$/eventsinthecity-client/.tern-project" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eventsinthecity-client/app.js" afterPath="$PROJECT_DIR$/eventsinthecity-client/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eventsinthecity-client/routes/events.js" afterPath="$PROJECT_DIR$/eventsinthecity-client/routes/events.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eventsinthecity-client/routes/profile.js" afterPath="$PROJECT_DIR$/eventsinthecity-client/routes/profile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eventsinthecity-client/views/funEventDetails.ejs" afterPath="$PROJECT_DIR$/eventsinthecity-client/views/funEventDetails.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eventsinthecity-client/views/techEventDetails.ejs" afterPath="$PROJECT_DIR$/eventsinthecity-client/views/techEventDetails.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eventsinthecity-client/views/techEvents.ejs" afterPath="$PROJECT_DIR$/eventsinthecity-client/views/techEvents.ejs" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -37,14 +31,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eventsinthecity-client/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="155">
               <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
               <folding>
                 <marker date="1511163756000" expanded="true" signature="460:536" ph="{&quot;secret&quot;: 'my_secret'...}" />
-                <marker date="1511163756000" expanded="true" signature="1933:2006" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -73,27 +66,21 @@
       <file leaf-file-name="techEventDetails.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eventsinthecity-client/views/techEventDetails.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
+            <state relative-caret-position="1197">
               <caret line="92" column="6" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="techEvents.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="techEvents.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/eventsinthecity-client/views/techEvents.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="79" column="10" lean-forward="false" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
+            <state relative-caret-position="33">
+              <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
               <folding>
-                <marker date="1511163756000" expanded="true" signature="2768:3855" ph="{...}" />
-                <marker date="1511163756000" expanded="true" signature="3799:3827" ph="{...}" />
-                <marker date="1511163756000" expanded="true" signature="3933:4308" ph="..." />
-                <marker date="1511163756000" expanded="false" signature="3962:3974" ph="..." />
-                <marker date="1511163756000" expanded="true" signature="3975:4296" ph="..." />
-                <marker date="1511163756000" expanded="false" signature="4012:4031" ph="..." />
-                <marker date="1511163756000" expanded="true" signature="4032:4132" ph="..." />
-                <marker date="1511163756000" expanded="true" signature="4189:4286" ph="..." />
+                <marker date="1511163948000" expanded="false" signature="3892:3904" ph="..." />
+                <marker date="1511163948000" expanded="false" signature="3942:3961" ph="..." />
               </folding>
             </state>
           </provider>
@@ -112,10 +99,10 @@
         <option value="$PROJECT_DIR$/eventsinthecity/routes/scrape.js" />
         <option value="$PROJECT_DIR$/eventsinthecity-client/routes/profile.js" />
         <option value="$PROJECT_DIR$/eventsinthecity-client/views/profile.ejs" />
-        <option value="$PROJECT_DIR$/eventsinthecity-client/views/techEvents.ejs" />
         <option value="$PROJECT_DIR$/eventsinthecity-client/views/techEventDetails.ejs" />
         <option value="$PROJECT_DIR$/eventsinthecity-client/views/funEventDetails.ejs" />
         <option value="$PROJECT_DIR$/eventsinthecity-client/routes/events.js" />
+        <option value="$PROJECT_DIR$/eventsinthecity-client/views/techEvents.ejs" />
       </list>
     </option>
   </component>
@@ -250,10 +237,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22586000" />
+    <option name="totallyTimeSpent" value="22735000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -261,7 +249,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5479452" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1890411" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16600476" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="MaxCompute Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -567,7 +555,6 @@
           <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding>
             <marker date="1511163756000" expanded="true" signature="460:536" ph="{&quot;secret&quot;: 'my_secret'...}" />
-            <marker date="1511163756000" expanded="true" signature="1933:2006" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -629,35 +616,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eventsinthecity-client/views/techEvents.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="79" column="10" lean-forward="false" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
-          <folding>
-            <marker date="1511163756000" expanded="true" signature="2768:3855" ph="{...}" />
-            <marker date="1511163756000" expanded="true" signature="3799:3827" ph="{...}" />
-            <marker date="1511163756000" expanded="true" signature="3933:4308" ph="..." />
-            <marker date="1511163756000" expanded="false" signature="3962:3974" ph="..." />
-            <marker date="1511163756000" expanded="true" signature="3975:4296" ph="..." />
-            <marker date="1511163756000" expanded="false" signature="4012:4031" ph="..." />
-            <marker date="1511163756000" expanded="true" signature="4032:4132" ph="..." />
-            <marker date="1511163756000" expanded="true" signature="4189:4286" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/eventsinthecity-client/views/funEventDetails.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="89" column="12" lean-forward="false" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eventsinthecity-client/views/techEventDetails.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="92" column="6" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -669,6 +631,25 @@
           <folding>
             <marker date="1511163756000" expanded="true" signature="1308:1383" ph="{...}" />
             <marker date="1511163756000" expanded="true" signature="1362:1383" ph="/*...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eventsinthecity-client/views/techEventDetails.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1197">
+          <caret line="92" column="6" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eventsinthecity-client/views/techEvents.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding>
+            <marker date="1511163948000" expanded="false" signature="3892:3904" ph="..." />
+            <marker date="1511163948000" expanded="false" signature="3942:3961" ph="..." />
           </folding>
         </state>
       </provider>
