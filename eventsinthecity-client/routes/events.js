@@ -85,7 +85,13 @@ exports.listTechEventDetails = function(req, res) {
 		var eventCategory = req.param("cat");
 		console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
 		if(eventCategory == 'tech'){
-			for( var i=0;i<output.length; i++){
+            for(var i = 0; i < 3; i++) {
+                var randomNumber = Math.floor(Math.random() * output.length)
+                console.log("inside recommendations" + randomNumber)
+                recommend[i]=output[randomNumber];
+            }
+
+            for( var i=0;i<output.length; i++){
 				if(output[i].id == eventid && output[i].type == eventType){
 		        //console.log(req.session.email)
 					event={};
@@ -113,11 +119,7 @@ exports.listTechEventDetails = function(req, res) {
 
 		          });
 
-                    for(var i = 0; i < 3; i++) {
-                        var randomNumber = Math.floor(Math.random() * output.length)
-                        console.log("inside recommendations" + randomNumber)
-                        recommend[i]=output[randomNumber];
-                    }
+
 
                     console.log(recommend)
 		        // push data into userevents collection
@@ -141,6 +143,13 @@ exports.listFunEventDetails = function(req, res) {
 		  var eventType = req.param("type");
 		  console.log("id= " + eventid,"type="+eventType);
 		  if (eventType == 'fun'){
+
+              for(var i = 0; i < 3; i++){
+                  var randomNumber =  Math.floor(Math.random() * outputFun.length)
+                  console.log("inside recommendations" + randomNumber)
+                  recommendFun[i]=outputFun[randomNumber];
+              }
+
 		    for( var i=0;i<outputFun.length; i++){
 		      if(outputFun[i].id == eventid){
 		    	  event={};
@@ -163,11 +172,7 @@ exports.listFunEventDetails = function(req, res) {
 
 		          });
 
-                  for(var i = 0; i < 3; i++){
-                      var randomNumber =  Math.floor(Math.random() * outputFun.length)
-                      console.log("inside recommendations" + randomNumber)
-                      recommendFun[i]=outputFun[randomNumber];
-                  }
+
 
 		          // push data into userevents collection
 		        res.render("funEventDetails",{
