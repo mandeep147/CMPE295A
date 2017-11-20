@@ -44,6 +44,16 @@
 <main role="main">
   <div class="jumbotron">
     <h1 class="row" style="text-align:center;padding-bottom:2rem;">Event Details</h1>
+    
+     <form action="/savefunDetails" method="post">
+     <input type = "hidden" id="eventid" name = "eventid" value =<%=fun.id%>>
+     <input type = "hidden" id="eventType" name = "eventType" value =<%=fun.type%>>
+     
+	<!--<a class="btn btn-primary" ><i class="glyphicon glyphicon-star-empty"></i>Save</a>
+	<a class="btn btn-primary" href="/saveToFavorite"><i class="glyphicon glyphicon-star-empty"></i>Save</a>-->
+	<input type="submit" class="btn btn-info" value="Save Event">
+	 </form>
+    
 
       <div>
         <h2>Title: <%= fun.title %></h2>

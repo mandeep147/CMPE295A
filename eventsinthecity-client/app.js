@@ -57,6 +57,8 @@ app.get('/funEvents',events.listFunEvents);
 app.get('/techEventDetails',events.listTechEventDetails)
 app.get('/funEventDetails',events.listFunEventDetails)
 
+app.post('/savetechDetails',events.savetechDetails);
+app.post('/savefunDetails',events.savefunDetails);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
