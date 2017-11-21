@@ -54,7 +54,7 @@
               <div class="card-body">
                 <h5 class="card-title"><%= fun[i].title %></h5>
                 <p class="card-text text-secondary"><%= fun[i].time %></p>
-                <a class="btn btn-primary" href="/funEventDetails?id=<%=fun[i].id%>&type=fun">Continue</a>
+                <a class="btn btn-primary" href="/funEventDetails?id=<%=fun[i].id%>&type=<%=fun[i].type%>&cat=fun">Continue</a>
               </div>
             </div>
             <% } %>
@@ -64,7 +64,7 @@
     <hr />
 
   </div>
-  
+
   <footer>
   	<div class="row" style="height:100px;">
   		<div class = "col-md-8" style="background:#7ed026;">

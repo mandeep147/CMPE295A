@@ -142,14 +142,13 @@ exports.listFunEventDetails = function(req, res) {
       console.log("FUN!!!!!")
       console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
 
-		  if (eventType == 'fun'){
-
+		  if (eventCategory == 'fun'){
+          /*
               for(var i = 0; i < 3; i++){
                   var randomNumber =  Math.floor(Math.random() * outputFun.length)
                   console.log("inside recommendations" + randomNumber)
                   recommendFun[i]=outputFun[randomNumber];
-              }
-
+              }*/
 		    for( var i=0;i<outputFun.length; i++){
 		      if(outputFun[i].id == eventid){
 		    	  event={};
@@ -171,15 +170,12 @@ exports.listFunEventDetails = function(req, res) {
 		              }));
 
 		          });
-
-
-
 		          // push data into userevents collection
 		        res.render("funEventDetails",{
-		          fun:outputFun[i], recommend: recommendFun,
+		          fun:outputFun[i],recommend: recommendFun,
 		        });
 		      }
-		    }
+		    }//end of for
 		  }
 	}
 	else{
