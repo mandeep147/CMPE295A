@@ -1,89 +1,90 @@
 body {
-
-font-family: 'Barlow Semi Condensed', sans-serif;
-  -webkit-font-smoothing: antialiased
+  font-family: "Barlow Semi Condensed", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-.row{
-
+.row {
 }
 
-.sampleEvents{
+.sampleEvents {
   margin-top: 1.5em;
 }
 
-.col-lg-4{
-    margin-bottom: 1.5rem;
-    text-align: center;
-    flex: 0 0 33.333333%;
-max-width: 33.333333%;
-
+.col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
 }
-.display-3{
-    font-size: 4.5rem;
-    font-weight: 300;
-    line-height: 1.2;
+.display-3 {
+  font-size: 4.5rem;
+  font-weight: 300;
+  line-height: 1.2;
 }
-.banner{
-  background-image: url(/images/bg-banner-1.jpeg);
+.banner {
+  /* background-image: url(/images/bg-banner-1.jpeg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   height: 100vh;
-  width : 100%;
-  opacity: 0.8;
+  width: 100%;
+  /* opacity: 0.8; */
   position: absolute;
   z-index: -1;
-  top:0;
+  top: 0;
 }
-
+.video-bg {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: -100;
+}
 .displaycontent h2,
-.displaycontent h3{
-  color:white;
-  font-weight : 100;
+.displaycontent h3 {
+  color: white;
+  font-weight: 100;
   margin-top: 30px;
-  text-align :center;
-  padding-top: 10px
+  text-align: center;
+  padding-top: 10px;
 }
-.loginButton{
-  color:white;
- width : 200px;
- height : 40px;
- border-radius : 10px;
- border-color:white;
- border :1px solid white;
- background : none;
- font-size : 1em;
- font-weight : 100;
- margin-top : 35px;
- text-align : center;
+.loginButton {
+  color: white;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  border-color: white;
+  border: 1px solid white;
+  background: none;
+  font-size: 1em;
+  font-weight: 100;
+  margin-top: 35px;
+  text-align: center;
 }
-.custom-navbar{
+.custom-navbar {
   text-transform: uppercase;
   background-color: transparent;
-
 }
-.custom-navbar a{
-  color:white
+.custom-navbar a {
+  color: white;
 }
 
-.navbar-nav{
-    color: white;
+.navbar-nav {
+  color: white;
 }
 .brand a {
   color: white;
 }
 
-.container.sampleEvents{
-      color: ghostwhite;
-      margin-top:200px;
+.container.sampleEvents {
+  color: ghostwhite;
+  margin-top: 200px;
 }
-.sampleEvents .btn.btn-secondary{
+.sampleEvents .btn.btn-secondary {
   color: black;
-background-color: darkturquoise;
+  background-color: darkturquoise;
 }
 
-.footerText{
-	color:#ffffff; 
-	text-align:center; 
-	margin-top:30px;
+.footerText {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 30px;
 }

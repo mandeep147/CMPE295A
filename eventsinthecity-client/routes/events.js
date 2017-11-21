@@ -118,9 +118,6 @@ exports.listTechEventDetails = function(req, res) {
 		              }));*/
 
 		          });
-
-
-
                     console.log(recommend)
 		        // push data into userevents collection
 		        res.render("techEventDetails",{
@@ -141,7 +138,10 @@ exports.listFunEventDetails = function(req, res) {
 	if(req.session.email){
 		  var eventid = req.param("id");
 		  var eventType = req.param("type");
-		  console.log("id= " + eventid,"type="+eventType);
+      var eventCategory = req.param("cat");
+      console.log("FUN!!!!!")
+      console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
+
 		  if (eventType == 'fun'){
 
               for(var i = 0; i < 3; i++){
@@ -190,10 +190,10 @@ exports.listFunEventDetails = function(req, res) {
 
 
 exports.savetechDetails = function(req, res){
-	
+
 	var eventid = req.body.eventid;
 	var type = req.body.eventType;
-	
+
 	console.log("fav eventid "+eventid);
 	console.log("fav event type "+type);
 
@@ -205,30 +205,30 @@ exports.savetechDetails = function(req, res){
 			type : req.body.eventType,
 			category : "tech",
 		};
-	
+
 	mongo.connect(mongoURL, function(){
 		console.log('Connected to mongo at: ' + mongoURL);
 		var coll = mongo.collection('favoriteEvents');
 
 		coll.insert(techfvrt,(function(err, user){
 			if (user) {
-							
+
 				console.log("Details saved successfully  ");
 
 			} else {
 				console.log("returned false");
 			}
 		}));
-	});  
+	});
 	res.redirect('/techEventDetails?id='+eventid+'&type='+type+'&cat=tech');
 	};
-	
-	
+
+
 	exports.savefunDetails = function(req, res){
-		
+
 		var funeventid = req.body.eventid;
 		var funtype = req.body.eventType;
-		
+
 		console.log("fav fun eventid "+funeventid);
 		console.log("fav fun event type "+funtype);
 
@@ -240,20 +240,20 @@ exports.savetechDetails = function(req, res){
 				type : req.body.eventType,
 				category : "fun",
 			};
-		
+
 		mongo.connect(mongoURL, function(){
 			console.log('Connected to mongo at: ' + mongoURL);
 			var coll = mongo.collection('favoriteEvents');
 
 			coll.insert(funfvrt,(function(err, user){
 				if (user) {
-								
+
 					console.log("Details saved successfully  ");
 
 				} else {
 					console.log("returned false");
 				}
 			}));
-		});  
+		});
 		res.redirect('/funEventDetails?id='+eventid+'&type='+type+'&cat=fun');
 		};
