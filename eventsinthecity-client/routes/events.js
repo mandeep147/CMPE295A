@@ -143,12 +143,12 @@ exports.listFunEventDetails = function(req, res) {
       console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
 
 		  if (eventCategory == 'fun'){
-          /*
+          
               for(var i = 0; i < 3; i++){
                   var randomNumber =  Math.floor(Math.random() * outputFun.length)
                   console.log("inside recommendations" + randomNumber)
                   recommendFun[i]=outputFun[randomNumber];
-              }*/
+              }
 		    for( var i=0;i<outputFun.length; i++){
 		      if(outputFun[i].id == eventid){
 		    	  event={};
@@ -160,14 +160,20 @@ exports.listFunEventDetails = function(req, res) {
 		          mongo.connect(mongoURL, function(){
 		              console.log('Connected to mongo at: ' + mongoURL);
 		              var coll1 = mongo.collection('userevents');
+		              
+		              coll1.update({
+                          id: event.id},
+					  	  {$set:{'userid': event.userid, 'type': event.type, 'category': event.category}},
+						  {upsert: true}
+		              );
 
-		              coll1.insert(event,(function(err, user){
+		        /*      coll1.insert(event,(function(err, user){
 		                  if (!err) {
 		                      console.log("Details saved successfully  ");
 		                  } else {
 		                      console.log("returned false"+err);
 		                  }
-		              }));
+		              })); */
 
 		          });
 		          // push data into userevents collection
@@ -205,8 +211,14 @@ exports.savetechDetails = function(req, res){
 	mongo.connect(mongoURL, function(){
 		console.log('Connected to mongo at: ' + mongoURL);
 		var coll = mongo.collection('favoriteEvents');
+		
+		coll.update({
+			eventid: techfvrt.eventid},
+		  	  {$set:{'userid': techfvrt.userid, 'type': techfvrt.type, 'category': techfvrt.category}},
+			  {upsert: true}
+        );
 
-		coll.insert(techfvrt,(function(err, user){
+	/*	coll.insert(techfvrt,(function(err, user){
 			if (user) {
 
 				console.log("Details saved successfully  ");
@@ -214,7 +226,7 @@ exports.savetechDetails = function(req, res){
 			} else {
 				console.log("returned false");
 			}
-		}));
+		})); */
 	});
 	res.redirect('/techEventDetails?id='+eventid+'&type='+type+'&cat=tech');
 	};
@@ -240,8 +252,14 @@ exports.savetechDetails = function(req, res){
 		mongo.connect(mongoURL, function(){
 			console.log('Connected to mongo at: ' + mongoURL);
 			var coll = mongo.collection('favoriteEvents');
+			
+			coll.update({
+				eventid: funfvrt.eventid},
+			  	  {$set:{'userid': funfvrt.userid, 'type': funfvrt.type, 'category': funfvrt.category}},
+				  {upsert: true}
+	        );
 
-			coll.insert(funfvrt,(function(err, user){
+		/*	coll.insert(funfvrt,(function(err, user){
 				if (user) {
 
 					console.log("Details saved successfully  ");
@@ -249,7 +267,7 @@ exports.savetechDetails = function(req, res){
 				} else {
 					console.log("returned false");
 				}
-			}));
+			})); */
 		});
-		res.redirect('/funEventDetails?id='+eventid+'&type='+type+'&cat=fun');
+		res.redirect('/funEventDetails?id='+funeventid+'&type='+funtype+'&cat=fun');
 		};
