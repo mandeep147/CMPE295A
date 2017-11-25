@@ -92,6 +92,7 @@ exports.searchMeetupSFEvents = function(req, res) {
     	meup.city=venueoutput[0].city;
     	meup.state=venueoutput[0].state;
         meup.country=venueoutput[0].localized_country_name;
+        meup.capacity=output[0][0][i].headcount;
         
         meup.type="SFTECH";
     	

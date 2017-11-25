@@ -151,7 +151,7 @@ exports.featureEvents = function (req, res) {
         }
     })
 }
-
+/* DO NOT REMOVE
 exports.scrapeSF = function (req, res) {
     url = "https://www.events12.com/sanfrancisco/"
     request(url, function(error, response, html){
@@ -162,16 +162,15 @@ exports.scrapeSF = function (req, res) {
             var json1 = { title : ""};
             var funeventsSF =[];
             
-       /*     
-            console.log($('.event .title').eq(0).text());
-            console.log($('.event .date').eq(0).text());
-            console.log($('.event .miles').eq(0).text());
-            console.log($('.event').text());
+            console.log($('.events .title').eq(0).text());
+            console.log($('.events .date').eq(0).text());
+            console.log($('.events .miles').eq(0).text());
+            console.log($('.events').text());
             var myString = ($('.event').eq(0).text());
             var splits = ($('.event').eq(0).text()).split('\n', 5);
             console.log(splits[4]);
-            */
-        
+            
+     
             for(var i=0;i<$('.event').length;i++){
             	event={};
             	event.id=i+200;
@@ -233,63 +232,86 @@ exports.scrapeSF = function (req, res) {
         }
     })
 }
-
-
-
-/*
-exports.scrape = function (req, res) {
-    url = "https://www.siliconvalley-codecamp.com/Session/2017"
+*/
+exports.scrapeSF = function (req, res) {
+    url = "https://www.events12.com/sanfrancisco/"
     request(url, function(error, response, html){
+
         if(!error){
             var $ = cheerio.load(html);
+            console.log("I'm here");
             var json1 = { title : ""};
-            var arrEvents =[];
-            console.log($('.currentSession').eq(0).text());
-            //console.log($('.ProfessionalSession').eq(0).text());
-            for(var i=0;i<$('.currentSession').length;i++){
-            arrEvents.push($('.currentSession').eq(i).text().replace(/(\r\n|\n|\r)/gm,""));
-            console.log($('.currentSession').eq(i).text());
-            }
+            var funeventsSF =[];
             
-           res.render("scrape", {
-               values : arrEvents
+    /*        console.log($('.qq .title').eq(0).text());
+            console.log($('.qq .date').eq(0).text());
+            console.log($('.qq .miles').eq(0).text());
+            console.log($('.qq').eq(0).text());
+            var myString = ($('.qq').eq(0).text());
+            var splits = ($('.qq').eq(0).text()).split('\n', 5);
+            console.log(splits[4]);
+            console.log(splits[1]); */
+
+            
+     
+            for(var i=0;i<$('.qq').length;i++){
+            	event={};     	
+            	
+            //	event.description=($('.qq').eq(i).text());
+               	var splits=[];
+            	splits = ($('.qq').eq(i).text()).replace(/\n+/g, '\n').split('\n', 5);
+            	event.id=i+200;
+            	event.title=splits[1];
+            	event.time=($('.qq .date').eq(i).text());
+            	event.description=splits[4];
+            	
+            	event.url="https://www.events12.com/sanfrancisco/";
+            	
+            	var str = $('.qq .miles').eq(i).text();
+               	if(str.includes("mile"))
+            		event.location=($('.qq .miles').eq(i).text()) + " of San Francisco";
+            	else
+            		event.location=($('.qq .miles').eq(i).text());
+
+            	event.type="SFFUN";
+            	funeventsSF.push(event);
+            	           	
+            }  
+           
+            var sfeventobj = {"funeventsSF" : funeventsSF};
+            
+        	mongo.connect(mongoURL, function(){
+        		console.log('Connected to mongo at: ' + mongoURL);
+        		var coll1 = mongo.collection('funEvents');
+        		var coll2 = mongo.collection('techfunEvents');
+        		
+        		coll1.insert(sfeventobj,(function(err, user){
+        			if (!err) {
+        							
+        				console.log("Details saved successfully  ");
+
+        			} else {
+        				console.log("returned false"+err);
+        			}
+        		}));
+        		coll2.insert(sfeventobj,(function(err, user){
+        			if (!err) {
+        							
+        				console.log("Details saved successfully  ");
+
+        			} else {
+        				console.log("returned false"+err);
+        			}
+        		}));
+        		
+        	});
+
+          console.log(JSON.stringify(funeventsSF));
+           res.render("scrapeSF", {
+               values : funeventsSF
            });
 
         }
     })
 }
 
-
-
-
-
-exports.scrape = function (req, res) {
-    url = "http://sjdowntown.com/events/"
-    request(url, function(error, response, html){
-        if(!error){
-            var $ = cheerio.load(html);
-            console.log("I'm here");
-            var json = { title : ""};
-            var allEvents=[];
-            var arrSJD =[];
-            console.log($('.dp_pec_isotope ').children().first().text());
-            console.log($('span.dp_pec_date_time').eq(0).text());
-            console.log($('span.dp_pec_event_title_sp').eq(0).text());
-            console.log($('span.dp_pec_event_location').eq(0).text());            
-            console.log($('span.dp_pec_event_description').eq(0).text());
-            $('.dp_pec_content').filter(function () {
-                var data = $(this);
-                console.log(data)
-                title = data.eq(2).text();
-               // console.log("data:" +data[0])
-                console.log("title: "+title)
-                json.title = title;
-            })
-
-            res.send(JSON.stringify(json));
-        }
-    })
-}
-
-
-*/
