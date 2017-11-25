@@ -10,6 +10,7 @@ var MongoStore = require('connect-mongo')(session);
 var events=require('./routes/events');
 var login = require('./routes/login');
 var profile = require('./routes/profile');
+var profileHistory = require('./routes/profileHistory');
 var scrape = require('./routes/scrape');
 
 var app = express();
@@ -46,6 +47,7 @@ app.get('/login', routes.clickOnLoginButton);
 app.get('/homepage',routes.homepage);
 app.get('/users', user.list);
 app.get('/profile',profile.getProfileInfo);
+app.get('/profileHistory',profileHistory.getProfileHistInfo);
 app.post('/loginRequest', login.loginRequest);
 app.post('/register',login.register);
 //app.get('/logout',login.logout);
