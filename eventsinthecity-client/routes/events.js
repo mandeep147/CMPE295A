@@ -46,6 +46,12 @@ mongo.connect(mongoURL, function(db) {
     //	console.log("1------"+outputArrays); 
     	}
 
+
+      //add code for sorting by capacity HERE
+      console.log("OUTPUT!!!!!!")
+      for ( var i=0;i<output.length; i++)
+      {console.log(output[i].capacity);}
+
     } else {
       console.log(err)
     }
@@ -224,7 +230,7 @@ exports.listFunEventDetails = function(req, res) {
       console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
 
 		  if (eventCategory == 'fun'){
-          
+
               for(var i = 0; i < 3; i++){
                   var randomNumber =  Math.floor(Math.random() * goutputFun.length)
                   console.log("inside recommendations" + randomNumber)
@@ -241,7 +247,7 @@ exports.listFunEventDetails = function(req, res) {
 		          mongo.connect(mongoURL, function(){
 		              console.log('Connected to mongo at: ' + mongoURL);
 		              var coll1 = mongo.collection('userevents');
-		              
+
 		              coll1.update({
                           id: event.id},
 					  	  {$set:{'userid': event.userid, 'type': event.type, 'category': event.category}},
@@ -292,7 +298,7 @@ exports.savetechDetails = function(req, res){
 	mongo.connect(mongoURL, function(){
 		console.log('Connected to mongo at: ' + mongoURL);
 		var coll = mongo.collection('favoriteEvents');
-		
+
 		coll.update({
 			eventid: techfvrt.eventid},
 		  	  {$set:{'userid': techfvrt.userid, 'type': techfvrt.type, 'category': techfvrt.category}},
@@ -333,7 +339,7 @@ exports.savetechDetails = function(req, res){
 		mongo.connect(mongoURL, function(){
 			console.log('Connected to mongo at: ' + mongoURL);
 			var coll = mongo.collection('favoriteEvents');
-			
+
 			coll.update({
 				eventid: funfvrt.eventid},
 			  	  {$set:{'userid': funfvrt.userid, 'type': funfvrt.type, 'category': funfvrt.category}},

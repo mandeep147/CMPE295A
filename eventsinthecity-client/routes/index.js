@@ -6,24 +6,22 @@ var mongo = require("./mongoConnect");
 var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295";
 
 var fe = [];
-	mongo.connect(mongoURL, function(db) {
-	  console.log('Connected to mongo at: ' + mongoURL);
+  mongo.connect(mongoURL, function(db) {
+    console.log('Connected to mongo at: ' + mongoURL);
 
-	  var coll1 = db.collection('featuredEvents');
-	  coll1.find().toArray(function(err, result) {
-	    if (result.length) {
-	      fe= fe.concat(result[0].featuredEvents);
+    var coll1 = db.collection('featuredEvents');
+    coll1.find().toArray(function(err, result) {
+      if (result.length) {
+        fe= fe.concat(result[0].featuredEvents);
 
-	    } else {
-	      console.log(err)
-	    }
-	  })
-	  db.close();
-	});
-
+      } else {
+        console.log(err)
+      }
+    })
+    db.close();
+  });
 exports.index = function(req, res){
 	//console.log(JSON.stringify(req.session.email));
-
 	req.session.destroy();
 	console.log("Featured Events!!!!");
 	console.log(fe);
