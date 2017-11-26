@@ -7,9 +7,18 @@ var mongo = require("./mongoConnect");
 var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295";
 
 var output = [];
+var goutput = [];
+var outputArrays = [];
 var outputFun = [];
+var goutputFun = [];
+var outputFunArrays = [];
 var recommend=[];
 var recommendFun=[];
+var totalStudents = 0;
+var totalEvents = 0;
+var pageSize = 9;
+var tpageCount = 0;
+var fpageCount = 0;
 
 //Extract data for TechEvents data
 mongo.connect(mongoURL, function(db) {
@@ -22,6 +31,20 @@ mongo.connect(mongoURL, function(db) {
       output= output.concat(result[1].ebEventsSJ);
       output= output.concat(result[2].muSFEvents);
       output= output.concat(result[3].muSJEvents);
+      
+      goutput= goutput.concat(result[0].ebEventsSF);
+      goutput= goutput.concat(result[1].ebEventsSJ);
+      goutput= goutput.concat(result[2].muSFEvents);
+      goutput= goutput.concat(result[3].muSJEvents);
+      
+      totalStudents = output.length;
+      pageSize = 9;
+      tpageCount = Math.ceil(output.length/9);
+     
+      while (output.length > 0) {
+    	outputArrays.push(output.splice(0, pageSize));
+    //	console.log("1------"+outputArrays); 
+    	}
 
     } else {
       console.log(err)
@@ -40,6 +63,18 @@ mongo.connect(mongoURL, function(db) {
 
       outputFun=outputFun.concat(result[0].funeventsSJ);
       outputFun=outputFun.concat(result[1].funeventsSF);
+      
+      goutputFun=goutputFun.concat(result[0].funeventsSJ);
+      goutputFun=goutputFun.concat(result[1].funeventsSF);
+      
+      totalEvents = outputFun.length;
+      pageSize = 9;
+      fpageCount = Math.ceil(outputFun.length/9);
+     
+      while (outputFun.length > 0) {
+    	  outputFunArrays.push(outputFun.splice(0, pageSize));
+    //	console.log("1------"+outputArrays); 
+    	}
 
     } else {
       console.log(err)
@@ -58,10 +93,33 @@ exports.listTechEvents = function(req, res) {
         console.log("inside recommendations" + randomNumber)
         console.log(output[randomNumber]);
     }*/
+	
+	var currentPage = 1;
+	console.log("PageCount is " + tpageCount);
+    console.log("TotalStudents is " + totalStudents);
+	if (typeof req.query.page !== 'undefined') {
+    	//console.log("2");
+        currentPage = +req.query.page;
+        //console.log("currentPage is " + currentPage)
+    }
+	outputList = outputArrays[+currentPage - 1];
+    console.log("3------"+outputList);
+	
+/*	
   res.render("techEvents", {
     values: output
+  });  */
+  
+  res.render('techEvents', {
+	  values: outputList,
+      pageSize: pageSize,
+      totalStudents: totalStudents,
+      pageCount: tpageCount,
+      currentPage: currentPage
   });
 };
+
+
 //Fun Events page - FunEvents.ejs
 exports.listFunEvents = function(req, res) {
     /**
@@ -72,8 +130,28 @@ exports.listFunEvents = function(req, res) {
         console.log("inside recommendations" + randomNumber)
         console.log(outputFun[randomNumber]);
     }**/
-  res.render("funEvents", {
+	
+	var currentPage = 1;
+	console.log("PageCount is " + fpageCount);
+    console.log("TotalStudents is " + totalEvents);
+	if (typeof req.query.page !== 'undefined') {
+    	//console.log("2");
+        currentPage = +req.query.page;
+        //console.log("currentPage is " + currentPage)
+    }
+	outputList = outputFunArrays[+currentPage - 1];
+    console.log("3------"+outputList);
+    
+/*  res.render("funEvents", {
     fun:  outputFun
+  }); */
+  
+  res.render('funEvents', {
+	  fun: outputList,
+      pageSize: pageSize,
+      totalStudents: totalEvents,
+      pageCount: fpageCount,
+      currentPage: currentPage
   });
 };
 
@@ -84,15 +162,18 @@ exports.listTechEventDetails = function(req, res) {
 		var eventType = req.param("type");
 		var eventCategory = req.param("cat");
 		console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
+
 		if(eventCategory == 'tech'){
             for(var i = 0; i < 3; i++) {
-                var randomNumber = Math.floor(Math.random() * output.length)
+            	
+                var randomNumber = Math.floor(Math.random() * goutput.length)
+                console.log(goutput.length);
                 console.log("inside recommendations" + randomNumber)
-                recommend[i]=output[randomNumber];
+                recommend[i]=goutput[randomNumber];
             }
 
-            for( var i=0;i<output.length; i++){
-				if(output[i].id == eventid && output[i].type == eventType){
+            for( var i=0;i<goutput.length; i++){
+				if(goutput[i].id == eventid && goutput[i].type == eventType){
 		        //console.log(req.session.email)
 					event={};
 					event.userid = req.session.email;
@@ -121,7 +202,7 @@ exports.listTechEventDetails = function(req, res) {
                     console.log(recommend)
 		        // push data into userevents collection
 		        res.render("techEventDetails",{
-		          values:output[i], recommend: recommend,
+		          values:goutput[i], recommend: recommend,
 		        })
 		      }
 		    }
@@ -145,12 +226,12 @@ exports.listFunEventDetails = function(req, res) {
 		  if (eventCategory == 'fun'){
           
               for(var i = 0; i < 3; i++){
-                  var randomNumber =  Math.floor(Math.random() * outputFun.length)
+                  var randomNumber =  Math.floor(Math.random() * goutputFun.length)
                   console.log("inside recommendations" + randomNumber)
-                  recommendFun[i]=outputFun[randomNumber];
+                  recommendFun[i]=goutputFun[randomNumber];
               }
-		    for( var i=0;i<outputFun.length; i++){
-		      if(outputFun[i].id == eventid){
+		    for( var i=0;i<goutputFun.length; i++){
+		      if(goutputFun[i].id == eventid){
 		    	  event={};
 		          event.userid = req.session.email;
 		          event.id=eventid;
@@ -178,7 +259,7 @@ exports.listFunEventDetails = function(req, res) {
 		          });
 		          // push data into userevents collection
 		        res.render("funEventDetails",{
-		          fun:outputFun[i],recommend: recommendFun,
+		          fun:goutputFun[i],recommend: recommendFun,
 		        });
 		      }
 		    }//end of for
