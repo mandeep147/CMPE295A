@@ -35,14 +35,23 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/about">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contactUs">CONTACT US</a>
+              </li>
+            </ul>
+
+
+            <div class= "navbar-collapse collapse dual-collapse">
             <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
               <li class="nav-item active">
                 <a class="nav-link" href="/">HOME <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about">ABOUT</a>
-              </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="/login">SIGNUP</a>
               </li>
@@ -50,6 +59,7 @@
                 <a class="nav-link" href="/login">LOGIN</a>
               </li>
             </ul>
+          </div>
           </div>
         </nav>
       </div>
@@ -130,8 +140,8 @@
 </div>
 
     <footer>
-      <div class="footertext">
-        <p>Copyright © 2017 Events in the City. All Rights Reserved.</p>
+      <div class="footer">
+        <p class="footertext">Copyright © 2017 Events in the City. All Rights Reserved.</p>
       </div>
     </footer>
 

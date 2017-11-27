@@ -1,3 +1,156 @@
+/*=================================================
+||			stylesheet for homepage.ejs
+==================================================*/
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100%;
+}
+
+/*=================================================
+||				Nav Bar
+==================================================*/
+
+.navi {
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+custom-navbar {
+  background-color: transparent;
+}
+
+.nav-link {
+  border-bottom: 1px solid transparent;
+}
+
+.nav-link:hover {
+  border-bottom: 1px solid grey;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-item.active .nav-link {
+  border-bottom: 1px solid grey;
+}
+
+.navbar-nav a {
+  color: black;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+
+  margin-top: 5px;
+  font-weight: 600;
+  background: linear-gradient(to right, #7ed0268a 0%, #00c3efa8 100%);
+  padding-left: 5px;
+  padding-right: 5px;
+  color: white;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+  font-size: 1.25rem;
+  margin-left: 1rem;
+}
+
+#padding-1 {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+hr {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 10rem;
+    margin-left: 10rem;
+    border: 0;
+    border-top: 0.5px solid rgba(0,0,0,.1);
+}
+
+/*=================================================
+||				Signup area
+==================================================*/
+.sign{
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.sign1{
+    font-size: 3.5rem;
+    color: #464646eb
+}
+.sign2{
+    font-size: 1.5rem;
+    color:grey;
+}
+.newacc{
+      max-width: 500px;
+      padding: 10px 20px;
+      margin: 10px auto;
+      padding: 20px;
+      border-radius: 8px;
+background: #f4f7f88a;
+}
+
+
+.newacc input[type="text"],
+.newacc input[type="email"],
+.newacc input[type="password"],
+.newacc input[type="tel"],
+.newacc select {
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #e8eeef;
+    color:#8a97a0;
+}
+
+.button.nm
+{   width: 50%;
+    position: relative;
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 4px;
+    border: none;
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: #FFF;
+    background: #17a2b8b8;
+    margin: 0 auto;
+
+}
+.newacc input[type="submit"]:hover,
+.newacc input[type="button"]:hover
+{
+    background: #109177;
+}
+
+
+/*=================================================
+||				Footer
+==================================================*/
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  background-color: #8080806e;
+  height: 5rem;
+
+
+}
+.footertext{
+  padding-top: 2rem;
+}
+
+
+/*
 .log-In{
 		background-color: #a4d555;;
 		#background-image : linear-gradient(to right, #f88379,#ffffff);
@@ -10,7 +163,7 @@
 		color: #ffffff;
 		position: relative;
 		#font-weight: bold;
-		font-size: 35px;	
+		font-size: 35px;
 		font-family: "calibri";
 		font-weight: 50;
 		left: 210px;
@@ -21,7 +174,7 @@
 		position: absolute;
 		display: inline-block;
 		left: 700px;
-		margin-top: -40px; 
+		margin-top: -40px;
 		padding-top: 2px;
 		width: 165px;
 		height: 25px;
@@ -76,7 +229,7 @@
 	}
 .sign{
 		#background-image: url('../studymaterial/fblogin/background.jpg');
-		
+
 		height: 700px;
 		background-position: top center;
 		background-color: #EFF2FB;
@@ -159,7 +312,7 @@
 		margin-left: 5px;
 		font-size: 14px;
 		color: black;
-		font-family: "Arial"; 	
+		font-family: "Arial";
 	}
 strong{
 		color: #3b5998;
@@ -225,7 +378,7 @@ a{
 	margin-left: 10px;
 	margin-top: 4px;
 	font-size: 18px;
-	font-weight: bold; 	
+	font-weight: bold;
 }
 .keep{
 	position: absolute;
@@ -245,7 +398,7 @@ hr{
 	position: relative;
 	top:30px;
 }
-
+*/
 .errorUsername{
 	font-size:14px;
 	left:700px;
