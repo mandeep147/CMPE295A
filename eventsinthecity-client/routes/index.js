@@ -30,7 +30,7 @@ exports.index = function(req, res){
 //Render Homepage
 exports.homepage = function(req, res){
 	if(req.session.email){
-		res.render('homepage', { title: 'Events in the City' });
+		res.render('homepage', { title: 'Events in the City',featured:fe });
 	}
 	else{
 		res.render('signin', {title: 'Events in the City'});

@@ -2,93 +2,149 @@
 <html>
 
 <head>
-
   <title>Events in The City</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/homepage.css' />
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="angularjs/login.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
 </head>
 
 <body ng-app="mylogin" ng-controller="login">
 
-  <div class="banner">
-  
-    <!--<img src="/images/bg-banner-3.jpeg" alt="" class="bg-img">-->
-    <nav class="navbar navbar-expand-lg  custom-navbar">
-    <a class="navbar-brand" href="#">Events In the City</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <header>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/homepage">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/">Logout</a>
-        </li>
-
-
-      </ul>
-
-    </div>
-  </nav>
-
+    <div class="displaycontent" style="z-index: 1000;">
+      <div class="navi">
+        <nav class="navbar navbar-expand-lg  custom-navbar">
+          <a class="navbar-brand custom-brand" href="/homepage">Events In the City</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+              <li class="nav-item active">
+                <a class="nav-link" href="/homepage">HOME <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/profile">PFOFILE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" ng-click="logout()">LOGOUT</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
-    <div class="displaycontent">
-      <h2>Events In The City</h2>
-      <h3>Find inspiration about the Events you love.</h3>
-      <div style="text-align:center;">
-        <button ng-click = "clickOnProfileButton()" class="loginButton">Profile</button>
-      </div>
-
     </div>
+    <hr/>
+
+  </header>
+
+  <div class="displaycontent">
+    <h2>Discover and Learn</h2>
+    <h3>Tech and Fun Events in the same space</h3>
   </div>
-  <div class="container sampleEvents">
-	<div class= "row">
-    <div class="col-lg-6">
+
+  <div class="container boxsplit">
+    <div class="box1">
       <a href="/techEvents">
-        <img src="http://via.placeholder.com/350x350"  alt="Generic placeholder image" width="140" height="140"/>
-      </a>
-      <h2>Tech Events</h2>
+      <img src="images/office.jpg">
+      <span class="imagetitle">Tech Events</span>
+    </a>
     </div>
-
-    <div class="col-lg-6">
+    <div class="gap">
+      <span></span>
+    </div>
+    <div class="box2">
       <a href="/funEvents">
-        <img src="http://via.placeholder.com/350x350"  alt="Generic placeholder image" width="140" height="140"/>
-      </a>
-      <h2>Fun Events</h2>
-    </div>
+      <img src="images/lake.jpg">
+      <span class="imagetitle">Fun Events</span>
+    </a>
     </div>
   </div>
-  
-	<footer>
-  	<div class="row" style="height:75px;">
-  		<div class = "col-md-8" style="background:#7ed026;">
-  			<p class="footerText">Copyright © 2017 Events in the City. All Rights Reserved.</p>
-  		</div>
-  		<div class = "col-md-4" style="background:#00aeef;">
-  			<div class="row">
-  				<div class="col-sm-6"><p ><a href='/about' class="footerText" style="text-align:center;">About</a></p></div>
-  				<div class="col-sm-6"><p ><a href='/contactUs' class="footerText" style="text-align:center;">Contact Us</a></p></div>
-  			</div>
-  			
-  			
-  		</div>
-  	</div>
+
+  <div id="padding-1" class="inbetween">
+    <hr/>
+  </div>
+
+
+  <div class="container sampleEvents">
+<h3>Most Happening Events</h3>
+
+    <div class="row">
+
+      <div class="col s12 m6">
+        <div class="card small">
+          <div class="card-image">
+            <img src="images/lake.jpg">
+            <span class="card-title"><%= featured[0].title %></span>
+          </div>
+          <div class="card-content">
+            <p>
+              <%= featured[0].description %>
+            </p>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col s12 m6">
+        <div class="card small">
+          <div class="card-image">
+            <img src="images/office.jpg">
+            <span class="card-title"><%= featured[1].title %></span>
+          </div>
+          <div class="card-content">
+            <p>
+              <%= featured[1].description %>
+            </p>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col s12 m6">
+        <div class="card small">
+          <div class="card-image">
+            <img src="images/index.jpeg">
+            <span class="card-title"><%= featured[2].title %></span>
+          </div>
+          <div class="card-content">
+            <p>
+              <%= featured[2].description %>
+            </p>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+          </div>
+        </div>
+      </div>
+
+</div>
+</div>
+
+
+<footer>
+  <div class="footertext">
+    <p>Copyright © 2017 Events in the City. All Rights Reserved.</p>
+  </div>
 </footer>
+
+
 
 </body>
 

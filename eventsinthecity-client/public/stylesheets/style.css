@@ -98,6 +98,7 @@ body {
 .navbar-brand {
   font-size: 2rem;
   margin-right: 4rem;
+  font-weight: 600;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {

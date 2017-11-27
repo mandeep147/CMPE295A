@@ -1,0 +1,221 @@
+/*=================================================
+||			stylesheet for homepage.ejs
+==================================================*/
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100%;
+}
+
+/*=================================================
+||				Nav Bar
+==================================================*/
+
+.navi {
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+custom-navbar {
+  background-color: transparent;
+}
+
+.nav-link {
+  border-bottom: 1px solid transparent;
+}
+
+.nav-link:hover {
+  border-bottom: 1px solid grey;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-item.active .nav-link {
+  border-bottom: 1px solid grey;
+}
+
+.navbar-nav a {
+  color: black;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  margin-right: 4rem;
+  margin-top: 5px;
+  font-weight: 600;
+  background: linear-gradient(to right, #7ed0268a 0%, #00c3efa8 100%);
+  padding-left: 5px;
+  padding-right: 5px;
+  color: white;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+  font-size: 1.25rem;
+  margin-left: 1rem;
+}
+
+#padding-1 {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+hr {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 10rem;
+    margin-left: 10rem;
+    border: 0;
+    border-top: 0.5px solid rgba(0,0,0,.1);
+}
+/*=================================================
+||				Headings
+==================================================*/
+
+.displaycontent h2 {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.displaycontent h3 {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+
+/*=================================================
+||				Container split
+==================================================*/
+
+.container.boxsplit{
+  height: 50vh;
+  width: 100vw;
+  display: flex;
+}
+
+div[class*="box"] {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  position: relative;
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+.gap{
+  background-color: transparent;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.container.boxsplit img {
+  width: 100%;
+  height: 100%;
+}
+
+.imagetitle {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/*=================================================
+||				Featured events
+==================================================*/
+
+.sampleEvents h3{
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 3rem;
+
+}
+
+.card.small {
+  height: 500px;
+  position: relative;
+}
+.card{
+  margin: .5rem 0 1rem 0;
+background-color: #fff;
+border-radius: 2px;
+}
+
+.card.small .card-image {
+  max-height: 60%;
+  overflow: hidden;
+}
+.card .card-image{
+  position :relative;
+}
+
+.card .card-image img {
+    display: block;
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  img{
+    border: 0;
+  }
+
+.card .card-image .card-title {
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    padding: 24px;
+}
+
+.card .card-title {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+
+.card.small .card-image+.card-content {
+    max-height: 40%;
+}
+
+.card.small .card-content {
+        overflow: hidden;
+        font-size: 18px;
+}
+.card .card-content {
+    padding: 24px;
+    border-radius: 0 0 2px 2px;
+}
+.card .card-content p {
+    margin: 0;
+}
+
+.card .card-action:last-child {
+    border-radius: 0 0 2px 2px;
+}
+.card.small .card-action {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.card .card-action {
+    position: relative;
+    background-color: inherit;
+    border-top: 1px solid rgba(160,160,160,0.2);
+    padding: 16px 24px;
+}
+
+
+/*=================================================
+||				Footer
+==================================================*/
+
+.footerText {
+  text-align: center;
+  margin-top: 30px;
+}
