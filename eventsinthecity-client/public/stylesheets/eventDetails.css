@@ -3,7 +3,9 @@ body {
 font-family: 'Barlow Semi Condensed', sans-serif;
   -webkit-font-smoothing: antialiased
 }
-
+.container{
+  max-width: 75rem;
+  }
 .sampleEvents{
   margin-top: 1.5em;
 }
@@ -27,22 +29,6 @@ max-width: 33.333333%;
   margin-top: 30px;
   margin-bottom: 30px;
   padding-top: 10px
-}
-
-.custom-navbar{
-  text-transform: uppercase;
-  background-color: transparent;
-
-}
-.custom-navbar a{
-  color:white
-}
-
-.navbar-nav{
-    color: white;
-}
-.brand a {
-  color: white;
 }
 
 .container.sampleEvents{

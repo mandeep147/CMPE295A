@@ -2,100 +2,129 @@
 <html>
 
 <head>
+
+  <meta charset="UTF-8">
   <title>Events in The City</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/events.css' />
   <link rel='stylesheet' href='/stylesheets/eventDetails.css' />
-<style>
 
-.container{
-  max-width: 75rem;
-  }
-</style>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="angularjs/login.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+
 </head>
 
 <body>
-  <div class="container">
-  <nav class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container">
-    
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <button class="btn btn-primary" onclick="window.history.back()"><i class="glyphicon glyphicon-chevron-left">Back</i></button>
-        <a class="navbar-brand" href="#">EventsInTheCity</a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-      </div>
-      <!-- /.nav-collapse -->
-    </div>
-    <!-- /.container -->
-  </nav>
-<main role="main">
-  <div class="jumbotron">
-    <h1 class="row" style="text-align:center;padding-bottom:2rem;">Event Details</h1>
-    
-    <form action="/savetechDetails" method="post">
-     <input type = "hidden" id="eventid" name = "eventid" value =<%=values.id%>>
-     <input type = "hidden" id="eventType" name = "eventType" value =<%=values.type%>>
-     
-	<!--<a class="btn btn-primary" ><i class="glyphicon glyphicon-star-empty"></i>Save</a>
-	<a class="btn btn-primary" href="/saveToFavorite"><i class="glyphicon glyphicon-star-empty"></i>Save</a>-->
-	<input type="submit" class="btn btn-info" value="Save Event">
-	 </form>
-	
-      <div>
-        <h2>Title: <%= values.title %></h2>
-        <p><Strong>Description: </Strong><%=values.description%></p>
-        <p><Strong>Time : </Strong><%=values.time%></p>
-        <p><Strong>Location : </Strong><%=values.location%></p>
-        <p><Strong>Please Visit : </Strong><a><%= values.url %></a></p>
-      </div>
 
+  <header>
+    <div class="displaycontent" style="z-index: 1000;">
+      <div class="navi">
+        <nav class="navbar navbar-expand-lg  custom-navbar">
+          <a class="navbar-brand custom-brand" href="/homepage">Events In the City</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav mr-auto">
+
+              <li class="nav-item">
+                <a class="nav-link" href="/about">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contactUs">CONTACT US</a>
+              </li>
+            </ul>
+
+            <div class="navbar-collapse collapse dual-collapse">
+              <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item">
+                  <a class="nav-link" href="/profile">PFOFILE</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" ng-click="logout()">LOGOUT</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+    <hr/>
+  </header>
+
+  <div class="container details">
+    <p class="detailtitle">Event Details</p>
+      <div class="jumbotron details">
+
+
+        <div>
+          <h2><%= values.title %></h2>
+          <p><Strong>Description: </Strong><%=values.description%></p>
+          <p><Strong>Time : </Strong><%=values.time%></p>
+          <p><Strong>Location : </Strong><%=values.location%></p>
+          <p><Strong>Please Visit : </Strong><a href="<%= values.url %>"><%= values.url %></a></p>
+        </div>
+        <form action="/savetechDetails" method="post">
+          <input type="hidden" id="eventid" name="eventid" value=<%=values.id%>>
+          <input type="hidden" id="eventType" name="eventType" value=<%=values.type%>>
+          <input type="submit" class="btn btn-info" value="Save Event">
+        </form>
+      </div>
   </div>
-</main>
 
-</div>
-<div class="container sampleEvents">
-  <h3>You might also be interested in</h3>
-  <div class="column">
 
-    <div class="col-lg-4">
-      <h4><%= recommend[0].title %></h4>
-      <p>
-        <a class="btn btn-primary" href="/techEventDetails?id=<%=recommend[0].id%>&type=<%=recommend[0].type%>&cat=tech">View Event page</a>
-      </p>
+  <div class="container sampleEvents">
+    <h3>You might also be interested in</h3>
+
+    <div class="row">
+
+      <div class="col s12 m6">
+        <div class="card small">
+          <div class="card-image">
+            <img src="images/lake.jpg">
+          </div>
+          <div class="card-content">
+            <p><%= recommend[0].title %></p>
+          </div>
+          <div class="card-action">
+            <a class="btn btn-primary" href="/techEventDetails?id=<%=recommend[0].id%>&type=<%=recommend[0].type%>&cat=tech">View Event page</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6">
+        <div class="card small">
+          <div class="card-image">
+            <img src="images/office.jpg">
+          </div>
+          <div class="card-content">
+            <p><%= recommend[1].title %></p>
+          </div>
+          <div class="card-action">
+            <a class="btn btn-primary" href="/techEventDetails?id=<%=recommend[1].id%>&type=<%=recommend[1].type%>&cat=tech">View Event page</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6">
+        <div class="card small">
+          <div class="card-image">
+            <img src="images/index.jpeg">
+          </div>
+          <div class="card-content">
+            <p><%= recommend[2].title %></p>
+          </div>
+          <div class="card-action">
+            <a class="btn btn-primary" href="/techEventDetails?id=<%=recommend[2].id%>&type=<%=recommend[2].type%>&cat=tech">View Event page</a>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <div class="col-lg-4">
-      <!--img class="rounded-circle" src="http://via.placeholder.com/350x350" alt="Generic placeholder image" width="140" height="140"-->
-      <h4><%= recommend[1].title %></h4>
-      <p>
-        <a class="btn btn-primary" href="/techEventDetails?id=<%=recommend[1].id%>&type=<%=recommend[1].type%>&cat=tech">View Event page</a>
-      </p>
-    </div>
-
-    <div class="col-lg-4">
-      <h4><%= recommend[2].title %></h4>
-      <p>
-        <a class="btn btn-primary" href="/techEventDetails?id=<%=recommend[2].id%>&type=<%=recommend[2].type%>&cat=tech">View Event page</a>
-      </p>
-    </div>
-
   </div>
-</div>
 </body>
 
 </html>
