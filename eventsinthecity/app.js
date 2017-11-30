@@ -17,6 +17,7 @@ var meetupSF = require('./routes/meetupSF');
 var meetupSJ = require('./routes/meetupSJ');
 var eventbriteSJ = require('./routes/eventbriteSJ');
 var eventbriteSF = require('./routes/eventbriteSF');
+var page = require('./routes/page');
 
 var app = express();
 
@@ -49,6 +50,7 @@ app.get('/eventbriteSF',eventbriteSF.searchEbSFEvents);
 app.get('/eventbriteSJ',eventbriteSJ.searchEbSJEvents);
 app.get('/meetupSJ', meetupSJ.searchMeetupSJEvents);
 app.get('/meetupSF', meetupSF.searchMeetupSFEvents);
+app.get('/eventspage', page.displayEvents);
 
 app.post('/login', login.login);
 app.post('/register',login.register);

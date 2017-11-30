@@ -113,7 +113,7 @@ exports.featureEvents = function (req, res) {
             console.log("inside feature events");
             for(var i=0;i<$('.feature-events-div').length;i++){
                 event={};
-                event.id=i+1000;
+                event.id=i+2000;
                 event.title=($('.captiontitle').eq(i).text());
                 event.time=($('.feature-event-time').eq(i).text());
                 event.description=($('.ic_text').eq(i).text());

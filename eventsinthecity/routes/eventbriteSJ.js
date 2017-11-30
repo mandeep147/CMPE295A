@@ -36,7 +36,7 @@ exports.searchEbSJEvents = function(req, res) {
     var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:27017/cmpe295";
     var json_re={user:"kalyani"};
    
-    console.log(output[0][1]);
+ //   console.log(output[0][1]);
     
     res.render("eventbritesj", {
         values : output
