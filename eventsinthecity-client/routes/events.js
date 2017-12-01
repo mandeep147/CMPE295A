@@ -45,7 +45,7 @@ mongo.connect(mongoURL, function(db) {
 
       while (output.length > 0) {
     	outputArrays.push(output.splice(0, pageSize));
-  
+
     	}
 
     } else {
@@ -124,14 +124,6 @@ exports.listTechEvents = function(req, res) {
 
 //Fun Events page - FunEvents.ejs
 exports.listFunEvents = function(req, res) {
-    /**
-     * getting random 5 records
-     */
-   /** for(var i = 0; i < 5; i++){
-        var randomNumber =  Math.floor(Math.random() * outputFun.length)
-        console.log("inside recommendations" + randomNumber)
-        console.log(outputFun[randomNumber]);
-    }**/
 
 	var currentPage = 1;
 	console.log("PageCount is " + fpageCount);
