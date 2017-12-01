@@ -5,7 +5,7 @@
 
   <title>Events in The City</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/events.css' />
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -17,28 +17,39 @@
 
 <body ng-app="mylogin" ng-controller="login">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<button class="btn btn-primary" onclick="window.history.back()"><i class="glyphicon glyphicon-chevron-left">Back</i></button>
-	<a class="navbar-brand" href="#">Events in the City</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="navbarNav">
-		<ul class="navbar-nav">
-			<li class="nav-item active">
-				<a class="nav-link" href="/homepage">Home <span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/about">About</a>
-			</li>
-		</ul>
+<header>
+	<div class="displaycontent" style="z-index: 1000;">
+		<div class="navi">
+			<nav class="navbar navbar-expand-lg  custom-navbar">
+				<a class="navbar-brand custom-brand" href="/homepage">Events In the City</a>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="nav navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="/about">ABOUT</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/contactUs">CONTACT US</a>
+						</li>
+					</ul>
+
+					<div class="navbar-collapse collapse dual-collapse">
+						<ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+							<li class="nav-item">
+								<a class="nav-link" href="/profile">PROFILE</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" ng-click="logout()">LOGOUT</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+		</div>
 	</div>
-	<form class="form-inline">
-		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-		<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>&nbsp;&nbsp;
-		<button class="btn btn-outline-info my-2 my-sm-0" type="submit" ng-click="logout()">Logout</button>
-	</form>
-</nav>
+	<hr/>
+</header>
+
 
 	<div class="container">
 		<div  class="profile">
@@ -55,27 +66,46 @@
 					<td><%= values[0].address%></td>
 				</tr>
 			</table>
-
+			<hr/>
+			<div>
+				<a href="/profileHistory">
+					<p>Click here for your history </p>
+				</a>
+			</div>
 			<div class="container-fluid" style="margin-bottom:20px">
-				<hr/>
+
 				<h3>Saved Events</h3>
 				<div class="event-container" style="height:500px;overflow-y:scroll">
-					<div class="row" style="margin:10px">
+					<div class="row">
                         <% for(var i=1;i<values.length;i++) { %>
-						<div class="card" style="margin:10px; width:15rem">
-							<div class="card-body">
-								<p class="card-text text-secondary"><%= values[i].title %></p>
-								<a href = ><%= values[i].url %><class="card-text text-secondary"></a>
+                        <% if(i % 3 == 0){ %>
+                        <% } %>
+						<div class="col s12 m6">
+							<div class="card small">
+								<div class="card-image">
+									<img src="<%= values[i].image %>" alt="images/index.jpeg" />
+								</div>
+								<div class="card-title"><%= values[i].title %></div>
+                                <% if (values[i].cat == "tech"){ %>
+								<div class="card-action">
+									<a class="btn btn-primary" href="/<%=values[i].link%>?id=<%=values[i].id%>&type=<%=values[i].type%>&cat=tech">Continue</a>
+								</div>
+                                <% } %>
+                                <% if (values[i].cat == "fun"){ %>
+									<div class="card-action">
+									<a class="btn btn-primary" href="/<%=values[i].link%>?id=<%=values[i].id%>&type=<%=values[i].type%>&cat=fun">Continue</a>
+									</div>
+                                <% } %>
 							</div>
 						</div>
+                        <%  if(i % 3 == 2){ %>
+
+                        <% } %>
                         <% } %>
 					</div>
 				</div>
 				
-				<h3>Viewed Events</h3>
-				<a href="/profileHistory">
-                <p>Click here for your history </p>
-                </a>
+
 				
 			</div>
 		</div>
