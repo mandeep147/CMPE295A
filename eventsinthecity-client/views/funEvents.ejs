@@ -20,6 +20,7 @@
 
 <body ng-app="mylogin" ng-controller="login">
 
+
   <header>
     <div class="displaycontent" style="z-index: 1000;">
       <div class="navi">
@@ -38,140 +39,11 @@
             <div class="navbar-collapse collapse dual-collapse">
               <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
                 <li class="nav-item">
-                  <a class="nav-link" href="/profile">PROFILE</a>
+                  <a class="nav-link" href="/profile">PFOFILE</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" ng-click="logout()">LOGOUT</a>
-                </li><!DOCTYPE html>
-                <html>
-
-                <head>
-
-                  <title>Events in The City</title>
-
-                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
-                  <link rel='stylesheet' href='/stylesheets/events.css' />
-
-                  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-                  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-                  <script src="angularjs/login.js"></script>
-
-                  <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
-
-                </head>
-
-                <body ng-app="mylogin" ng-controller="login">
-
-                <header>
-                  <div class="displaycontent" style="z-index: 1000;">
-                    <div class="navi">
-                      <nav class="navbar navbar-expand-lg  custom-navbar">
-                        <a class="navbar-brand custom-brand" href="/homepage">Events In the City</a>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                          <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item">
-                              <a class="nav-link" href="/about">ABOUT</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="/contactUs">CONTACT US</a>
-                            </li>
-                          </ul>
-
-                          <div class="navbar-collapse collapse dual-collapse">
-                            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-                              <li class="nav-item">
-                                <a class="nav-link" href="/profile">PFOFILE</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" ng-click="logout()">LOGOUT</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </nav>
-
-                    </div>
-                  </div>
-                  <hr/>
-                </header>
-
-                <div class="backpage">
-                  <a class="back" onclick="window.history.back()">Go back to Home page</a>
-                </div>
-
-
-                <div class="container">
-                  <div class="jumbotron">
-                    <h1>Fun Events</h1>
-                  </div>
-                  <div class="container-fluid" style="margin-bottom:20px">
-                    <div class="event-container">
-                      <div class="row">
-                          <% for(var i=0;i<fun.length;i++) { %>
-                        <div class="col s12 m6">
-                          <div class="card small">
-                            <div class="card-image">
-                              <img src="<%= fun[i].image %>" alt="" />
-                            </div>
-                            <div class="card-title"><%= fun[i].title %></div>
-                            <p class="card-content"><%= fun[i].time %></p>
-                            <div class="card-action">
-                              <a class="btn btn-primary" href="/funEventDetails?id=<%=fun[i].id%>&type=<%=fun[i].type%>&cat=fun">Continue</a>
-                            </div>
-                          </div>
-                        </div>
-                          <% } %>
-                      </div>
-                      <nav aria-label="...">
-                          <% if (pageCount > 1) { %>
-                        <ul class="pagination justify-content-center">
-                            <% if (currentPage > 1) { %>
-                          <li class="page-item"><a class="page-link" href="/funEvents?page=1">&laquo;</a></li>
-                            <% } %>
-                            <% var i = 1;
-                              if (currentPage > 5) {
-                                i = +currentPage - 4;
-                              } %>
-                            <% if (i !== 1) { %>
-                          <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
-                            <% } %>
-                            <% for (i; i<=pageCount; i++) { %>
-                            <% if (currentPage == i) { %>
-                          <li class="page-item active"><span class="page-link"><%= i %> <span class="sr-only">(current)</span></span>
-                          </li>
-                            <% } else { %>
-                          <li class="page-item">
-                            <a class="page-link" href="/funEvents?page=<%= i %>">
-                                <%= i %>
-                            </a>
-                          </li>
-                            <% } %>
-                            <% if (i == (+currentPage + 4)) { %>
-                          <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
-                            <% break; } %>
-                            <% } %>
-                            <% if (currentPage != pageCount) { %>
-                          <li class="page-item"><a class="page-link" href="/funEvents?page=<%= pageCount %>">&raquo;</a></li>
-                            <% } %>
-                        </ul>
-                          <% } %>
-                      </nav>
-                    </div>
-                  </div>
-                  <hr />
-
-                </div>
-                <footer>
-                  <div class="footer">
-                    <p class="footertext">Copyright © 2017 Events in the City. All Rights Reserved.</p>
-                  </div>
-                </footer>
-
-                </body>
-                </html>
-
+                </li>
               </ul>
             </div>
           </div>
@@ -188,7 +60,7 @@
 
 
   <div class="container">
-    <div class="jumbotron">
+    <div class="jumbo">
       <h1>Fun Events</h1>
     </div>
     <div class="container-fluid" style="margin-bottom:20px">
@@ -197,13 +69,17 @@
           <% for(var i=0;i<fun.length;i++) { %>
             <div class="col s12 m6">
               <div class="card small">
-                <div class="card-image fun">
-                 <img src="<%= fun[i].image %>" alt="" style="height: 12rem;"/>
+                <div class="card-image" style="max-height :12rem;">
+                  <img src="<%= fun[i].image %>" alt="No image available" />
                 </div>
-                <div class="card-title"><%= fun[i].title %></div>
-                <p class="card-content"><%= fun[i].time %></p>
+                <div class="card-title">
+                  <%= fun[i].title %>
+                </div>
+                <p class="card-content">
+                  <%= fun[i].time %>
+                </p>
                 <div class="card-action">
-                  <a class="btn btn-primary" href="/funEventDetails?id=<%=fun[i].id%>&type=<%=fun[i].type%>&cat=fun">Continue</a>
+                  <a class="btn btn-primary fun" href="/funEventDetails?id=<%=fun[i].id%>&type=<%=fun[i].type%>&cat=fun">Continue</a>
                 </div>
               </div>
             </div>
@@ -211,14 +87,14 @@
         </div>
         <nav aria-label="...">
           <% if (pageCount > 1) { %>
-            <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content-center" style="margin-top: 1.5rem; margin-bottom: 2rem;">
               <% if (currentPage > 1) { %>
                 <li class="page-item"><a class="page-link" href="/funEvents?page=1">&laquo;</a></li>
                 <% } %>
                   <% var i = 1;
-	            if (currentPage > 5) {
-	                i = +currentPage - 4;
-	            } %>
+                              if (currentPage > 5) {
+                                i = +currentPage - 4;
+                              } %>
                     <% if (i !== 1) { %>
                       <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
                       <% } %>
@@ -255,4 +131,5 @@
   </footer>
 
 </body>
+
 </html>

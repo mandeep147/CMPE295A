@@ -1,8 +1,13 @@
-body {
+/*=================================================
+||			stylesheet for homepage.ejs
+==================================================*/
 
-font-family: 'Barlow Semi Condensed', sans-serif;
-  -webkit-font-smoothing: antialiased
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100%;
 }
+
 /*=================================================
 ||				Nav Bar
 ==================================================*/
@@ -59,34 +64,26 @@ hr {
   margin-right: 10rem;
   margin-left: 10rem;
   border: 0;
-  border-top: 0.5px solid rgba(0, 0, 0, .25);
+  border-top: 0.5px solid rgba(0, 0, 0, .1);
 }
 
 
-.line hr{
-  border: 0;
-  clear:both;
-  display:block;
-  background-color:#e9ecef;
-  height: 1px;
+.event-container{
+margin-left: 1rem;
 }
 
 /*=================================================
-||				Headings
+||				Profile
 ==================================================*/
-
-.jumbotron.details h2 {
-  font-size: 2rem;
-  text-align: center;
-  font-weight: 500;
-  margin-bottom: 2rem;
+.personalinfo{
+margin-left: 2rem;
+margin-right: 2rem;
 }
 
-.displaycontent h3 {
-  font-size: 2rem;
-  text-align: center;
-  font-weight: 500;
-  margin-bottom: 3rem;
+.profilehistory{
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
 }
 
 /*=================================================
@@ -107,93 +104,42 @@ hr {
   transition: 0.3s ease-in-out;
 }
 
-.jumbotron {
+.jumbo {
   text-align: center;
+}
+.jumbo h1{
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 
 /*=================================================
-||				Event Details page
+||				Main events
 ==================================================*/
 
-.container.details {
-  max-width: 75rem;
-  text-align: center;
-}
-
-.jumbotron.details {
-  text-align: center;
-  max-width: 50rem;
-  margin-left: 14rem;
-  margin-right: 14rem;
-}
-
-.detailtitle {
-  font-size: 2rem;
-}
-.saveevent{
-width: 30%;
-position: relative;
-display: block;
-font-size: 1.25rem;
-font-weight: 600;
-border-radius: 4px;
-border: none;
-text-align: center;
-padding-top: 0.5rem;
-padding-bottom: 0.5rem;
-color: #FFF;
-background: #17a2b8b8;
-margin: 0 auto;
-}
-.saveeventf{
-width: 30%;
-position: relative;
-display: block;
-font-size: 1.25rem;
-font-weight: 600;
-border-radius: 4px;
-border: none;
-text-align: center;
-padding-top: 0.5rem;
-padding-bottom: 0.5rem;
-color: #FFF;
-background: #17b88b9e;
-margin: 0 auto;
-}
-.save{
-  margin-top: 2.5rem;
-}
-
-/*=================================================
-||				Recommended events
-==================================================*/
-.sampleEvents{
-  margin-top: 2rem;
-}
-.sampleEvents h3{
+.savedevents{
   font-size: 2rem;
   text-align: center;
   font-weight: 500;
-  margin-bottom: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 
 }
 
 .card.small {
-  height: 380px;
+  height: 350px;
+  width:20rem;
   position: relative;
 }
 .card{
-  margin: .5rem 0 1rem 0;
+  margin: 1rem 0 1rem 0;
 background-color: #fff;
 border-radius: 2px;
 }
 
 .card.small .card-image {
-  max-height: 60%;
+  max-height: 70%;
   overflow: hidden;
-}
-.card .card-image{
   position :relative;
 }
 
@@ -206,9 +152,8 @@ border-radius: 2px;
     top: 0;
     bottom: 0;
     width: 100%;
-  }
-  img{
     border: 0;
+    max-height :12rem;
   }
 
 .card .card-image .card-title {
@@ -217,31 +162,32 @@ border-radius: 2px;
     bottom: 0;
     left: 0;
     max-width: 100%;
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
+
 }
 
 .card .card-title {
-    font-size: 1.25rem;
-    font-weight: 300;
+font-size: 1.25rem;
+font-weight: 400;
+margin-right: 0.5rem;
+margin-left: 0.5rem;
+margin-top: 0.5rem;
 }
-
 
 .card.small .card-image+.card-content {
     max-height: 40%;
 }
 
 .card.small .card-content {
-        overflow: hidden;
-        font-size: 1rem;
+
 }
 .card .card-content {
-
-    border-radius: 0 0 2px 2px;
-  margin-top: 0.5rem;
+  border-radius: 0 0 2px 2px;
+margin-top: 0.5rem;
 margin-bottom: 0.5rem;
 margin-right: 0.5rem;
 margin-left: 0.5rem;
+overflow: hidden;
+font-size: 1rem;
 }
 
 .card .card-action:last-child {
@@ -257,7 +203,7 @@ margin-left: 0.5rem;
     position: relative;
     background-color: inherit;
     border-top: 1px solid rgba(160,160,160,0.2);
-    padding: 16px 24px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
 }
 .tech{
   background-color: #17a2b8b8;
@@ -273,6 +219,23 @@ border-color: #17a2b8b8;
   color: #fff;
 border-color: #17b88b9e;
 
+}
+
+
+
+/*=================================================
+||				Footer
+==================================================*/
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  background-color: #8080806e;
+  height: 5rem;
+}
+
+.footertext {
+  padding-top: 2rem;
 }
 
 /*=================================================
@@ -318,19 +281,4 @@ border-color: #17b88b9e;
   #contact iframe {
     margin-bottom: 15px;
   }
-}
-
-/*=================================================
-||				Footer
-==================================================*/
-
-.footer {
-  text-align: center;
-  margin-top: 30px;
-  background-color: #8080806e;
-  height: 5rem;
-}
-
-.footertext {
-  padding-top: 2rem;
 }

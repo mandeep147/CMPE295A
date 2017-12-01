@@ -1,125 +1,124 @@
-﻿<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
 
 <head>
-
   <title>Events in The City</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-	<link rel='stylesheet' href='/stylesheets/events.css' />
+  <link rel='stylesheet' href='/stylesheets/profile.css' />
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="angularjs/login.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+
 </head>
 
 
 <body ng-app="mylogin" ng-controller="login">
 
-<header>
-	<div class="displaycontent" style="z-index: 1000;">
-		<div class="navi">
-			<nav class="navbar navbar-expand-lg  custom-navbar">
-				<a class="navbar-brand custom-brand" href="/homepage">Events In the City</a>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="nav navbar-nav mr-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="/about">ABOUT</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/contactUs">CONTACT US</a>
-						</li>
-					</ul>
+  <header>
+    <div class="displaycontent" style="z-index: 1000;">
+      <div class="navi">
+        <nav class="navbar navbar-expand-lg  custom-navbar">
+          <a class="navbar-brand custom-brand" href="/homepage">Events In the City</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/about">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contactUs">CONTACT US</a>
+              </li>
+            </ul>
 
-					<div class="navbar-collapse collapse dual-collapse">
-						<ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-							<li class="nav-item">
-								<a class="nav-link" href="/profile">PROFILE</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" ng-click="logout()">LOGOUT</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
+            <div class="navbar-collapse collapse dual-collapse">
+              <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item">
+                  <a class="nav-link" href="/profile">PROFILE</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" ng-click="logout()">LOGOUT</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
 
-		</div>
-	</div>
-	<hr/>
-</header>
-
-
-<div class="container">
-	<div  class="profile">
-		<h1 class="flush--bottom text--display3">
-			<span class="name"><%=  values[0].firstname %> <%=  values[0].lastname %></span>
-			<hr />
-		</h1>
-
-		<table>
-			<tr>
-				<td><b>Location:</b></td>
-			</tr>
-			<tr>
-				<td><%= values[0].address%></td>
-			</tr>
-		</table>
-		<hr/>
-	</div>
+      </div>
+    </div>
+    <hr/>
+  </header>
 
 
-	<a href="/profile">
-		<p>Click here to return to your profile </p>
-	</a>
+  <div class="container">
+    <div class="profile">
+      <div class="jumbotron personalinfo">
+        <h2>My Personal Information</h2>
+        <h1><%=  values[0].firstname %> <%=  values[0].lastname %></h1>
+        <table>
+          <tr>
+            <td><b>Location:</b></td>
+          </tr>
+          <tr>
+            <td>
+              <%= values[0].address%>
+            </td>
+          </tr>
+        </table>
+        <hr />
+      </div>
 
-</div>
-			<div class="container-fluid" style="margin-bottom:20px">
+      <div class="profilehistory">
+        <a class="history" href="/profile">Click here to return to your profile</a>
+      </div>
 
-				<h3>Viewed Events</h3>
-				<div class="event-container" style="height:500px;overflow-y:scroll">
-					<div class="row" style="margin:10px">
-                        <% for(var i=1;i<values.length;i++) { %>
-                        <% if(i % 3 == 0){ %>
+      <div class="container-fluid" style="margin-bottom:20px">
+        <h3 class="savedevents">Viewed Events</h3>
+        <div class="event-container">
+          <div class="row">
+            <% for(var i=1;i<values.length;i++) { %>
+              <% if(i % 3 == 0){ %>
+                <% } %>
+                  <div class="col s12 m6">
+                    <div class="card small">
+                      <div class="card-image">
+                        <img src="<%= values[i].image %>" alt="" />
+                      </div>
+                      <div class="card-title">
+                        <%= values[i].title %>
+                      </div>
+                      <% if (values[i].cat == "tech"){ %>
+                        <div class="card-action">
+                          <a class="btn btn-primary tech" href="/<%=values[i].link%>?id=<%=values[i].id%>&type=<%=values[i].type%>&cat=tech">Continue</a>
+                        </div>
                         <% } %>
-						<div class="col s12 m6">
-							<div class="card small">
-								<div class="card-image">
-									<img src="<%= values[i].image %>" alt="" />
-								</div>
-								<div class="card-title"><%= values[i].title %></div>
-								<% if (values[i].cat == "tech"){ %>
-								<div class="card-action">
-									<a class="btn btn-primary" href="/<%=values[i].link%>?id=<%=values[i].id%>&type=<%=values[i].type%>&cat=tech">Continue</a>
-								</div>
-                                <% } %>
-                                <% if (values[i].cat == "fun"){ %>
-								<div class="card-action">
-									<a class="btn btn-primary" href="/<%=values[i].link%>?id=<%=values[i].id%>&type=<%=values[i].type%>&cat=fun">Continue</a>
-								</div>
-                                <% } %>
-							</div>
-						</div>
-                        <%  if(i % 3 == 2){ %>
+                          <% if (values[i].cat == "fun"){ %>
+                            <div class="card-action">
+                              <a class="btn btn-primary tech" href="/<%=values[i].link%>?id=<%=values[i].id%>&type=<%=values[i].type%>&cat=fun">Continue</a>
+                            </div>
+                            <% } %>
+                    </div>
+                  </div>
+                  <%  if(i % 3 == 2){ %>
 
-                        <% } %>
-                        <% } %>
-					</div>
-		</div>
-	</div>
-	<footer>
-	  	<div class="row" style="height:75px;">
-	  		<div class = "col-md-8" style="background:#7ed026;">
-	  			<p class="footerText">Copyright © 2017 Events in the City. All Rights Reserved.</p>
-	  		</div>
-	  		<div class = "col-md-4" style="background:#00aeef;">
-	  			<p ><a href='/about' class="footerText" style="text-align:center;">About</a></p>
-	  		</div>
-	  	</div>
-	</footer>
+                    <% } %>
+                      <% } %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer">
+      <p class="footertext">Copyright © 2017 Events in the City. All Rights Reserved.</p>
+    </div>
+  </footer>
+
 </body>
+
 </html>
-
-

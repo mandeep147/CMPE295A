@@ -69,14 +69,16 @@
           <p><Strong>Description: </Strong><%=values.description%></p>
           <p><a href="<%= values.url %>">Read More...</a></p>
         </div>
-        <form action="/savetechDetails" method="post">
+        <form action="/savetechDetails" method="post" class="save">
           <input type="hidden" id="eventid" name="eventid" value=<%=values.id%>>
           <input type="hidden" id="eventType" name="eventType" value=<%=values.type%>>
-          <input type="submit" class="btn btn-info" value="Save Event">
+          <input type="submit" class="btn btn-info saveevent" value="Save Event">
         </form>
       </div>
   </div>
-
+  <div class="line">
+    <hr />
+  </div>
 
   <div class="container sampleEvents">
     <h3>You might also be interested in</h3>
@@ -92,7 +94,7 @@
             <p><%= recommend[0].title %></p>
           </div>
           <div class="card-action">
-            <a class="btn btn-primary" href="/techEventDetails?id=<%=recommend[0].id%>&type=<%=recommend[0].type%>&cat=tech">View Event page</a>
+            <a class="btn btn-primary tech" href="/techEventDetails?id=<%=recommend[0].id%>&type=<%=recommend[0].type%>&cat=tech">View Event page</a>
           </div>
         </div>
       </div>
@@ -106,7 +108,7 @@
             <p><%= recommend[1].title %></p>
           </div>
           <div class="card-action">
-            <a class="btn btn-primary" href="/techEventDetails?id=<%=recommend[1].id%>&type=<%=recommend[1].type%>&cat=tech">View Event page</a>
+            <a class="btn btn-primary tech" href="/techEventDetails?id=<%=recommend[1].id%>&type=<%=recommend[1].type%>&cat=tech">View Event page</a>
           </div>
         </div>
       </div>
@@ -120,7 +122,7 @@
             <p><%= recommend[2].title %></p>
           </div>
           <div class="card-action">
-            <a class="btn btn-primary" href="/techEventDetails?id=<%=recommend[2].id%>&type=<%=recommend[2].type%>&cat=tech">View Event page</a>
+            <a class="btn btn-primary tech" href="/techEventDetails?id=<%=recommend[2].id%>&type=<%=recommend[2].type%>&cat=tech">View Event page</a>
           </div>
         </div>
       </div>

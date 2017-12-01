@@ -58,7 +58,7 @@
 
 
   <div class="container">
-    <div class="jumbotron">
+    <div class="jumbo">
       <h1>Technical Events</h1>
     </div>
     <div class="container-fluid" style="margin-bottom:20px">
@@ -77,7 +77,7 @@
                       <%= values[i].time %>
                     </p>
                     <div class="card-action">
-                      <a class="btn btn-primary" href="/techEventDetails?id=<%=values[i].id%>&type=<%=values[i].type%>&cat=tech">Continue</a>
+                      <a class="btn btn-primary tech" href="/techEventDetails?id=<%=values[i].id%>&type=<%=values[i].type%>&cat=tech">Continue</a>
                     </div>
                 </div>
               </div>
@@ -88,7 +88,7 @@
         </div>
         <nav aria-label="...">
         <% if (pageCount > 1) { %>
-          <ul class="pagination justify-content-center">
+          <ul class="pagination justify-content-center" style="margin-top: 1.5rem; margin-bottom: 2rem;">
             <% if (currentPage > 1) { %>
               <li class="page-item"><a class="page-link" href="/techEvents?page=1">&laquo;</a></li>
               <% } %>
