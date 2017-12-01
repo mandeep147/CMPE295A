@@ -31,26 +31,22 @@ mongo.connect(mongoURL, function(db) {
       output= output.concat(result[1].ebEventsSJ);
       output= output.concat(result[2].muSFEvents);
       output= output.concat(result[3].muSJEvents);
-      
+
+      output.sort(function(a, b){return b.capacity - a.capacity});
+
       goutput= goutput.concat(result[0].ebEventsSF);
       goutput= goutput.concat(result[1].ebEventsSJ);
       goutput= goutput.concat(result[2].muSFEvents);
       goutput= goutput.concat(result[3].muSJEvents);
-      
+
       totalStudents = output.length;
       pageSize = 9;
       tpageCount = Math.ceil(output.length/9);
-     
+
       while (output.length > 0) {
     	outputArrays.push(output.splice(0, pageSize));
-    //	console.log("1------"+outputArrays); 
+  
     	}
-
-
-      //add code for sorting by capacity HERE
-      console.log("OUTPUT!!!!!!")
-      for ( var i=0;i<output.length; i++)
-      {console.log(output[i].capacity);}
 
     } else {
       console.log(err)
@@ -69,17 +65,17 @@ mongo.connect(mongoURL, function(db) {
 
       outputFun=outputFun.concat(result[0].funeventsSJ);
       outputFun=outputFun.concat(result[1].funeventsSF);
-      
+
       goutputFun=goutputFun.concat(result[0].funeventsSJ);
       goutputFun=goutputFun.concat(result[1].funeventsSF);
-      
+
       totalEvents = outputFun.length;
       pageSize = 9;
       fpageCount = Math.ceil(outputFun.length/9);
-     
+
       while (outputFun.length > 0) {
     	  outputFunArrays.push(outputFun.splice(0, pageSize));
-    //	console.log("1------"+outputArrays); 
+    //	console.log("1------"+outputArrays);
     	}
 
     } else {
@@ -99,7 +95,7 @@ exports.listTechEvents = function(req, res) {
         console.log("inside recommendations" + randomNumber)
         console.log(output[randomNumber]);
     }*/
-	
+
 	var currentPage = 1;
 	console.log("PageCount is " + tpageCount);
     console.log("TotalStudents is " + totalStudents);
@@ -110,12 +106,12 @@ exports.listTechEvents = function(req, res) {
     }
 	outputList = outputArrays[+currentPage - 1];
     console.log("3------"+outputList);
-	
-/*	
+
+/*
   res.render("techEvents", {
     values: output
   });  */
-  
+
   res.render('techEvents', {
 	  values: outputList,
       pageSize: pageSize,
@@ -136,7 +132,7 @@ exports.listFunEvents = function(req, res) {
         console.log("inside recommendations" + randomNumber)
         console.log(outputFun[randomNumber]);
     }**/
-	
+
 	var currentPage = 1;
 	console.log("PageCount is " + fpageCount);
     console.log("TotalStudents is " + totalEvents);
@@ -147,11 +143,11 @@ exports.listFunEvents = function(req, res) {
     }
 	outputList = outputFunArrays[+currentPage - 1];
     console.log("3------"+outputList);
-    
+
 /*  res.render("funEvents", {
     fun:  outputFun
   }); */
-  
+
   res.render('funEvents', {
 	  fun: outputList,
       pageSize: pageSize,
@@ -171,7 +167,7 @@ exports.listTechEventDetails = function(req, res) {
 
 		if(eventCategory == 'tech'){
             for(var i = 0; i < 3; i++) {
-            	
+
                 var randomNumber = Math.floor(Math.random() * goutput.length)
                 console.log(goutput.length);
                 console.log("inside recommendations" + randomNumber)
