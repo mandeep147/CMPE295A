@@ -92,11 +92,17 @@ function searchEventTitle(req, res, output) {
         var techEvent = db.collection('techfunEvents');
         techEvent.find().toArray(function(err, result) {
             if (result.length) {
+                console.log(result)
                 for(var j = 0; j < output.length; j++){
                 	for (var i = 0; i < result[0].ebEventsSF.length; i++) {
                         if (output[j].id == result[0].ebEventsSF[i].id) {
                             console.log("getSFTechDetails" + result[0].ebEventsSF[i].id)
                             console.log(result[0].ebEventsSF[i].title);
+                            output[j].id = result[0].ebEventsSF[i].id;
+                            output[j].type = result[0].ebEventsSF[i].type;
+                            output[j].cat = "tech";
+                            output[j].link = "techEventDetails";
+                            output[j].image = result[0].ebEventsSF[i].image;
                             output[j].title = result[0].ebEventsSF[i].title;
                             output[j].url = result[0].ebEventsSF[i].url;
                         }
@@ -105,6 +111,11 @@ function searchEventTitle(req, res, output) {
                         if (output[j].id == result[1].ebEventsSJ[i].id) {
                             console.log("getSJTechDetails" + result[1].ebEventsSJ[i].id)
                             console.log(result[1].ebEventsSJ[i].title);
+                            output[j].id = result[1].ebEventsSJ[i].id;
+                            output[j].type = result[1].ebEventsSJ[i].type;
+                            output[j].cat = "tech";
+                            output[j].link = "techEventDetails";
+                            output[j].image = result[1].ebEventsSJ[i].image;
                             output[j].title = result[1].ebEventsSJ[i].title;
                             output[j].url = result[1].ebEventsSJ[i].url;
                         }
@@ -113,6 +124,11 @@ function searchEventTitle(req, res, output) {
                         if (output[j].id == result[2].muSFEvents[i].id) {
                             console.log("getSFTechDetails" + result[2].muSFEvents[i].id)
                             console.log(result[2].muSFEvents[i].title);
+                            output[j].id = result[2].muSFEvents[i].id;
+                            output[j].type = result[2].muSFEvents[i].type;
+                            output[j].cat = "tech";
+                            output[j].link = "techEventDetails";
+                            output[j].image = result[2].muSFEvents[i].image;
                             output[j].title = result[2].muSFEvents[i].title;
                             output[j].url = result[2].muSFEvents[i].url;
                         }
@@ -121,7 +137,12 @@ function searchEventTitle(req, res, output) {
                         if (output[j].id == result[3].muSJEvents[i].id) {
                             console.log("getSJTechDetails" + result[3].muSJEvents[i].id)
                             console.log(result[3].muSJEvents[i].title);
+                            output[j].id = result[3].muSJEvents[i].id;
+                            output[j].type = result[3].muSJEvents[i].type;
+                            output[j].cat = "tech";
+                            output[j].link = "techEventDetails";
                             output[j].title = result[3].muSJEvents[i].title;
+                            output[j].image = result[3].muSJEvents[i].image;
                             output[j].url = result[3].muSJEvents[i].url;
                         }
                     }
@@ -129,7 +150,12 @@ function searchEventTitle(req, res, output) {
                         if (output[j].id == result[4].funeventsSJ[i].id) {
                             console.log("getSJFunDetails" + result[4].funeventsSJ[i].id)
                             console.log(result[4].funeventsSJ[i].title);
+                            output[j].id = result[4].funeventsSJ[i].id;
+                            output[j].type = result[4].funeventsSJ[i].type;
+                            output[j].cat = "fun";
+                            output[j].link = "funEventDetails";
                             output[j].title = result[4].funeventsSJ[i].title;
+                            output[j].image = result[4].funeventsSJ[i].image;
                             output[j].url = result[4].funeventsSJ[i].url;
                         }
                     }
@@ -137,6 +163,11 @@ function searchEventTitle(req, res, output) {
                         if (output[j].id == result[5].funeventsSF[i].id) {
                             console.log("getSFFunDetails" + result[5].funeventsSF[i].id)
                             console.log(result[5].funeventsSF[i].title);
+                            output[j].id = result[5].funeventsSF[i].id;
+                            output[j].type = result[5].funeventsSF[i].type;
+                            output[j].cat = "fun";
+                            output[j].link = "funEventDetails";
+                            output[j].image = result[5].funeventsSF[i].image;
                             output[j].title = result[5].funeventsSF[i].title;
                             output[j].url = result[5].funeventsSF[i].url;
                         }
@@ -159,6 +190,11 @@ function searchFunTitle(req, res, output) {
                         if (output[j].id == result[0].allEvents[i].id ) {
                             console.log("getFunDetails"+result[0].allEvents[i].id)
                             console.log(result[0].allEvents[i].title);
+                            output[j].id = result[0].allEvents[i].id;
+                            output[j].type = result[0].allEvents[i].type;
+                            output[j].image = result[0].allEvent[i].image;
+                            output[j].cat = "fun";
+                            output[j].link = "funEventDetails";
                             output[j].title = result[0].allEvents[i].title;
                             output[j].url = result[0].allEvents[i].url;
                         }
