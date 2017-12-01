@@ -23,14 +23,14 @@ exports.scrapefun = function (req, res) {
             console.log($('.venuetitle a').eq(0).attr('href'));
             console.log($('.venuename').eq(0).text());
             console.log($('.eventtime').eq(0).text());
-            console.log($('.eventtime').eq(0).text());
+            console.log($('.featureeventdatemobile.hidden-lg.hidden-md.hidden-sm').eq(0).text().replace(/\s\s+/g, '' ));
             console.log($('.hidden-xs.show-print').eq(0).text());
             for(var i=0;i<$('.venuetitle').length;i++){
             	event={};
             	event.id=i+100;
             	event.title=($('.venuetitle').eq(i).text());
-            	event.time=($('.eventtime').eq(i).text());
-            	event.description=" ";
+            	event.time=($('.featureeventdatemobile.hidden-lg.hidden-md.hidden-sm').eq(i).text().replace(/\s\s+/g, '' ))+ " " +($('.eventtime').eq(i).text().substring(11));
+            	event.description=($('.hidden-xs.show-print').eq(i).text());
             	event.url="http://www.sanjose.org"+($('.venuetitle a').eq(i).attr('href'));
             	event.location=($('.venuename').eq(i).text());
             	event.type="SJFUN1";
@@ -63,8 +63,8 @@ exports.scrapefun1 = function (req, res) {
             	event={};
             	event.id=i+111;
             	event.title=($('.venuetitle').eq(i).text());
-            	event.time=($('.eventtime').eq(i).text());
-            	event.description=" ";
+            	event.time=($('.featureeventdatemobile.hidden-lg.hidden-md.hidden-sm').eq(i).text().replace(/\s\s+/g, '' ))+ " " +($('.eventtime').eq(i).text().substring(11));
+            	event.description=($('.hidden-xs.show-print').eq(i).text());
             	event.url="http://www.sanjose.org"+($('.venuetitle a').eq(i).attr('href'));
             	event.location=($('.venuename').eq(i).text());
             	event.type="SJFUN2";
@@ -95,8 +95,8 @@ exports.scrapefun2 = function (req, res) {
             	event={};
             	event.id=i+121;
             	event.title=($('.venuetitle').eq(i).text());
-            	event.time=($('.eventtime').eq(i).text());
-            	event.description=" ";
+            	event.time=($('.featureeventdatemobile.hidden-lg.hidden-md.hidden-sm').eq(i).text().replace(/\s\s+/g, '' ))+ " " +($('.eventtime').eq(i).text().substring(11));
+            	event.description=($('.hidden-xs.show-print').eq(i).text());
             	event.url="http://www.sanjose.org"+($('.venuetitle a').eq(i).attr('href'));
             	event.location=($('.venuename').eq(i).text());
                	event.type="SJFUN3";
@@ -152,7 +152,7 @@ exports.featureEventsMain = function (req, res) {
             console.log("image http://www.sanjose.org"+$('.img-responsive.slider-event-img').attr('src'));
             console.log("title "+$('.img-responsive.slider-event-img').attr('alt'));
             console.log("Time "+$('.event-date').eq(0).text().replace(/\s\s+/g, ' ' ));
-            console.log("Desc "+$('.slider-content').eq(0).text());
+            console.log("Desc "+$('.ellipsis').eq(0).text());
             console.log("URL http://www.sanjose.org"+$('.events-slider a').attr('href'));
         
             for(var i=0;i<$('.event-date').length;i++){
@@ -160,7 +160,7 @@ exports.featureEventsMain = function (req, res) {
                 event.id=i+3000;
                 event.title=($('.img-responsive.slider-event-img').eq(i).attr('alt'));
                 event.time=($('.event-date').eq(i).text());
-                event.description=" ";
+                event.description=($('.ellipsis').eq(i).text());
                 event.url="http://www.sanjose.org"+($('.events-slider a').eq(i).attr('href'));
                 event.location="San Jose";
                 event.type="Featured Events";
@@ -211,7 +211,9 @@ exports.featureEvents = function (req, res) {
                 event.id=i+2000;
                 event.title=($('.captiontitle').eq(i).text());
                 event.time=($('.feature-event-time').eq(i).text());
-                event.description=($('.ic_text').eq(i).text());
+                var desc=($('.ic_text').eq(i).text());
+                event.description=desc.slice(0,-10);
+                
                 event.url="http://www.sanjose.org/events/";
                 event.url="http://www.sanjose.org"+($('.captiontitle a').eq(i).attr('href'));
                 event.location=($('.ic_category').eq(i).text());
@@ -255,6 +257,8 @@ exports.scrapeSF = function (req, res) {
 
         if(!error){
             var $ = cheerio.load(html);
+            $('.disc').remove()
+            $.html()
             console.log("I'm here");
             var json1 = { title : ""};
             var funeventsSF =[];
@@ -263,7 +267,7 @@ exports.scrapeSF = function (req, res) {
             console.log($('.date').eq(0).text());
             console.log($('.miles').eq(0).text());
             console.log("---------");
-            console.log($('.columns article a').eq(0).attr('href'));
+            console.log($('.columns article a').eq(1).attr('href'));
             
         //    console.log($('.columns article.style').eq(0).attr('background'));
             
@@ -274,19 +278,19 @@ exports.scrapeSF = function (req, res) {
             console.log(splits);
             
      
-            for(var i=0;i<$('.columns article').length;i++){
+            for(var i=0;i<$('.date').length;i++){
             	event={};
             	event.id=i+200;
             	var splits=[];
-            	splits = ($('.columns article').eq(0).text()).replace(/\n+/g, '\n').split('\n', 5);
+            	splits = ($('.columns article').eq(i).text()).replace(/\n+/g, '\n').split('\n', 5);
             	event.title=splits[1];
             	event.time=($('.date').eq(i).text());
             	
-            	event.description=($('.event').eq(i).text());
+            	//event.description=($('.event').eq(i).text());
                	
             	event.description=splits[4];
             	
-            	event.url=($('.columns article a').eq(0).attr('href'));
+            	event.url=($('.columns article a').eq(i).attr('href'));
             	
             	var str = $('.miles').eq(i).text();
             //	event.location=($('.event .miles').eq(i).text());
