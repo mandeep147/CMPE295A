@@ -16,9 +16,12 @@ exports.scrapefun = function (req, res) {
             console.log("I'm here");
             var json1 = { title : ""};
             var arrSJD =[];
-            console.log($('.allevents-img').eq(0).attr('src'));
+           // console.log($('.allevents-img.img').attr('src'));
+            console.log($('img').attr('src'));
+          //  console.log("image http://www.sanjose.org"+$('.allevents-img img').attr('src'));
             console.log($('.venuetitle').eq(0).text());
             console.log($('.venuename').eq(0).text());
+            console.log($('.eventtime').eq(0).text());
             console.log($('.eventtime').eq(0).text());
             for(var i=0;i<$('.venuetitle').length;i++){
             	event={};
@@ -29,7 +32,8 @@ exports.scrapefun = function (req, res) {
             	event.url="http://www.sanjose.org/events/";
             	event.location=($('.venuename').eq(i).text());
             	event.type="SJFUN1";
-            	//event.image=($('.allevents-img').eq(i).attr('src'));
+            //	console.log("image http://www.sanjose.org"+$('.allevents-img img').eq(i).attr('src'));
+            	event.image="http://www.sanjose.org"+($('.allevents-img img').eq(i).attr('src'));
             	funeventsSJ.push(event);
             	           	
             }
@@ -38,10 +42,42 @@ exports.scrapefun = function (req, res) {
     })
 }
 
-
+exports.scrapefun1 = function (req, res) {
+    url = "http://www.sanjose.org/events/?page=2"
+    request(url, function(error, response, html){
+        if(!error){
+            var $ = cheerio.load(html);
+            console.log("I'm here");
+            var json1 = { title : ""};
+            var arrSJD =[];
+           // console.log($('.allevents-img.img').attr('src'));
+            console.log($('img').attr('src'));
+          //  console.log("image http://www.sanjose.org"+$('.allevents-img img').attr('src'));
+            console.log($('.venuetitle').eq(0).text());
+            console.log($('.venuename').eq(0).text());
+            console.log($('.eventtime').eq(0).text());
+            console.log($('.eventtime').eq(0).text());
+            for(var i=0;i<$('.venuetitle').length;i++){
+            	event={};
+            	event.id=i+111;
+            	event.title=($('.venuetitle').eq(i).text());
+            	event.time=($('.eventtime').eq(i).text());
+            	event.description=" ";
+            	event.url="http://www.sanjose.org/events/";
+            	event.location=($('.venuename').eq(i).text());
+            	event.type="SJFUN2";
+            //	console.log("image http://www.sanjose.org"+$('.allevents-img img').eq(i).attr('src'));
+            	event.image="http://www.sanjose.org"+($('.allevents-img img').eq(i).attr('src'));
+            	funeventsSJ.push(event);
+            	           	
+            }
+            console.log(JSON.stringify(funeventsSJ));
+        }
+    })
+}
 
 exports.scrapefun2 = function (req, res) {
-    url = "http://www.sanjose.org/events/?page=2"
+    url = "http://www.sanjose.org/events/?page=3"
     request(url, function(error, response, html){
 
         if(!error){
@@ -55,14 +91,15 @@ exports.scrapefun2 = function (req, res) {
             console.log($('.eventtime').eq(0).text());
             for(var i=0;i<$('.venuetitle').length;i++){
             	event={};
-            	event.id=i+111;
+            	event.id=i+121;
             	event.title=($('.venuetitle').eq(i).text());
             	event.time=($('.eventtime').eq(i).text());
             	event.description=" ";
             	event.url="http://www.sanjose.org/events/";
             	event.location=($('.venuename').eq(i).text());
-               	event.type="SJFUN2";
+               	event.type="SJFUN3";
             	//event.image=($('.allevents-img').eq(i).attr('src'));
+               	event.image="http://www.sanjose.org"+($('.allevents-img img').eq(i).attr('src'));
                	funeventsSJ.push(event);
             	           	
             }
@@ -93,7 +130,7 @@ exports.scrapefun2 = function (req, res) {
         			}
         		}));
         		
-        	});
+        	}); 
         
             console.log(JSON.stringify(funeventsSJ));
            res.render("scrapefun2", {
@@ -251,7 +288,7 @@ exports.scrapeSF = function (req, res) {
             var splits = ($('.qq').eq(0).text()).split('\n', 5);
             console.log(splits[4]);
             console.log(splits[1]); */
-
+            console.log($('.imagebox').attr('src'));
             
      
             for(var i=0;i<$('.qq').length;i++){
@@ -274,6 +311,7 @@ exports.scrapeSF = function (req, res) {
             		event.location=($('.qq .miles').eq(i).text());
 
             	event.type="SFFUN";
+            	event.image="";
             	funeventsSF.push(event);
             	           	
             }  
@@ -304,7 +342,7 @@ exports.scrapeSF = function (req, res) {
         			}
         		}));
         		
-        	});
+        	});   
 
           console.log(JSON.stringify(funeventsSF));
            res.render("scrapeSF", {

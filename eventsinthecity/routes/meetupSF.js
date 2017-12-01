@@ -95,6 +95,7 @@ exports.searchMeetupSFEvents = function(req, res) {
         meup.capacity=output[0][0][i].headcount;
         
         meup.type="SFTECH";
+        meup.image="";
     	
     	
         muSFEvents.push(meup);

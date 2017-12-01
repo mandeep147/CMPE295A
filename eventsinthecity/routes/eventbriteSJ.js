@@ -47,19 +47,24 @@ exports.searchEbSJEvents = function(req, res) {
     {
     //	console.log(output[0][1][i].name.text);
     //	console.log(output[0][1][i].description.text);
+    	if (output[0][1][i].logo != null)
+		{
     	eb={};
     	eb.id=10000 + i;
     	eb.title=output[0][1][i].name.text;
-    	eb.time=output[0][1][i].start.local;
+    	var a = new Date(output[0][1][0].start.local);
+    	eb.time=a;
     	eb.description=output[0][1][i].description.text;
     	eb.url=output[0][1][i].url;
     	eb.status=output[0][1][i].status;
     	eb.location="San Jose";
     	eb.capacity=output[0][1][i].capacity;
     	eb.type="SJTECH";
-    	
+    	eb.image=output[0][1][i].logo.url;
+    	//console.log(output[0][1][i].logo.url);
 
     	ebEvents.push(eb);
+		}
     	
     }
     var eventobj = {"ebEventsSJ" : ebEvents};

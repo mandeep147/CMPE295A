@@ -102,6 +102,8 @@ exports.searchMeetupSJEvents = function(req, res) {
         
         else
         meup.type="SCTECH";
+        
+        meup.image="";
     	
     	
         muSJEvents.push(meup);

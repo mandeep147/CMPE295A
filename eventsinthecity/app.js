@@ -43,6 +43,7 @@ app.get('/users', user.list);
 
 app.get('/events',events.searchEvents);
 app.get('/scrapefun', scrape.scrapefun);
+app.get('/scrapefun1', scrape.scrapefun1);
 app.get('/scrapefeatured', scrape.featureEvents);
 app.get('/scrapefun2', scrape.scrapefun2);
 app.get('/scrapeSF', scrape.scrapeSF);

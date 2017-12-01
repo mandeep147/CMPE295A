@@ -142,24 +142,34 @@ exports.searchEbSFEvents = function(req, res) {
         values : output
     });
     
+    
+  //  console.log(output[0][1][0].logo.url);
    
     for(var i=0;i<output[0][1].length;i++)
     {
     //	console.log(output[0][1][i].name.text);
     //	console.log(output[0][1][i].description.text);
+    	if (output[0][1][i].logo != null)
+    		{
     	eb={};
     	eb.id=1000 + i;
     	eb.title=output[0][1][i].name.text;
-    	eb.time=output[0][1][i].start.local;
+    	var a = new Date(output[0][1][0].start.local);
+    	eb.time=a;
     	eb.description=output[0][1][i].description.text;
     	eb.url=output[0][1][i].url;
     	eb.status=output[0][1][i].status;
     	eb.location="San Francisco";
     	eb.capacity=output[0][1][i].capacity;
+    	//console.log(output[0][1][i].name.text);
+    	//console.log(output[0][1][i].logo.url);
+    	eb.image=output[0][1][i].logo.url;
     	eb.type="SFTECH";
     	
-
+    	
     	ebEvents.push(eb);
+    	
+    		}
     	
     }
     var eventobj = {"ebEventsSF" : ebEvents};
@@ -188,7 +198,7 @@ exports.searchEbSFEvents = function(req, res) {
 			}
 		}));
 		
-	});
+	});  
 	
 
 };

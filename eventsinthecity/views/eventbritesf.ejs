@@ -54,7 +54,22 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            
+
+           <!--<div class="col-md-12">-->
+          <% for(var i=0;i<values.length;i++) { %>
+            <% if(i % 3 == 0){ %>
+              <!--  <div class="row">-->
+              <% } %>
+                <div class="card" style="margin:10px; width:15rem">
+                  <!--style="width:20rem"-->
+                  <div class="card-body">
+                    <h5 class="card-title"><%= values[0][1][i].name.text %></h5>
+                          
+                  </div>
+                </div>
+                <%  if(i % 3 == 2){ %>
+                  <% } %>
+                    <% } %> 
      
 				
         </div>
