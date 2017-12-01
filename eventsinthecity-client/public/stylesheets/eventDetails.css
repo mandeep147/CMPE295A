@@ -81,6 +81,29 @@ hr {
 }
 
 /*=================================================
+||				Backpage
+==================================================*/
+
+.backpage {
+  padding-left: 11rem;
+  margin-bottom: 2rem;
+}
+
+.backpage a {
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+}
+.backpage a:hover {
+  border-bottom: 1px solid grey;
+  transition: 0.3s ease-in-out;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+
+/*=================================================
 ||				Event Details page
 ==================================================*/
 
@@ -151,11 +174,12 @@ border-radius: 2px;
     bottom: 0;
     left: 0;
     max-width: 100%;
-    padding: 24px;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .card .card-title {
-    font-size: 24px;
+    font-size: 1.25rem;
     font-weight: 300;
 }
 
@@ -166,14 +190,15 @@ border-radius: 2px;
 
 .card.small .card-content {
         overflow: hidden;
-        font-size: 18px;
+        font-size: 1rem;
 }
 .card .card-content {
-    padding: 24px;
+
     border-radius: 0 0 2px 2px;
-}
-.card .card-content p {
-    margin: 0;
+  margin-top: 0.5rem;
+margin-bottom: 0.5rem;
+margin-right: 0.5rem;
+margin-left: 0.5rem;
 }
 
 .card .card-action:last-child {

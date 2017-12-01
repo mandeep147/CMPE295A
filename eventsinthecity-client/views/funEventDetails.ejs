@@ -52,6 +52,9 @@
     <hr/>
   </header>
 
+  <div class="backpage">
+    <a class="back" onclick="window.history.back()">Go back to Home page</a>
+  </div>
 
 
   <div class="container details">
@@ -60,11 +63,7 @@
 
       <div>
         <h2>Title: <%= fun.title %></h2>
-        <p>
-          <Strong>Description: </Strong>
-          <%=fun.description%>
-        </p>
-        <p>
+
           <Strong>Time : </Strong>
           <%=fun.time%>
         </p>
@@ -73,7 +72,12 @@
           <%=fun.location%>
         </p>
         <p>
-          <Strong>Please Visit : </Strong>
+          <Strong>Description: </Strong>
+          <%=fun.description%>
+        </p>
+        <p>
+        <p>
+          <Strong>Read More : </Strong>
           <a>
             <%= fun.url %>
           </a>

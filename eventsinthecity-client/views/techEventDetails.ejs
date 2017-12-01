@@ -53,6 +53,9 @@
     </div>
     <hr/>
   </header>
+  <div class="backpage">
+    <a class="back" onclick="window.history.back()">Go back to Home page</a>
+  </div>
 
   <div class="container details">
     <p class="detailtitle">Event Details</p>
@@ -60,10 +63,11 @@
 
         <div>
           <h2><%= values.title %></h2>
-          <p><Strong>Description: </Strong><%=values.description%></p>
+
           <p><Strong>Time : </Strong><%=values.time%></p>
           <p><Strong>Location : </Strong><%=values.location%></p>
-          <p><Strong>Please Visit : </Strong><a href="<%= values.url %>"><%= values.url %></a></p>
+          <p><Strong>Description: </Strong><%=values.description%></p>
+          <p><a href="<%= values.url %>">Read More...</a></p>
         </div>
         <form action="/savetechDetails" method="post">
           <input type="hidden" id="eventid" name="eventid" value=<%=values.id%>>
