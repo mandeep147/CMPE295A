@@ -148,6 +148,7 @@ exports.featureEvents = function (req, res) {
         if(!error){
             var $ = cheerio.load(html);
             console.log("inside feature events");
+           // console.log("image http://www.sanjose.org"+$('.feature-events-img img').attr('src'));
             for(var i=0;i<$('.feature-events-div').length;i++){
                 event={};
                 event.id=i+2000;
@@ -159,6 +160,7 @@ exports.featureEvents = function (req, res) {
                 event.type="Featured Events";
 
                 event.time = event.time.replace(/\s\s+/g, ' ' );
+                event.image="http://www.sanjose.org"+($('.feature-events-img img').eq(i).attr('src'));
                 console.log("id: "+event.id+"\n title: "+event.title+"\n time: "+event.time+"\n description: "+event.description+"\n location: "+event.location)
                 //event.image=($('.allevents-img').eq(i).attr('src'));
                 featuredEvents.push(event);
@@ -179,7 +181,7 @@ exports.featureEvents = function (req, res) {
                     }
                 }));
 
-            });
+            });  
 
             res.render("scrapefeatured", {
                 values : featuredEvents
