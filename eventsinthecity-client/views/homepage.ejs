@@ -81,66 +81,30 @@
 
 
   <div class="container sampleEvents">
-<h3>Most Happening Events</h3>
+    <h3>Most Happening Events</h3>
 
     <div class="row">
+      <% for(var i=0;i<6;i++) { %>
 
       <div class="col s12 m6">
         <div class="card small">
           <div class="card-image">
-            <img src="images/lake.jpg">
-            <span class="card-title"><%= featured[0].title %></span>
+            <img src="<%= featured[i].image %>" alt="No image available" />
+            <span class="card-title"><%= featured[i].title %></span>
           </div>
           <div class="card-content">
             <p>
-              <%= featured[0].description %>
+              <%= featured[i].description %>
             </p>
           </div>
           <div class="card-action">
-            <a href="#">This is a link</a>
+            <a class="btn btn-primary fun" href="/featuredEvents?id=<%=featured[i].id%>">Continue</a>
           </div>
         </div>
       </div>
-
-
-      <div class="col s12 m6">
-        <div class="card small">
-          <div class="card-image">
-            <img src="images/office.jpg">
-            <span class="card-title"><%= featured[1].title %></span>
-          </div>
-          <div class="card-content">
-            <p>
-              <%= featured[1].description %>
-            </p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col s12 m6">
-        <div class="card small">
-          <div class="card-image">
-            <img src="images/index.jpeg">
-            <span class="card-title"><%= featured[2].title %></span>
-          </div>
-          <div class="card-content">
-            <p>
-              <%= featured[2].description %>
-            </p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
-      </div>
-
+<% } %>
 </div>
 </div>
-
 <footer>
   <div class="footer">
     <p class="footertext">Copyright © 2017 Events in the City. All Rights Reserved.</p>
