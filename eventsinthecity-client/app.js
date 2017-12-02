@@ -59,6 +59,7 @@ app.get('/funEvents',events.listFunEvents);
 
 app.get('/techEventDetails',events.listTechEventDetails)
 app.get('/funEventDetails',events.listFunEventDetails)
+app.get('/featuredEventDetails',routes.listFeaturedEventDetails)
 
 app.post('/savetechDetails',events.savetechDetails);
 app.post('/savefunDetails',events.savefunDetails);
