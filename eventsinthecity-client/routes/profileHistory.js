@@ -33,7 +33,8 @@ function  userData(req, res, output) {
             user.firstname =data.userdetails[0].firstname;
             user.lastname=data.userdetails[0].lastname;
             user.address=data.userdetails[0].address;
-
+            user.phone = data.userdetails[0].phone;
+            user.email = data.userdetails[0].email;
             output.push(user);
           //  console.log("user data");
          //   console.log(output);
