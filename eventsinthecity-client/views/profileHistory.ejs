@@ -58,16 +58,17 @@
       <div class="jumbotron personalinfo">
         <h2>My Personal Information</h2>
         <h1><%=  values[0].firstname %> <%=  values[0].lastname %></h1>
-        <table>
-          <tr>
-            <td><b>Location:</b></td>
-          </tr>
-          <tr>
-            <td>
-              <%= values[0].address%>
-            </td>
-          </tr>
-        </table>
+		  <table>
+			  <tr>
+				  <td><b>Location:</b> <%= values[0].address%></td>
+			  </tr>
+			  <tr>
+				  <td><b>Phone:</b>  <%= values[0].phone%></td>
+			  </tr>
+			  <tr>
+				  <td><b>Registered Email:</b> <%= values[0].email%></td>
+			  </tr>
+		  </table>
         <hr />
       </div>
 
