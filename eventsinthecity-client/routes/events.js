@@ -22,7 +22,7 @@ var fpageCount = 0;
 
 //Extract data for TechEvents data
 mongo.connect(mongoURL, function(db) {
-  console.log('Connected to mongo at: ' + mongoURL);
+  //console.log('Connected to mongo at: ' + mongoURL);
   var coll1 = db.collection('techEvents');
   coll1.find().toArray(function(err, result) {
     if (result.length) {
@@ -58,7 +58,7 @@ mongo.connect(mongoURL, function(db) {
 //Extract data for Fun Events data
 mongo.connect(mongoURL, function(db) {
 
-  console.log('Connected to mongo at: ' + mongoURL);
+  //console.log('Connected to mongo at: ' + mongoURL);
   var coll2 = db.collection('funEvents');
   coll2.find().toArray(function(err, result) {
     if (result.length) {
@@ -97,15 +97,15 @@ exports.listTechEvents = function(req, res) {
     }*/
 
 	var currentPage = 1;
-	console.log("PageCount is " + tpageCount);
-    console.log("TotalStudents is " + totalStudents);
+	//console.log("PageCount is " + tpageCount);
+    //console.log("TotalStudents is " + totalStudents);
 	if (typeof req.query.page !== 'undefined') {
     	//console.log("2");
         currentPage = +req.query.page;
         //console.log("currentPage is " + currentPage)
     }
 	outputList = outputArrays[+currentPage - 1];
-    console.log("3------"+outputList);
+    //console.log("3------"+outputList);
 
 /*
   res.render("techEvents", {
@@ -126,19 +126,15 @@ exports.listTechEvents = function(req, res) {
 exports.listFunEvents = function(req, res) {
 
 	var currentPage = 1;
-	console.log("PageCount is " + fpageCount);
-    console.log("TotalStudents is " + totalEvents);
+	//console.log("PageCount is " + fpageCount);
+    //console.log("TotalStudents is " + totalEvents);
 	if (typeof req.query.page !== 'undefined') {
     	//console.log("2");
         currentPage = +req.query.page;
         //console.log("currentPage is " + currentPage)
     }
 	outputList = outputFunArrays[+currentPage - 1];
-    console.log("3------"+outputList);
-
-/*  res.render("funEvents", {
-    fun:  outputFun
-  }); */
+    //console.log("3------"+outputList);
 
   res.render('funEvents', {
 	  fun: outputList,
@@ -155,14 +151,14 @@ exports.listTechEventDetails = function(req, res) {
 		var eventid = req.param("id");
 		var eventType = req.param("type");
 		var eventCategory = req.param("cat");
-		console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
+		//console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
 
 		if(eventCategory == 'tech'){
             for(var i = 0; i < 3; i++) {
 
                 var randomNumber = Math.floor(Math.random() * goutput.length)
-                console.log(goutput.length);
-                console.log("inside recommendations" + randomNumber)
+                //console.log(goutput.length);
+                //console.log("inside recommendations" + randomNumber)
                 recommend[i]=goutput[randomNumber];
             }
 
@@ -176,7 +172,7 @@ exports.listTechEventDetails = function(req, res) {
 					event.category=eventCategory;
 
 		          	mongo.connect(mongoURL, function(){
-		          		console.log('Connected to mongo at: ' + mongoURL);
+		          		//console.log('Connected to mongo at: ' + mongoURL);
 		              	var coll1 = mongo.collection('userevents');
 
 		              	coll1.update({
@@ -193,7 +189,7 @@ exports.listTechEventDetails = function(req, res) {
 		              }));*/
 
 		          });
-                    console.log(recommend)
+                    //console.log(recommend)
 		        // push data into userevents collection
 		        res.render("techEventDetails",{
 		          values:goutput[i], recommend: recommend,
@@ -214,14 +210,14 @@ exports.listFunEventDetails = function(req, res) {
 		  var eventid = req.param("id");
 		  var eventType = req.param("type");
       var eventCategory = req.param("cat");
-      console.log("FUN!!!!!")
-      console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
+      //console.log("FUN!!!!!")
+      //console.log("id= " + eventid,"type="+eventType, "cat"+eventCategory);
 
 		  if (eventCategory == 'fun'){
 
               for(var i = 0; i < 3; i++){
                   var randomNumber =  Math.floor(Math.random() * goutputFun.length)
-                  console.log("inside recommendations" + randomNumber)
+                  //console.log("inside recommendations" + randomNumber)
                   recommendFun[i]=goutputFun[randomNumber];
               }
 		    for( var i=0;i<goutputFun.length; i++){
@@ -233,7 +229,7 @@ exports.listFunEventDetails = function(req, res) {
 		          event.category=eventCategory;
 
 		          mongo.connect(mongoURL, function(){
-		              console.log('Connected to mongo at: ' + mongoURL);
+		              //console.log('Connected to mongo at: ' + mongoURL);
 		              var coll1 = mongo.collection('userevents');
 
 		              coll1.update({
@@ -271,8 +267,8 @@ exports.savetechDetails = function(req, res){
 	var eventid = req.body.eventid;
 	var type = req.body.eventType;
 
-	console.log("fav eventid "+eventid);
-	console.log("fav event type "+type);
+	//console.log("fav eventid "+eventid);
+	//console.log("fav event type "+type);
 
 //	res.redirect('/techEvents');
 
@@ -284,7 +280,7 @@ exports.savetechDetails = function(req, res){
 		};
 
 	mongo.connect(mongoURL, function(){
-		console.log('Connected to mongo at: ' + mongoURL);
+		//console.log('Connected to mongo at: ' + mongoURL);
 		var coll = mongo.collection('favoriteEvents');
 
 		coll.update({
@@ -312,8 +308,8 @@ exports.savetechDetails = function(req, res){
 		var funeventid = req.body.eventid;
 		var funtype = req.body.eventType;
 
-		console.log("fav fun eventid "+funeventid);
-		console.log("fav fun event type "+funtype);
+		//console.log("fav fun eventid "+funeventid);
+		//console.log("fav fun event type "+funtype);
 
 //		res.redirect('/techEvents');
 
@@ -325,7 +321,7 @@ exports.savetechDetails = function(req, res){
 			};
 
 		mongo.connect(mongoURL, function(){
-			console.log('Connected to mongo at: ' + mongoURL);
+			//console.log('Connected to mongo at: ' + mongoURL);
 			var coll = mongo.collection('favoriteEvents');
 
 			coll.update({

@@ -13,6 +13,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="angularjs/login.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+  <script type = "text/javascript" >
+    function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+    </script>
 </head>
 
 <body ng-app="mylogin" ng-controller="login" class="ng-scope">

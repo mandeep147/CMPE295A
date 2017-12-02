@@ -10,7 +10,7 @@ exports.connect = function(url, callback){
       if (err) { throw new Error('Could not connect: '+err); }
       db = _db;
       connected = true;
-      console.log(connected +" is connected?");
+      //console.log(connected +" is connected?");
       callback(db);
     });
 };
@@ -21,9 +21,7 @@ exports.connect = function(url, callback){
 exports.collection = function(name){
     if (!connected) {
       throw new Error('Must connect to Mongo before calling "collection"');
-    } 
+    }
     return db.collection(name);
-  
+
 };
-
-

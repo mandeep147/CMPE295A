@@ -6,11 +6,11 @@ var mysql = require('./mysql');
 var encryption = require('./encryption');
 
 exports.loginRequest = function(req,res){
-    console.log(req.body);
+    //console.log(req.body);
     var email = req.body.username;
     var password = req.body.password;
     var encrypted_password=encryption.encrypt(password);
-    console.log("This is encrypted password" + encrypted_password);
+    //console.log("This is encrypted password" + encrypted_password);
     var connection = mysql.getConnection();
     connection.query("select * from users where email = '"+ email + "' and password = '" + encrypted_password +"'" ,function(err,rows){
         if(rows.length>0){
@@ -28,7 +28,7 @@ exports.loginRequest = function(req,res){
 
 exports.register = function(req,res){
     var connection = mysql.getConnection();
-    console.log("This is after /register api call:" + JSON.stringify(req.body));
+    //console.log("This is after /register api call:" + JSON.stringify(req.body));
     var password = req.body.password;
     var encrypted_password = encryption.encrypt(password);
 
@@ -39,12 +39,12 @@ exports.register = function(req,res){
         phone: req.body.mobile,
         address:req.body.address
     };
-    console.log(data);
+    //console.log(data);
     connection.query("insert into users set ?", data, function(err,rows){
         if(!err){
             req.session.firstname=data.firstname;  //for displaying hi "name" on homepage
 
-            console.log("Successful");
+            //console.log("Successful");
             res.send({status:200, firstname: req.session.firstname});
         }
         else{
@@ -53,9 +53,9 @@ exports.register = function(req,res){
     });
 };
 
-exports.logout = function(req,res){			
-	console.log(JSON.stringify(req.session.email));
-	
+exports.logout = function(req,res){
+	//console.log(JSON.stringify(req.session.email));
+
 	req.session.destroy();
 	res.render('index');
 };

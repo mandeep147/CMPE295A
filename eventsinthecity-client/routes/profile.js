@@ -93,12 +93,12 @@ function searchEventTitle(req, res, output) {
         var techEvent = db.collection('techfunEvents');
         techEvent.find().toArray(function(err, result) {
             if (result.length) {
-                console.log(result)
+                //console.log(result)
                 for(var j = 0; j < output.length; j++){
                 	for (var i = 0; i < result[0].ebEventsSF.length; i++) {
                         if (output[j].id == result[0].ebEventsSF[i].id) {
-                            console.log("getSFTechDetails" + result[0].ebEventsSF[i].id)
-                            console.log(result[0].ebEventsSF[i].title);
+                            //console.log("getSFTechDetails" + result[0].ebEventsSF[i].id)
+                            //console.log(result[0].ebEventsSF[i].title);
                             output[j].id = result[0].ebEventsSF[i].id;
                             output[j].type = result[0].ebEventsSF[i].type;
                             output[j].cat = "tech";
@@ -110,8 +110,8 @@ function searchEventTitle(req, res, output) {
                     }
                     for (var i = 0; i < result[1].ebEventsSJ.length; i++) {
                         if (output[j].id == result[1].ebEventsSJ[i].id) {
-                            console.log("getSJTechDetails" + result[1].ebEventsSJ[i].id)
-                            console.log(result[1].ebEventsSJ[i].title);
+                            //console.log("getSJTechDetails" + result[1].ebEventsSJ[i].id)
+                            //console.log(result[1].ebEventsSJ[i].title);
                             output[j].id = result[1].ebEventsSJ[i].id;
                             output[j].type = result[1].ebEventsSJ[i].type;
                             output[j].cat = "tech";
@@ -123,8 +123,8 @@ function searchEventTitle(req, res, output) {
                     }
                     for (var i = 0; i < result[2].muSFEvents.length; i++) {
                         if (output[j].id == result[2].muSFEvents[i].id) {
-                            console.log("getSFTechDetails" + result[2].muSFEvents[i].id)
-                            console.log(result[2].muSFEvents[i].title);
+                            //console.log("getSFTechDetails" + result[2].muSFEvents[i].id)
+                            //console.log(result[2].muSFEvents[i].title);
                             output[j].id = result[2].muSFEvents[i].id;
                             output[j].type = result[2].muSFEvents[i].type;
                             output[j].cat = "tech";
@@ -136,8 +136,8 @@ function searchEventTitle(req, res, output) {
                     }
                     for (var i = 0; i < result[3].muSJEvents.length; i++) {
                         if (output[j].id == result[3].muSJEvents[i].id) {
-                            console.log("getSJTechDetails" + result[3].muSJEvents[i].id)
-                            console.log(result[3].muSJEvents[i].title);
+                            //console.log("getSJTechDetails" + result[3].muSJEvents[i].id)
+                            //console.log(result[3].muSJEvents[i].title);
                             output[j].id = result[3].muSJEvents[i].id;
                             output[j].type = result[3].muSJEvents[i].type;
                             output[j].cat = "tech";
@@ -149,8 +149,8 @@ function searchEventTitle(req, res, output) {
                     }
                     for (var i = 0; i < result[4].funeventsSJ.length; i++) {
                         if (output[j].id == result[4].funeventsSJ[i].id) {
-                            console.log("getSJFunDetails" + result[4].funeventsSJ[i].id)
-                            console.log(result[4].funeventsSJ[i].title);
+                            //console.log("getSJFunDetails" + result[4].funeventsSJ[i].id)
+                            //console.log(result[4].funeventsSJ[i].title);
                             output[j].id = result[4].funeventsSJ[i].id;
                             output[j].type = result[4].funeventsSJ[i].type;
                             output[j].cat = "fun";
@@ -162,8 +162,8 @@ function searchEventTitle(req, res, output) {
                     }
                     for (var i = 0; i < result[5].funeventsSF.length; i++) {
                         if (output[j].id == result[5].funeventsSF[i].id) {
-                            console.log("getSFFunDetails" + result[5].funeventsSF[i].id)
-                            console.log(result[5].funeventsSF[i].title);
+                            //console.log("getSFFunDetails" + result[5].funeventsSF[i].id)
+                            //console.log(result[5].funeventsSF[i].title);
                             output[j].id = result[5].funeventsSF[i].id;
                             output[j].type = result[5].funeventsSF[i].type;
                             output[j].cat = "fun";
@@ -185,12 +185,12 @@ function searchFunTitle(req, res, output) {
         var funEvent = db.collection('funEvents');
         funEvent.find().toArray(function(err, result) {
             if (result.length )  {
-                console.log("getFunDetails "+result[0].allEvents[3].id)
+                //console.log("getFunDetails "+result[0].allEvents[3].id)
                 for(var j = 0; j < output.length; j++){
                     for(var i = 0; i < result[0].allEvents.length; i++) {
                         if (output[j].id == result[0].allEvents[i].id ) {
-                            console.log("getFunDetails"+result[0].allEvents[i].id)
-                            console.log(result[0].allEvents[i].title);
+                            //console.log("getFunDetails"+result[0].allEvents[i].id)
+                            //console.log(result[0].allEvents[i].title);
                             output[j].id = result[0].allEvents[i].id;
                             output[j].type = result[0].allEvents[i].type;
                             output[j].image = result[0].allEvent[i].image;
@@ -209,8 +209,8 @@ function searchFunTitle(req, res, output) {
 
 
 function exportData(req, res, output) {
-    console.log("outside")
-    console.log(output);
+    //console.log("outside")
+    //console.log(output);
     res.render("profile", {
         "values": output
     });

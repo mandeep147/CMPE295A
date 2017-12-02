@@ -8,7 +8,7 @@ var mongoURL = "mongodb://ec2-54-183-239-166.us-west-1.compute.amazonaws.com:270
 var fe = [];
 var recommendFun=[];
 mongo.connect(mongoURL, function(db) {
-  console.log('Connected to mongo at: ' + mongoURL);
+  //console.log('Connected to mongo at: ' + mongoURL);
 
   var coll1 = db.collection('featuredEvents');
   coll1.find().toArray(function(err, result) {
@@ -24,8 +24,6 @@ mongo.connect(mongoURL, function(db) {
 exports.index = function(req, res) {
   //console.log(JSON.stringify(req.session.email));
   req.session.destroy();
-  console.log("Featured Events!!!!");
-  console.log(fe);
   res.render('index', {
     title: 'Events in the City',
     featured: fe
@@ -34,7 +32,7 @@ exports.index = function(req, res) {
 
 exports.featured = function(req, res) {
   var eventid = req.param("id");
-  console.log("Featured Events Details page!!!!");
+  //console.log("Featured Events Details page!!!!");
   for (var i = 0; i < fe.length; i++) {
     if (fe[i].id == eventid) {
 
@@ -79,14 +77,14 @@ exports.clickOnLoginButton = function(req, res) {
 
 exports.listFeaturedEventDetails = function(req, res) {
 	  var eventid = req.param("id");
-	  console.log("Featured Events Details page!!!!");
-	  
+	  //console.log("Featured Events Details page!!!!");
+
 	  for(var i = 0; i < 3; i++){
           var randomNumber =  Math.floor(Math.random() * fe.length)
-          console.log("inside recommendations" + randomNumber)
+          //console.log("inside recommendations" + randomNumber)
           recommendFun[i]=fe[randomNumber];
       }
-	  
+
 	  for (var i = 0; i < fe.length; i++) {
 	    if (fe[i].id == eventid) {
 
