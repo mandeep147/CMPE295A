@@ -1,44 +1,80 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
 
-  
+<head>
+  <meta charset="UTF-8">
+  <title>Events in The City</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  <link rel='stylesheet' href='/stylesheets/footer.css' />
+  <link rel='stylesheet' href='/stylesheets/eventDetails.css' />
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="angularjs/login.js"></script>
-  
+
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+
 </head>
 
 <body>
-	<button class="btn btn-primary" onclick="window.history.back()"><i class="glyphicon glyphicon-chevron-left">Back</i></button>
-	<h1>About Us </h1>
-	<p>
-	Staying updated about upcoming events has become very easy these days due to presence of various social media platforms like Facebook, Twitter. But still many events taking place in various domains like movies, games, hackathons, tech talks, etc., in and around the city goes unnoticed as there is no single platform for all the events mentioned. Due to lack of organized information, people tend to miss the important events which might take place in their neighborhood.
-	<br><br>
-	There are two main categories of events which students going to college are interested in. The first one being the Tech-talks, Hackathons and other Information sessions from various tech companies in the San Francisco Bay Area. The second category will be all the seasonal events, hiking trips, and other fun activities in this area. Hence, we propose an application which provides this information presented in a single platform.
+  <header>
+    <div class="displaycontent" style="z-index: 1000;">
+      <div class="navi">
+        <nav class="navbar navbar-expand-lg  custom-navbar">
+          <a class="navbar-brand custom-brand" href="/homepage">Events In the City</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav mr-auto">
 
-	<br><br>
-	We are a team of four Master's students doing our Master's Project under Prof. Richard Sinn.
-	Our team, consists of Aarti Chella, Anushka Jain, Mandeep Kaur and Kalyani Polagani.
-	We used various Web Scraping and Web Mining techniques in our application. We used these approaches in our
-	application to allow the users to view all the events from technology and fun categories that are happening currently in San Francisco Bay Area or in the future.
+              <li class="nav-item">
+                <a class="nav-link" href="/about">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contactUs">CONTACT US</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-	</p>
-	
-	<footer>
-	  	<div class="row" style="height:75px;">
-	  		<div class = "col-md-8" style="background:#7ed026;">
-	  			<p class="footerText">Copyright © 2017 Events in the City. All Rights Reserved.</p>
-	  		</div>
-	  		<div class = "col-md-4" style="background:#00aeef;">
-	  			<p ><a href='/about' class="footerText" style="text-align:center;">About</a></p>
-	  		</div>
-	  	</div>
-	</footer>
-	</body>
+      </div>
+    </div>
+    <hr/>
+  </header>
+  <div class="backpage">
+    <a class="back" onclick="window.history.back()">Go back to Home page</a>
+  </div>
+  <div class="aboutimage">
+    <img src="/images/bg-banner-2.jpeg" style="height:400px; width:75%;">
+    <p class="abouttext">ABOUT</p>
+  </div>
+
+  <div class="container details">
+    <div class="jumbotron details1">
+
+      <h1 class="detailtitle" style="margin-bottom: 1rem;"><u>Our Goal</u></h1>
+      <p class="about">
+        Staying updated about upcoming events has become very easy these days due to presence of various social media platforms like Facebook, Twitter. But still many events taking place in various domains like movies, games, hackathons, tech talks, etc., in
+        and around the city goes unnoticed as there is no single platform for all the events mentioned. Due to lack of organized information, people tend to miss the important events which might take place in their neighborhood.
+      </p>
+      <p class="about">
+        There are two main categories of events which students going to college are interested in. The first one being the Tech-talks, Hackathons and other Information sessions from various tech companies in the San Francisco Bay Area. The second category will
+        be all the seasonal events, hiking trips, and other fun activities in this area. Hence, we propose an application which provides this information presented in a single platform.
+      </p>
+    </div>
+    <div class="jumbotron details2">
+      <h1 class="detailtitle" style="margin-bottom: 1rem;"><u>Our Team</u></h1>
+      <p class="about">
+        We are a team of four Master's students doing our Master's Project under Prof. Richard Sinn. Our team, consists of Aarti Chella, Anushka Jain, Mandeep Kaur and Kalyani Polagani. We used various Web Scraping and Web Mining techniques in our application.
+        We used these approaches in our application to allow the users to view all the events from technology and fun categories that are happening currently in San Francisco Bay Area or in the future.
+
+      </p>
+    </div>
+  </div>
+  <footer>
+    <div class="footer">
+      <p class="footertext">Copyright © 2017 Events in the City. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+
 </html>

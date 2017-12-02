@@ -36,11 +36,12 @@
 
             <div class="navbar-collapse collapse dual-collapse">
               <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+
                 <li class="nav-item">
-                  <a class="nav-link" href="/profile">PROFILE</a>
+                  <a class="nav-link" href="/login">SIGNUP</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" ng-click="logout()">LOGOUT</a>
+                  <a class="nav-link" href="/login">LOGIN</a>
                 </li>
               </ul>
             </div>
@@ -62,88 +63,26 @@
     <div class="jumbotron details">
 
       <div>
-        <h2><%= fun.title %></h2>
-
+        <h2><%= featuredEvent.title %></h2>
+        <div class="card-image">
+          <img src="<%= featuredEvent.image %>" alt="No image available" />
+        </div>
           <Strong>Time : </Strong>
-          <%=fun.time%>
+          <%=featuredEvent.time%>
         </p>
         <p>
           <Strong>Location : </Strong>
-          <%=fun.location%>
+          <%=featuredEvent.location%>
         </p>
         <p>
           <Strong>Description: </Strong>
-          <%=fun.description%>
+          <%=featuredEvent.description%>
         </p>
         <p>
         <p>
-            <p><a href="<%= fun.url %>">Read More...</a></p>
+            <a class="findout" href="/login">Find out More...</a>
 
         </p>
-      </div>
-      <form action="/savefunDetails" method="post" class="save">
-        <input type="hidden" id="eventid" name="eventid" value=<%=fun.id%>>
-        <input type="hidden" id="eventType" name="eventType" value=<%=fun.type%>>
-        <input type="submit" class="btn btn-info saveeventf" value="Save Event">
-      </form>
-
-    </div>
-  </div>
-<div class="line">
-  <hr />
-</div>
-  <div class="container sampleEvents">
-
-    <h3>You might also be interested in</h3>
-
-    <div class="row">
-
-      <div class="col s12 m6">
-        <div class="card small">
-          <div class="card-image">
-            <img src="images/lake.jpg">
-          </div>
-          <div class="card-content">
-            <p>
-              <%= recommend[0].title %>
-            </p>
-          </div>
-          <div class="card-action">
-            <a class="btn btn-primary fun" href="/techEventDetails?id=<%=recommend[0].id%>&type=<%=recommend[0].type%>&cat=tech">View Event page</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col s12 m6">
-        <div class="card small">
-          <div class="card-image">
-            <img src="images/office.jpg">
-          </div>
-          <div class="card-content">
-            <p>
-              <%= recommend[1].title %>
-            </p>
-          </div>
-          <div class="card-action">
-            <a class="btn btn-primary fun" href="/techEventDetails?id=<%=recommend[1].id%>&type=<%=recommend[1].type%>&cat=tech">View Event page</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col s12 m6">
-        <div class="card small">
-          <div class="card-image">
-            <img src="images/index.jpeg">
-          </div>
-          <div class="card-content">
-            <p>
-              <%= recommend[2].title %>
-            </p>
-          </div>
-          <div class="card-action">
-            <a class="btn btn-primary fun" href="/techEventDetails?id=<%=recommend[2].id%>&type=<%=recommend[2].type%>&cat=tech">View Event page</a>
-          </div>
-        </div>
       </div>
 
     </div>
@@ -154,7 +93,6 @@
       <p class="footertext">Copyright © 2017 Events in the City. All Rights Reserved.</p>
     </div>
   </footer>
-
 </body>
 
 </html>

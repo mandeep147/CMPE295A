@@ -1,47 +1,73 @@
 <!DOCTYPE html>
 <html>
-<head>
 
-  
+<head>
+  <meta charset="UTF-8">
+  <title>Events in The City</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/eventDetails.css' />
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="angularjs/login.js"></script>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link rel='stylesheet' href='/stylesheets/footer.css' />
 
-  
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+
 </head>
 
 <body>
-	<button class="btn btn-primary" onclick="window.history.back()"><i class="glyphicon glyphicon-chevron-left">Back</i></button>
+  <header>
+    <div class="displaycontent" style="z-index: 1000;">
+      <div class="navi">
+        <nav class="navbar navbar-expand-lg  custom-navbar">
+          <a class="navbar-brand custom-brand" href="/homepage">Events In the City</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav mr-auto">
 
-	<section id="contact">
-  <div class="container">
-    <div class="well well-sm">
-      <h3><strong>Contact Us</strong></h3>
-    </div>        
-	  
-  		<div class="container">
-  			
-  			<div class="column">
-                <p>1 Washington Sq, San Jose, CA 95192, USA</p>
-                <p>+1 (669) 242-6994</p>
-                <p>eventsinthecity@gmail.com </p>
-            </div>
-            
-            <div class="column">
-                <div id="map-canvas"></div>
-            </div>
-            
-            
+              <li class="nav-item">
+                <a class="nav-link" href="/about">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contactUs">CONTACT US</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+    <hr/>
+  </header>
+  <div class="backpage">
+    <a class="back" onclick="window.history.back()">Go back to Home page</a>
+  </div>
+  <div id="paddingc" class="inbetween">
+  </div>
+  <section id="contact">
+    <div class="container">
+      <div class="jumbotron contact">
+      <div class="well well-sm">
+        <h3><strong>Contact Us</strong></h3>
+      </div>
+
+      <div class="container">
+
+        <div class="column">
+          <p>1 Washington Sq, San Jose, CA 95192, USA</p>
+          <p>+1 (669) 242-6994</p>
+          <p>eventsinthecity@gmail.com </p>
         </div>
-        
-        
-	<div class="col-md-5">
-          <h4><strong>Get in Touch</strong></h4>
+
+        <div class="column">
+          <div id="map-canvas"></div>
+        </div>
+
+      </div>
+
+      <div class="col-md-5">
+        <h4><strong>Get in Touch</strong></h4>
         <form>
           <div class="form-group">
             <input type="text" class="form-control" name="" value="" placeholder="Name">
@@ -61,41 +87,41 @@
         </form>
       </div>
     </div>
+    </div>
+    </div>
+
+  </section>
+
+  <div id="paddingc" class="inbetween">
   </div>
 
-</section>
+  <footer>
+    <div class="footer">
+      <p class="footertext">Copyright © 2017 Events in the City. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-	
-	
-	<footer>
-	  	<div class="row" style="height:75px;">
-	  		<div class = "col-md-8" style="background:#7ed026;">
-	  			<p class="footerText">Copyright © 2017 Events in the City. All Rights Reserved.</p>
-	  		</div>
-	  		<div class = "col-md-4" style="background:#00aeef;">
-	  			<p ><a href='/about' class="footerText" style="text-align:center;">About</a></p>
-	  		</div>
-	  	</div>
-	</footer>
-	
-	<script async defer 
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAp-7ZGM2bsKoRAXPcBUKu9XrM7vmikxFM&callback=initMap">
-</script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAp-7ZGM2bsKoRAXPcBUKu9XrM7vmikxFM&callback=initMap">
+  </script>
 
-<script>
-      function initMap() {
-        var myLatLng = {lat: +37.3352, lng: -121.8811};
-        var map = new google.maps.Map(document.getElementById('map-canvas'), {
-          zoom: 4,
-          center: myLatLng
-        });
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
-      }
-    </script>
-    
-	</body>
+  <script>
+    function initMap() {
+      var myLatLng = {
+        lat: +37.3352,
+        lng: -121.8811
+      };
+      var map = new google.maps.Map(document.getElementById('map-canvas'), {
+        zoom: 4,
+        center: myLatLng
+      });
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+    }
+  </script>
+
+</body>
+
 </html>

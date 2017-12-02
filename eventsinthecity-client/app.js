@@ -45,6 +45,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/login', routes.clickOnLoginButton);
 app.get('/homepage',routes.homepage);
+app.get('/featuredEvents',routes.featured);
 app.get('/users', user.list);
 app.get('/profile',profile.getProfileInfo);
 app.get('/profileHistory',profileHistory.getProfileHistInfo);

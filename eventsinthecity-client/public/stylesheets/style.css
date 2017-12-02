@@ -122,11 +122,12 @@ body {
 }
 
 .card.small {
-  height: 500px;
+  height: 400px;
+  width:20rem;
   position: relative;
 }
 .card{
-  margin: .5rem 0 1rem 0;
+  margin: 1rem 0 1rem 0;
 background-color: #fff;
 border-radius: 2px;
 }
@@ -134,8 +135,6 @@ border-radius: 2px;
 .card.small .card-image {
   max-height: 60%;
   overflow: hidden;
-}
-.card .card-image{
   position :relative;
 }
 
@@ -164,7 +163,7 @@ border-radius: 2px;
 
 .card .card-title {
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 600;
 }
 
 
