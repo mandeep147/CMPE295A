@@ -1,4 +1,4 @@
-# CMPE295A    
+# Events in the city   
 
 ### Motive:
 Staying updated about upcoming events is quite difficult these days as there is no single platform to check all the events at the same time. 
